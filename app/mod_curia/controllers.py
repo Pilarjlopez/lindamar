@@ -13,10 +13,13 @@ from app import db
 # Importar modulo de usuario (i.e. User)
 #from app.mod_curia.models import User
 
-# Definir el blueprint: 'Curia', establecer el prefijo de la url: app.url/auth
+# Definir el blueprint: 'Curia', establecer el prefijo de la url: app.url/curia
 mod_curia = Blueprint('curia', __name__, url_prefix='/curia')
 
 # Establecer las rutas y metodos aceptados
+
+### Rutas del menu principal
+
 @mod_curia.route('/inicio/', methods=['GET', 'POST'])
 def inicio():
     return render_template("curia/inicio.html") 
@@ -24,14 +27,6 @@ def inicio():
 @mod_curia.route('/obispos/', methods=['GET', 'POST'])
 def obispos():
     return render_template("curia/obispos.html") 
-
-@mod_curia.route('/arquidiocesis/', methods=['GET', 'POST'])
-def arquidiocesis():
-    return render_template("curia/arquidiocesis.html") 
-
-@mod_curia.route('/parroquias/', methods=['GET', 'POST'])
-def parroquias():
-    return render_template("curia/parroquias.html") 
 
 @mod_curia.route('/noticias/', methods=['GET', 'POST'])
 def noticias():
@@ -41,7 +36,71 @@ def noticias():
 def contacto():
     return render_template("curia/contacto.html")
 
+### Rutas del menu de arquidocesis
+
+@mod_curia.route('/arquidiocesis/catedral/', methods=['GET', 'POST'])
+def catedral():
+    return render_template("/curia/arquidiocesis/catedral.html") 
+
+@mod_curia.route('/arquidiocesis/santuario-diocesano/', methods=['GET', 'POST'])
+def santuario_dio():
+    return render_template("/curia/arquidiocesis/santuario-diocesano.html") 
+
+@mod_curia.route('/carquidiocesis/seminario-diocesano/', methods=['GET', 'POST'])
+def seminario_diocesano():
+    return render_template("/curia/arquidiocesis/seminarios-diocesanos.html") 
+
+@mod_curia.route('/arquidiocesis/vicario-pastoral/', methods=['GET', 'POST'])
+def vicario_pastoral():
+    return render_template("/curia/arquidiocesis/vicario-pastoral.html")
+
+### Rutas del menu de curia arzobispal
+    
+
+
+@mod_curia.route('/curia-arzobispal/consejo-gobierno/', methods=['GET', 'POST'])
+def consejo_gobierno():
+    return render_template("/curia/curia-arzobispal/consejo-gob.html") 
+
+@mod_curia.route('/curia-arzobispal/colegio-consultores/', methods=['GET', 'POST'])
+def colegio_consultores():
+    return render_template("/curia/curia-arzobispal/colegio-consul.html") 
+
+@mod_curia.route('/curia-arzobispal/consejo-pastoral/', methods=['GET', 'POST'])
+def consejo_pastoral():
+    return render_template("/curia/curia-arzobispal/consejo-pas.html") 
+
+@mod_curia.route('/curia-arzobispal/tribunal-ecle/', methods=['GET', 'POST'])
+def tribunal_ecle():
+    return render_template("/curia/curia-arzobispal/tribunal-ecle.html") 
+
+@mod_curia.route('/curia-arzobispal/consejo-presbiteral/', methods=['GET', 'POST'])
+def consejo_presbiteral():
+    return render_template("/curia/curia-arzobispal/consejo-presbiteral.html") 
+
+### Parte de parroquias del menu parroquias 
+
+@mod_curia.route('/parroquias/zona-central/', methods=['GET', 'POST'])
+def zona_c():
+    return render_template("curia/parroquias/zona-central.html")
+
+@mod_curia.route('/parroquias/zona-oriental/', methods=['GET', 'POST'])
+def zona_or():
+    return render_template("curia/parroquias/zona-oriental.html") 
+
+@mod_curia.route('/parroquias/zona-occidental/', methods=['GET', 'POST'])
+def zona_oc():
+    return render_template("curia/parroquias/zona-occidental.html") 
+
+@mod_curia.route('/parroquias/masaya/', methods=['GET', 'POST'])
+def masaya():
+    return render_template("/curia/parroquias/masaya.html") 
+
+@mod_curia.route('/parroquias/carazo/', methods=['GET', 'POST'])
+def carazo():
+    return render_template("curia/parroquias/carazo.html") 
 
 
 
 
+    

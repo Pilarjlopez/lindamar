@@ -1,0 +1,30 @@
+body {
+    background-color: #ecf0fb;
+}
+
+#mcuria {
+    background-color: #2196f3;
+    text-align: center;
+}
+
+.vitrina {
+    margin: 5px 0;
+    background-color: white;
+    /*padding: 0;*/
+}
+
+#fcuria {
+    background-color: #2196f3; 
+}
+
+#nav-mobile {
+}
+
+
+nav ul a {
+    padding: 0 60px;
+}
+
+.dropdown-content {
+  min-width: 215px;
+}
