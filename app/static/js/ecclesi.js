@@ -1,8 +1,8 @@
 (function($){
   $(function(){
-
-    var window_width = $(window).width();
-
+      
+    //var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+      
     // Plugin initialization
     $('.carousel.carousel-slider').carousel({full_width: true});
     $('.carousel').carousel();
@@ -13,8 +13,26 @@
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
     $('select').not('.disabled').material_select();
-    $('input.autocomplete').autocomplete({
-      data: {"Apple": null, "Microsoft": null, "Google": 'http://placehold.it/250x250'}
+    
+    var window_width = $(window).width();
+    
+    $(window).scroll(function() {
+        var altura_cabecera = $('.parallax-container').outerHeight(true);
+        var altura_menu = $('.menu').outerHeight(true);
+        
+        if ($(window).scrollTop() >= altura_cabecera){
+            $('.parallax-container').addClass('hide');
+            $('.menu').addClass('navbar-fixed');
+            $('.container').css('margin-top', '600px');
+            //alert($('#inicio a').text('<img class="responsive-img" src="{{ url_for(' + 'static' + ', filename=' + 'img/escudo_curia.svg' + ') }}" style="width: 64px;height: 64px;">'));
+            //$('#inicio a').val( '<a href="' + "{{ url_for('curia.inicio') }}" + ' style="padding: 0 0 0 60px;"><img class="responsive-img" src="{{ url_for(' + 'static' + ', filename=' + 'img/escudo_curia.svg' + ') }}" style="width: 64px;height: 64px;"></a>' );
+            $('#inicio a').text('<img class="responsive-img" src="{{ url_for("static", filename="img/escudo_curia.svg") }}" style="width: 64px;height: 64px;">');
+        } else {
+            $('.parallax-container').removeClass('hide');
+            $('.menu').removeClass('navbar-fixed');
+            $('.container').css('margin-top', '0');
+            $('#inicio a').text( 'Inicio' );
+        }
     });
 
   }); // end of document ready

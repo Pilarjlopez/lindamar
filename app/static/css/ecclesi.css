@@ -17,14 +17,14 @@ body {
     background-color: #2196f3; 
 }
 
-#nav-mobile {
-}
-
-
 nav ul a {
     padding: 0 60px;
 }
 
 .dropdown-content {
   min-width: 215px;
+}
+
+.text-justify {
+    text-align: justify;
 }
