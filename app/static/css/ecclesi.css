@@ -14,7 +14,7 @@ body {
 }
 
 #fcuria {
-    background-color: #2196f3; 
+    background-color: #2196f3;
 }
 
 nav ul a {
@@ -27,4 +27,62 @@ nav ul a {
 
 .text-justify {
     text-align: justify;
+}
+
+.navbar-fixed {
+    height: auto;
+}
+
+nav {
+    background-color: transparent;
+    box-shadow: 0 0 0 0;
+}
+
+.brand-logo {
+    margin: 20px 0 0 20px;
+}
+
+.btn-inicio {
+    background-color: rgba(255, 255, 255, 0.50);
+    box-shadow: 0 0 0 0;
+}
+
+.btn-inicio:hover {
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffffff;
+    box-shadow: 0 0 0 0;
+}
+
+.slide {
+    background-attachment: fixed;
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 180px 0;
+}
+
+.container-kitten {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+#descarga {
+    background-image: url(../../../static/img/nica.svg);
+    background-color: #ecf0fb;
+}
+
+.pie-seccion {
+    background-color: #06a7ed;
+    height: 40px;
+    color: #FFFFFF;
+}
+
+.pie-seccion p {
+    padding-top: 5px;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: #216778;
 }

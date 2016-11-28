@@ -19,4 +19,4 @@ mod_ecclesi = Blueprint('ecclesi', __name__, url_prefix='/ecclesi')
 # Establecer las rutas y metodos aceptados
 @mod_ecclesi.route('/descarga/', methods=['GET', 'POST'])
 def descarga():
-    return render_template("ecclesi/inicio.html") 
+    return render_template("ecclesi/inicio.html")
