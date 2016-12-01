@@ -4,7 +4,7 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/materialize.css') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/icon.css') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/ecclesi.css') }}">
-<div class=page>
+<div class="page">
     <div class="parallax-container">
         <div class="parallax"><img class="responsive-img" src="{{ url_for('static', filename='img/ccatedral.svg') }}"></div>
     </div>
@@ -29,7 +29,7 @@
         <li><a href="{{ url_for('curia.consejo_gobierno') }}">Consejo de Gobierno</a></li>
         <li><a href="{{ url_for('curia.consejo_pastoral') }}">Consejo de Pastoral</a></li>
         <li><a href="{{ url_for('curia.colegio_consultores') }}">Colegio de Consultores</a></li>
-        <li><a href="{{ url_for('curia.tribunal_ecle') }}">Tribunal Eclesiastico</a></li> 
+        <li><a href="{{ url_for('curia.tribunal_ecle') }}">Tribunal Eclesiastico</a></li>
         <li><a href="{{ url_for('curia.consejo_presbiteral') }}">Consejo Presbiteral </a></li>
     </ul>
     <ul id="parroquias" class="dropdown-content">
@@ -40,7 +40,7 @@
         <li><a href="{{ url_for('curia.masaya') }}">Zona Masaya</a></li>
         <li><a href="{{ url_for('curia.carazo') }}">Zona Carazo</a></li>
     </ul>
-    
+
     <div class="menu">
         <nav id="mcuria">
             <div class="nav-wrapper center-align">
@@ -56,15 +56,15 @@
             </div>
         </nav>
     </div>
-    <div style="margin-top:100px;"></div>
-    
+    <div id="espacio" style="margin-top:100px;"></div>
+
     {% block body %}{% endblock %}
-    
+
     <div style="margin-top:80px;"></div>
     <footer class="page-footer" id="fcuria">
         <div class="footer-copyright">
             <div class="container center-align">
-                Copyright © 2016 Atrquidiocesis de Managua 
+                Copyright © 2016 Atrquidiocesis de Managua
             </div>
         </div>
     </footer>

@@ -29,11 +29,13 @@ nav ul a {
     text-align: justify;
 }
 
-.navbar-fixed {
+
+/* Estilos EcclesiApp */
+.navbar-ecclesi {
     height: auto;
 }
 
-nav {
+.navbar-ecclesi nav {
     background-color: transparent;
     box-shadow: 0 0 0 0;
 }
