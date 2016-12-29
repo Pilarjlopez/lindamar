@@ -23,6 +23,18 @@ def descarga():
 
 @mod_ecclesi.route('/prueba/', methods=['GET', 'POST'])
 def prueba():
+<<<<<<< HEAD
     cat = Categoria.query.filter_by(id_categoria=2).first()
     return render_template("ecclesi/prueba.html", cat=cat)
+=======
+    return render_template("ecclesi/prueba.html")
+
+@mod_ecclesi.route('/registro/', methods=['GET', 'POST'])
+def registro():
+    return render_template("ecclesi/registro.html")
+
+@mod_ecclesi.route('/nueva/', methods=['GET', 'POST'])
+def nueva():
+    return render_template("ecclesi/nueva.html")
+>>>>>>> cb821d933e11766ba7efe136c4c4238a0f746450
 

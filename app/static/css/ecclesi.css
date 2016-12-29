@@ -44,7 +44,11 @@ nav ul a {
 }
 
 .brand-logo {
-    margin: 20px 0 0 20px;
+    margin: 5px 0 0 10px;
+}
+
+.brand-logo img{
+    height: 36px;
 }
 
 .btn-inicio {
@@ -87,6 +91,7 @@ nav ul a {
     height: 24px;
     border-radius: 50%;
     border: 2px solid #ffffff;
+<<<<<<< HEAD
 }
 
 #roller ul li a.active {
@@ -97,6 +102,18 @@ nav ul a {
     background-color: #ffffff;
 }
 
+=======
+}
+
+#roller ul li a.active {
+    width: 16px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+}
+
+>>>>>>> cb821d933e11766ba7efe136c4c4238a0f746450
 /* Secciones */
 #seccion1 .pie-seccion {
     margin-top: 580px;
@@ -148,4 +165,37 @@ nav ul a {
     border-top-width: 3px;
     border-top-style: solid;
     border-top-color: #11002b;
+<<<<<<< HEAD
+=======
+}
+
+/*** Registros ***/
+#formulario {
+    background-color: #6f8a91;
+    
+}
+
+#registro-nav {
+    height: 64px;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: #fff;
+}
+
+.panel-ecclesi {
+    background-color: #fff;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2px;
+    will-change: top, opacity;
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #2196f3;
+    box-shadow: 0 1px 0 0 #2196f3;
+}
+
+input:not([type]):focus:not([readonly]) + label, input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label, input[type=email]:focus:not([readonly]) + label, input[type=url]:focus:not([readonly]) + label, input[type=time]:focus:not([readonly]) + label, input[type=date]:focus:not([readonly]) + label, input[type=datetime-local]:focus:not([readonly]) + label, input[type=tel]:focus:not([readonly]) + label, input[type=number]:focus:not([readonly]) + label, input[type=search]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: #2196f3;
+>>>>>>> cb821d933e11766ba7efe136c4c4238a0f746450
 }
