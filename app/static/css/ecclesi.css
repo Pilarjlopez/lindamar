@@ -1,10 +1,10 @@
 
-/* Estilos Globales */
+/*** Estilos Globales ***/
 body {
     background-color: #ecf0fb;
 }
 
-/* Estilos Curia */
+/*** Estilos Curia ***/
 #mcuria {
     background-color: #2196f3;
     text-align: center;
@@ -13,7 +13,6 @@ body {
 .vitrina {
     margin: 5px 0;
     background-color: white;
-    /*padding: 0;*/
 }
 
 #fcuria {
@@ -32,18 +31,24 @@ nav ul a {
     text-align: justify;
 }
 
-/* Estilos EcclesiApp */
+/*** Estilos EcclesiApp ***/
+/* Barra de Menu */
 .navbar-ecclesi {
-    height: auto;
+    height: 0;
 }
 
 .navbar-ecclesi nav {
+    top: 0;
     background-color: transparent;
     box-shadow: 0 0 0 0;
 }
 
 .brand-logo {
-    margin: 20px 0 0 20px;
+    margin: 5px 0 0 10px;
+}
+
+.brand-logo img{
+    height: 36px;
 }
 
 .btn-inicio {
@@ -59,68 +64,122 @@ nav ul a {
     box-shadow: 0 0 0 0;
 }
 
-.slide {
-    background-attachment: fixed;
-    width: 100%;
-    height: auto;
+/* Paginacion de secciones */
+#roller {
     position: relative;
-    padding: 180px 0;
+    height: 0;
+    z-index: 998;
 }
 
-.container-kitten {
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
+#roller ul {
+    position: fixed;
+    top: 230px;
+    left: 20px;
 }
 
-#slide1 {
-    background-image: url(../../../static/img/nica.svg);
-    background-color: #ecf0fb;
+#roller ul li a{
+    margin: 4px;
+    width: 16px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.50);
+    transition: .28s ease;
 }
 
-#slide1 .pie-seccion {
+#roller ul li a:hover {
+    width: 16px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+#roller ul li a.active {
+    width: 16px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+}
+
+/* Secciones */
+#seccion1 .pie-seccion {
+    margin-top: 580px;
     background-color: #06a7ed;
     height: 40px;
     color: #FFFFFF;
 }
 
-#slide1 .pie-seccion p {
+#seccion1 .pie-seccion p {
     padding-top: 5px;
     border-top-width: 3px;
     border-top-style: solid;
     border-top-color: #216778;
 }
 
-#slide2 {
-   background-color: #afe9af;  
+#seccion2 {
+    background-color: #afe9af;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-#slide2 .pie-seccion {
+#seccion2 .pie-seccion {
     background-color: #4caf50;
     height: 40px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
-#slide2 .pie-seccion p {
+#seccion2 .pie-seccion p {
     padding-top: 5px;
     border-top-width: 3px;
     border-top-style: solid;
     border-top-color: #53961e;
 }
 
-#slide3 {
-   background-color: #e5d5ff;  
+#seccion3 {
+    background-color: #e5d5ff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-#slide3 .pie-seccion {
+#seccion3 .pie-seccion {
     background-color: #4a148c;
     height: 40px;
     color: #FFFFFF;
 }
 
-#slide3 .pie-seccion p {
+#seccion3 .pie-seccion p {
     padding-top: 5px;
     border-top-width: 3px;
     border-top-style: solid;
     border-top-color: #11002b;
+}
+
+/*** Registros ***/
+#formulario {
+    background-color: #6f8a91;
+    
+}
+
+#registro-nav {
+    height: 64px;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: #fff;
+}
+
+.panel-ecclesi {
+    background-color: #fff;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2px;
+    will-change: top, opacity;
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #2196f3;
+    box-shadow: 0 1px 0 0 #2196f3;
+}
+
+input:not([type]):focus:not([readonly]) + label, input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label, input[type=email]:focus:not([readonly]) + label, input[type=url]:focus:not([readonly]) + label, input[type=time]:focus:not([readonly]) + label, input[type=date]:focus:not([readonly]) + label, input[type=datetime-local]:focus:not([readonly]) + label, input[type=tel]:focus:not([readonly]) + label, input[type=number]:focus:not([readonly]) + label, input[type=search]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: #2196f3;
 }

@@ -20,3 +20,16 @@ mod_ecclesi = Blueprint('ecclesi', __name__, url_prefix='/ecclesi')
 @mod_ecclesi.route('/descarga/', methods=['GET', 'POST'])
 def descarga():
     return render_template("ecclesi/inicio.html")
+
+@mod_ecclesi.route('/prueba/', methods=['GET', 'POST'])
+def prueba():
+    return render_template("ecclesi/prueba.html")
+
+@mod_ecclesi.route('/registro/', methods=['GET', 'POST'])
+def registro():
+    return render_template("ecclesi/registro.html")
+
+@mod_ecclesi.route('/nueva/', methods=['GET', 'POST'])
+def nueva():
+    return render_template("ecclesi/nueva.html")
+
