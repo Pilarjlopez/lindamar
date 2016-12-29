@@ -4,37 +4,25 @@ from app import db
 
 # Definir un modelo de base para otras tablas de la base de heredar
 class Base(db.Model):
-
     __abstract__  = True
-
-    id            = db.Column(db.Integer, primary_key=True)
     date_created  = db.Column(db.DateTime,  default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(),
-                                           onupdate=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-# Definir un modelo de usuario
-class User(Base):
+# Definir modelo de templo
+class Templo(db.Model):
+    __tablename__      = 'templo'
+    id_templo          = db.Column('id_templo', db.Integer, primary_key=True)
+    nombre             = db.Column('nombre', db.Unicode)
+    nombre_popular     = db.Column('nombre_popular', db.Unicode)
+    direccion          = db.Column('direccion', db.Unicode)
+    telefono           = db.Column('telefono', db.Unicode)
+    historia           = db.Column('historia', db.Unicode)
+    portada            = db.Column('portada', db.Unicode)
+    institucion        = db.Column('institucion', db.Unicode)
 
-    __tablename__ = 'auth_user'
-
-    # Nombre de usuario
-    name    = db.Column(db.String(128),  nullable=False)
-
-    # Los datos de identificacion: correo electronico y clave
-    email    = db.Column(db.String(128),  nullable=False,
-                                            unique=True)
-    password = db.Column(db.String(192),  nullable=False)
-
-    # Autorizacion de datos: rol y estado
-    role     = db.Column(db.SmallInteger, nullable=False)
-    status   = db.Column(db.SmallInteger, nullable=False)
-
-    # Nuevo procedimiento de representacion de instancias
-    def __init__(self, name, email, password):
-
-        self.name     = name
-        self.email    = email
-        self.password = password
-
-    def __repr__(self):
-        return '<User %r>' % (self.name)    
+# Definir modelo de Categoria
+class Categoria(db.Model):
+    __tablename__ = 'categoria'
+    id_categoria  = db.Column('id_categoria', db.Integer, primary_key=True)
+    tipo          = db.Column('tipo', db.Unicode)
+	

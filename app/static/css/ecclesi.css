@@ -1,10 +1,10 @@
 
-/* Estilos Globales */
+/*** Estilos Globales ***/
 body {
     background-color: #ecf0fb;
 }
 
-/* Estilos Curia */
+/*** Estilos Curia ***/
 #mcuria {
     background-color: #2196f3;
     text-align: center;
@@ -13,7 +13,6 @@ body {
 .vitrina {
     margin: 5px 0;
     background-color: white;
-    /*padding: 0;*/
 }
 
 #fcuria {
@@ -32,12 +31,14 @@ nav ul a {
     text-align: justify;
 }
 
-/* Estilos EcclesiApp */
+/*** Estilos EcclesiApp ***/
+/* Barra de Menu */
 .navbar-ecclesi {
-    height: auto;
+    height: 0;
 }
 
 .navbar-ecclesi nav {
+    top: 0;
     background-color: transparent;
     box-shadow: 0 0 0 0;
 }
@@ -59,66 +60,90 @@ nav ul a {
     box-shadow: 0 0 0 0;
 }
 
-.slide {
-    background-attachment: fixed;
-    width: 100%;
-    height: auto;
+/* Paginacion de secciones */
+#roller {
     position: relative;
-    padding: 180px 0;
+    height: 0;
+    z-index: 998;
 }
 
-.container-kitten {
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
+#roller ul {
+    position: fixed;
+    top: 230px;
+    left: 20px;
 }
 
-#slide1 {
-    background-image: url(../../../static/img/nica.svg);
-    background-color: #ecf0fb;
+#roller ul li a{
+    margin: 4px;
+    width: 16px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.50);
+    transition: .28s ease;
 }
 
-#slide1 .pie-seccion {
+#roller ul li a:hover {
+    width: 16px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+#roller ul li a.active {
+    width: 16px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+}
+
+/* Secciones */
+#seccion1 .pie-seccion {
+    margin-top: 580px;
     background-color: #06a7ed;
     height: 40px;
     color: #FFFFFF;
 }
 
-#slide1 .pie-seccion p {
+#seccion1 .pie-seccion p {
     padding-top: 5px;
     border-top-width: 3px;
     border-top-style: solid;
     border-top-color: #216778;
 }
 
-#slide2 {
-   background-color: #afe9af;  
+#seccion2 {
+    background-color: #afe9af;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-#slide2 .pie-seccion {
+#seccion2 .pie-seccion {
     background-color: #4caf50;
     height: 40px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
-#slide2 .pie-seccion p {
+#seccion2 .pie-seccion p {
     padding-top: 5px;
     border-top-width: 3px;
     border-top-style: solid;
     border-top-color: #53961e;
 }
 
-#slide3 {
-   background-color: #e5d5ff;  
+#seccion3 {
+    background-color: #e5d5ff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-#slide3 .pie-seccion {
+#seccion3 .pie-seccion {
     background-color: #4a148c;
     height: 40px;
     color: #FFFFFF;
 }
 
-#slide3 .pie-seccion p {
+#seccion3 .pie-seccion p {
     padding-top: 5px;
     border-top-width: 3px;
     border-top-style: solid;

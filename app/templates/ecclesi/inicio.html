@@ -1,38 +1,66 @@
 {% extends "ecclesi/layout.html" %}
 {% block body %}
-<div class="slide" id="slide1" data-slide="1">
-    <div class="container-kitten clearfix">
-        <div id="content" class="grid_12">
-            <p class="center-align" style="font-size: 40px;color: #666666;">Pequeña descripción de la aplicación</p>
-            <div class="center-align">
+
+<div id="roller">
+    <ul class="table-of-contents">
+        <li><a href="#seccion1"></a></li>
+        <li><a href="#seccion2"></a></li>
+        <li><a href="#seccion3"></a></li>
+    </ul>
+</div>
+
+<div id="seccion1" class="parallax-container block scrollspy">
+    <div class="parallax">
+        <img src="{{ url_for('static', filename='img/nica.svg') }}" style="display: block; transform: translate3d(-50%, 194px, 0px); z-index: -1;">
+        <div class="contenido">
+            <div class="grid_12 center-align">
+                <h3 class="center-align" style="color: #666666;">Pequeña descripción de la aplicación</h3>
                 <a class="waves-effect waves-light btn-large red" style="font-size: 20px;">DESCARGAR</a>
             </div>
         </div>
     </div>
-    <div class="pie-seccion" style="margin-top:200px;">
+    <div class="pie-seccion">
         <p class="center-align">¿Como funciona EcclesiApp?</p>
     </div>
 </div>
-<div class="slide" id="slide2" data-slide="2">
-    <div class="container-kitten clearfix">
-        <div id="content" class="grid_12">
-            <div class="center-align">
-               
+
+<div id="seccion2" class="block section scrollspy">
+        <div  class="contenido">
+            <div class="grid_12 center-align">
+                <div class="carousel carousel-slider center" data-indicators="true" style="height: 400px;">
+                    <div class="carousel-fixed-item center">
+                      <a class="btn waves-effect white grey-text darken-text-2">button</a>
+                    </div>
+                    <div class="carousel-item red white-text" href="#one!">
+                      <h2>First Panel</h2>
+                      <p class="white-text">This is your first panel</p>
+                    </div>
+                    <div class="carousel-item amber white-text" href="#two!">
+                      <h2>Second Panel</h2>
+                      <p class="white-text">This is your second panel</p>
+                    </div>
+                    <div class="carousel-item green white-text" href="#three!">
+                      <h2>Third Panel</h2>
+                      <p class="white-text">This is your third panel</p>
+                    </div>
+                    <div class="carousel-item blue white-text" href="#four!">
+                      <h2>Fourth Panel</h2>
+                      <p class="white-text">This is your fourth panel</p>
+                    </div>
+                  </div>
             </div>
         </div>
-    </div>
     <div class="pie-seccion" style="margin-top:200px;">
         <p class="center-align">Contactenos!</p>
     </div>
 </div>
-<div class="slide" id="slide3" data-slide="3">
-    <div class="container-kitten clearfix">
-        <div id="content" class="grid_12">
-            <div class="center-align">
-               
+
+<div id="seccion3" class="block section scrollspy">
+        <div class="contenido">
+            <div class="grid_12 center-align">
+
             </div>
         </div>
-    </div>
     <div class="pie-seccion" style="margin-top:200px;">
         <p class="center-align">Arquidiocesis de Managua - EcclesiApp</p>
     </div>

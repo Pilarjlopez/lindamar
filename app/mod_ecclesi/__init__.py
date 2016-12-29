@@ -26,4 +26,4 @@ app.register_blueprint(ecclesi_module)
 
 # Construir la base de datos
 # Esto debera crear un archivo usando SQLAlchemy
-db.create_all() 
+#db.create_all() 

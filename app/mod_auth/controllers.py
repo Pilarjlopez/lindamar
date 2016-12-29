@@ -1,7 +1,7 @@
 # Importar las dependencias de flask
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for
 
-# Importar clave / ayudantes de encriptacion
+# Importar clave/ayudantes de encriptacion
 from werkzeug import check_password_hash, generate_password_hash
 
 # Importar el objeto de base de datos desde el modulo principal de la aplicacion
