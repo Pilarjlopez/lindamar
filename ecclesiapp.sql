@@ -109,7 +109,6 @@ CREATE TABLE IF NOT EXISTS `ecclesiapp`.`templo` (
   `direccion` VARCHAR(500) NOT NULL,
   `telefono` VARCHAR(45) NOT NULL,
   `historia` VARCHAR(500) NULL DEFAULT NULL,
-  `nombre_institucion` VARCHAR(100) NOT NULL,
   `portada` VARCHAR(45) NULL,
   `institucion` VARCHAR(45) NULL,
   `id_zona_parroquial` INT(11) NOT NULL,
