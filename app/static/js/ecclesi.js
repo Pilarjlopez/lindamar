@@ -33,10 +33,8 @@
         }
     });
 
-<<<<<<< HEAD
+
     var window_width = $(window).width();
-=======
->>>>>>> cb821d933e11766ba7efe136c4c4238a0f746450
     var window_height = $(window).height();
 
     var roller_alto = $('#roller ul').height();
