@@ -64,6 +64,37 @@ nav ul a {
     box-shadow: 0 0 0 0;
 }
 
+#acceso {
+    width: 30%;
+    border-radius: 0;
+}
+
+#acceso .row {
+    padding: 0;
+    margin-bottom: 0;
+}
+
+#acceso .row .col.s12 {
+    padding: 0;
+}
+
+#acceso input[type=text]:focus:not([readonly]),
+#acceso input[type=password]:focus:not([readonly]) {
+    border-bottom: 1px solid #06a7ed;
+    box-shadow: 0 1px 0 0 #06a7ed;
+}
+
+#acceso input[type=text]:focus:not([readonly]) + label,
+#acceso input[type=password]:focus:not([readonly]) + label {
+    color: #06a7ed;
+}
+
+#acceso button {
+    width: 100%;
+    background-color: #06a7ed;
+    padding: 0;
+}
+
 /* Paginacion de secciones */
 #roller {
     position: relative;

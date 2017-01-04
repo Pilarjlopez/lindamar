@@ -33,5 +33,3 @@ def registro():
 @mod_ecclesi.route('/nueva/', methods=['GET', 'POST'])
 def nueva():
     return render_template("ecclesi/nueva.html")
-
-
