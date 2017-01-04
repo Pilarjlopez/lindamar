@@ -8,6 +8,7 @@ setup(
         'virtualenv',
         'flask',
         'flask-sqlalchemy',
+        'flask-login',
         'flask-wtf',
         'pymysql',
     ],

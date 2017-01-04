@@ -1,4 +1,18 @@
 {% extends "ecclesi/layout.html" %}
+
+{% macro render_field(field, placeholder=None, id=None, class=None) %}
+{% if field.errors %}
+<div>
+{% elif field.flags.error %}
+<div>
+{% else %}
+<div>
+{% endif %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+</div>
+{% endmacro %}
+
 {% block body %}
 
 <div id="roller">
@@ -165,17 +179,37 @@
 <div id="acceso" class="modal">
     <div class="modal-content">
         <div class="row">
-            <form class="col s12">
+            {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+            <div>
+            {% for error in errors %}
+            {{ error }}<br>
+            {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            {% if form.errors %}
+            <div>
+            {% for field, error in form.errors.items() %}
+            {% for e in error %}
+            {{ e }}<br>
+            {% endfor %}
+            {% endfor %}
+            </div>
+            {% endif %}
+            <form class="col s12" method="POST" action="{{ url_for('usuario.acceso') }}" accept-charset="UTF-8" role="form">
+                {{ form.csrf_token }}
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="text" class="validate">
-                        <label for="email">Usuario</label>
+                        {{ render_field(form.email, placeholder="Email", id="email", class="validate") }}
+                        <!-- label for="email">Usuario</label -->
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Contraseña</label>
+                        {{ render_field(form.password, placeholder="Contraseña", id="password", class="validate") }}
+                        <!-- label for="password">Contraseña</label -->
                     </div>
                 </div>
                 <div class="row">
