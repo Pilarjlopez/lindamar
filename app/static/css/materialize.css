@@ -3390,7 +3390,7 @@ input[type=range] + .thumb {
   padding-top: 0;
 }
 
-.row {
+.row {    
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
@@ -7764,8 +7764,8 @@ input[type=range]:focus::-ms-fill-upper {
 
 .carousel .carousel-item {
   display: none;
-  width: 200px;
-  height: 400px;
+  width: 100px;
+  height: 100px;
   position: absolute;
   top: 0;
   left: 0;
