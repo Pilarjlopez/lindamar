@@ -8,7 +8,7 @@ from werkzeug import check_password_hash, generate_password_hash
 from app import db
 
 # Importar modulo de formulario
-#from app.mod_curia.forms import LoginForm
+from app.mod_usuario.forms import FormularioAcceso
 
 # Importar modulo de modelos
 from app.mod_ecclesi.models import Categoria
@@ -19,7 +19,8 @@ mod_ecclesi = Blueprint('ecclesi', __name__, url_prefix='/ecclesi')
 # Establecer las rutas y metodos aceptados
 @mod_ecclesi.route('/descarga/', methods=['GET', 'POST'])
 def descarga():
-    return render_template("ecclesi/inicio.html")
+    form = FormularioAcceso(request.form)
+    return render_template("ecclesi/inicio.html", form=form)
 
 @mod_ecclesi.route('/prueba/', methods=['GET', 'POST'])
 def prueba():
