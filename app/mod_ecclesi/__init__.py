@@ -1,6 +1,9 @@
 # importar flask y los operadores de plantilla
 from flask import Flask, render_template
 
+# flask login
+from flask_login import LoginManager
+
 # Importar SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
@@ -9,6 +12,9 @@ app = Flask(__name__)
 
 # Configuraciones
 app.config.from_object('config')
+
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 # Definir el objeto de base de datos que se importa por modulos y controladores
 db = SQLAlchemy(app)

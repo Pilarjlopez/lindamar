@@ -1,6 +1,10 @@
 # Importar las dependencias de flask
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for
 
+# importar flask login
+from app import login_manager
+from flask_login import (current_user, login_required, login_user, logout_user, confirm_login, fresh_login_required)
+
 # Importar clave / ayudantes de encriptacion
 from werkzeug import check_password_hash, generate_password_hash
 
@@ -12,6 +16,17 @@ from app.mod_usuario.forms import FormularioAcceso
 
 # Importar modulo de modelos
 from app.mod_ecclesi.models import Categoria
+
+# Importar Modelos
+from app.mod_usuario.models import Usuario
+
+@login_manager.user_loader
+def user_loader(user_id):
+    """Given *user_id*, return the associated User object.
+
+    :param unicode user_id: user_id (email) user to retrieve
+    """
+    return Usuario.query.filter_by(email=user_id).first()
 
 # Definir el blueprint: 'auth', establecer el prefijo de la url: app.url/auth
 mod_ecclesi = Blueprint('ecclesi', __name__, url_prefix='/ecclesi')
@@ -28,6 +43,7 @@ def prueba():
     return render_template("ecclesi/prueba.html", cat=cat)
 
 @mod_ecclesi.route('/registro/', methods=['GET', 'POST'])
+@login_required
 def registro():
     return render_template("ecclesi/registro.html")
 

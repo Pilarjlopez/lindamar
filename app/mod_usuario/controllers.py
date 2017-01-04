@@ -17,12 +17,23 @@ from app.mod_usuario.forms import FormularioAcceso
 # Importar Modelos
 from app.mod_usuario.models import Usuario
 
+@login_manager.user_loader
+def user_loader(user_id):
+    """Given *user_id*, return the associated User object.
+
+    :param unicode user_id: user_id (email) user to retrieve
+    """
+    return Usuario.query.get(user_id)
+
 # Definir el blueprint: 'auth', establecer el prefijo de la url: app.url/auth
 mod_usuario = Blueprint('usuario', __name__, url_prefix='/usuario')
 
 # Establecer las rutas y metodos aceptados
 @mod_usuario.route('/acceso/', methods=['GET', 'POST'])
 def acceso():
+    """For GET requests, display the login form. For POSTS, login the current user
+    by processing the form."""
+    #print db
     form = FormularioAcceso(request.form)
     
     if form.validate_on_submit():
@@ -34,4 +45,4 @@ def acceso():
             login_user(user, remember=True)
             return redirect(url_for("ecclesi.registro"))
         
-    return redirect(url_for("ecclesi.descarga", form=form))
+    return redirect(url_for("ecclesi.descarga"))
