@@ -7,10 +7,11 @@
 
     // Plugin initialization
     $('.carousel.carousel-slider').carousel({full_width: true});
-    //$('.carousel').carousel();
+    $('.carousel').carousel();
     $('.slider').slider({full_width: true});
     $('.parallax').parallax();
-    $('.modal-trigger').leanModal();
+    $('.modal').modal();
+    //$('.modal-trigger').leanModal();
     $('.scrollspy').scrollSpy();
     $('.button-collapse').sideNav({'edge': 'left'});
     $('.datepicker').pickadate({selectYears: 20});
@@ -33,10 +34,8 @@
         }
     });
 
-<<<<<<< HEAD
+
     var window_width = $(window).width();
-=======
->>>>>>> cb821d933e11766ba7efe136c4c4238a0f746450
     var window_height = $(window).height();
 
     var roller_alto = $('#roller ul').height();
