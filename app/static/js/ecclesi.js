@@ -2,9 +2,9 @@
     $(function(){
 
         // Plugin initialization
-        //$('.carousel.carousel-slider').carousel({full_width: true});
-        //$('.carousel').carousel();
-        $('.slider').slider({full_width: true});
+        $('.carousel.carousel-slider').carousel({full_width: true});
+        $('.carousel').carousel();
+        //$('.slider').slider({full_width: true});
         $('.parallax').parallax();
         $('.modal').modal();
         //$('.modal-trigger').leanModal();
@@ -45,9 +45,9 @@
         $('#seccion1 .pie-seccion').css('margin-top', (window_height - pie_alto) + 'px');
         // Seccion 2
         var contenido2_alto = $('#seccion2 .contenido').height();
-        contenido2_alto = (window_height / 2) - (contenido2_alto / 1.7);
+        contenido2_alto = (window_height / 6) - (contenido2_alto / 2);
         $('#seccion2 .contenido').css('margin-top', contenido2_alto + 'px');
-        $('#seccion2 .pie-seccion').css('margin-top', ((window_height / 5.5) - pie_alto) + 'px');
+        $('#seccion2 .pie-seccion').css('margin-top', ((window_height / 4.8) - pie_alto) + 'px');
         // Seccion 3
         var contenido3_alto = $('#seccion3 .contenido').height();
         //$('#seccion3 .contenido').css('margin-top', (((window_height / 2) + (window_height * 2)) - contenido3_alto) + 'px');
