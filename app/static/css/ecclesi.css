@@ -185,6 +185,14 @@ nav ul a {
     border-top-color: #11002b;
 }
 
+.slider .slides {
+    background-color: transparent;
+}
+
+.slider .slides li img {
+    background-position: inherit;
+}
+
 /*** Registros ***/
 #formulario {
     background-color: #6f8a91;

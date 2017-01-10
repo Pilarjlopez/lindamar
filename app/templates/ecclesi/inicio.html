@@ -1,6 +1,6 @@
 {% extends "ecclesi/layout.html" %}
 
-{% macro render_field(field, placeholder=None, id=None, class=None) %}
+{% macro render_field(field, placeholder=None) %}
 {% if field.errors %}
 <div>
 {% elif field.flags.error %}
@@ -12,7 +12,7 @@
     {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
 </div>
 {% endmacro %}
-
+    
 {% block body %}
 
 <div id="roller">
@@ -23,13 +23,16 @@
     </ul>
 </div>
 
+<!-- == SECCION I == -->
 <div id="seccion1" class="parallax-container block scrollspy">
     <div class="parallax">
         <img src="{{ url_for('static', filename='img/nica.svg') }}" style="display: block; transform: translate3d(-50%, 194px, 0px); z-index: -1;">
         <div class="contenido">
-            <div class="grid_12 center-align">
-                <h5 class="center-align" style="color: #666666;">EcclesiApp es una aplicacion para celulares con Android que te ayudara a encontrar Iglesias en toda Nicaragua, podras ver la ubicacion y datos importantes como horarios de Misa y confesiones, ademas podras ver tambien fotos de la iglesia, datos historicos y eventos que se realizaran en la iglesia que selecciones. Descarga completamente gratis esta App. </h3>
-                <a class="waves-effect waves-light btn-large red" style="font-size: 20px;">DESCARGAR</a>
+            <div class="center-align container">
+                <h1 class="center-align" style="color: #666666;">EcclesiApp</h1>
+                <h5 style="color: #666666;">La aplicaci&oacute;n que te ayudara a encontrar Iglesias en toda Nicaragua, podras ver la ubicacion y datos importantes como horarios de Misa y confesiones, ademas podras ver tambien fotos de la iglesia, datos historicos y eventos que se realizaran en la iglesia que selecciones. Descarga completamente gratis esta App. </h5>
+                <br/>
+                <a class="waves-effect waves-light btn-large red" style="font-size: 30px;">DESCARGAR <i class="material-icons">android</i></a>
             </div>
         </div>
     </div>
@@ -38,132 +41,218 @@
     </div>
 </div>
 
+<!-- == SECCION II == -->
 <div id="seccion2" class="block section scrollspy">
-        <div  class="contenido">
-            <div class="grid_12 center-align">
-                <div class="carousel carousel-slider center" data-indicators="true" style="height: 400px;">
-                   
-                    <div class="carousel-item red white-text " href="#one!">
-                              <div class="row panel-centrado">
-                                 <div class="col s3 l2 ">
-                                  <div class="card">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
-                                    </div>
-                                    <div class="card-content">
-                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                                      <p><a href="#">This is a link</a></p>
+        <div class="contenido container">
+            <div class="slider">
+                <ul class="slides">
+                    <!-- panel 1 -->
+                    <li>
+                        <div class="row" style="height: 100%;">
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
                                     </div>
                                     <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
                                     </div>
-                                  </div>
-                                 </div>
-                                  
-                                 <div class="col s3 l2">
-                                  <div class="card">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
-                                    </div>
-                                    <div class="card-content">
-                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                                      <p><a href="#">This is a link</a></p>
-                                    </div>
-                                    <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                    </div>
-                                  </div>
-                                 </div>
-                                  
-                                 <div class="col s3 l2">
-                                  <div class="card">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
-                                    </div>
-                                    <div class="card-content">
-                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                                      <p><a href="#">This is a link</a></p>
-                                    </div>
-                                    <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                    </div>
-                                  </div>
-                                 </div>              
                                 </div>
-                    </div>
-                    <div class="carousel-item none white-text" href="#two!">
-                      <h2>Second Panel</h2>
-                      <p class="white-text">This is your second panel</p>
-                        
-                        <div class="row">
-                                 <div class="col s3 l2">
-                                  <div class="card">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
-                                    </div>
-                                    <div class="card-content">
-                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                                      <p><a href="#">This is a link</a></p>
-                                    </div>
-                                    <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                    </div>
-                                  </div>
-                                 </div>
-                                  
-                                 <div class="col s3 l2">
-                                  <div class="card">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
-                                    </div>
-                                    <div class="card-content">
-                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                                      <p><a href="#">This is a link</a></p>
-                                    </div>
-                                    <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                    </div>
-                                  </div>
-                                 </div>
-                                  
-                                 <div class="col s3 l2">
-                                  <div class="card">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
-                                    </div>
-                                    <div class="card-content">
-                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                                      <p><a href="#">This is a link</a></p>
-                                    </div>
-                                    <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                                    </div>
-                                  </div>
-                                 </div>              
                             </div>
-                    </div>
-                    <div class="carousel-item none white-text" href="#three!">
-                      <h2>Third Panel</h2>
-                      <p class="white-text">This is your third panel</p>
-                    </div>
-                    <div class="carousel-item none white-text" href="#four!">
-                      <h2>Fourth Panel</h2>
-                      <p class="white-text">This is your fourth panel</p>
-                    </div>
-                  </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- panel 2 -->
+                    <li>
+                        <div class="row" style="height: 100%;">
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- panel 3 -->
+                    <li>
+                        <div class="row" style="height: 100%;">
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- panel 4 -->
+                    <li>
+                        <div class="row" style="height: 100%;">
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3" style="height: 100%;">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-image waves-effect waves-block waves-light" style="height: 100%;">
+                                        <img class="activator" src="{{ url_for('static', filename='img/cell.svg') }}">
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                
+                </ul>
             </div>
+            
         </div>
     <div class="pie-seccion" style="margin-top:200px;">
         <p class="center-align">Contactenos!</p>
     </div>
 </div>
 
+<!-- == SECCION II == -->
 <div id="seccion3" class="block section scrollspy">
         <div class="contenido">
             <div class="grid_12 center-align">
@@ -175,29 +264,10 @@
     </div>
 </div>
 
-<!-- Esctructura Modal -->
+<!-- Esctructura Modal del Fomulario de Acceso -->
 <div id="acceso" class="modal">
     <div class="modal-content">
         <div class="row">
-            {% with errors = get_flashed_messages(category_filter=["error"]) %}
-            {% if errors %}
-            <div>
-            {% for error in errors %}
-            {{ error }}<br>
-            {% endfor %}
-            </div>
-            {% endif %}
-            {% endwith %}
-
-            {% if form.errors %}
-            <div>
-            {% for field, error in form.errors.items() %}
-            {% for e in error %}
-            {{ e }}<br>
-            {% endfor %}
-            {% endfor %}
-            </div>
-            {% endif %}
             <form class="col s12" method="POST" action="{{ url_for('usuario.acceso') }}" accept-charset="UTF-8" role="form">
                 {{ form.csrf_token }}
                 <div class="row">

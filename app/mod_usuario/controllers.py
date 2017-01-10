@@ -23,7 +23,7 @@ def user_loader(user_id):
 
     :param unicode user_id: user_id (email) user to retrieve
     """
-    return Usuario.query.get(user_id)
+    return Usuario.query.filter_by(email=user_id).first()
 
 # Definir el blueprint: 'auth', establecer el prefijo de la url: app.url/auth
 mod_usuario = Blueprint('usuario', __name__, url_prefix='/usuario')
