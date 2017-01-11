@@ -38,20 +38,24 @@
         $('.block').css('height', window_height + 'px');
         
         var pie_alto = $('.pie-seccion').height();
+        $('.carousel.carousel-slider').css('height', '450px');
+        
         // Seccion 1
         var contenido1_alto = $('#seccion1 .contenido').height();
         contenido1_alto = (window_height / 2) - (contenido1_alto / 1.5);
         $('#seccion1 .contenido').css('margin-top', contenido1_alto + 'px');
         $('#seccion1 .pie-seccion').css('margin-top', (window_height - pie_alto) + 'px');
         // Seccion 2
+        $('.carousel.carousel-slider').css('height', '450px');
         var contenido2_alto = $('#seccion2 .contenido').height();
-        contenido2_alto = (window_height / 6) - (contenido2_alto / 2);
+        contenido2_alto = (window_height / 2.2) - (contenido2_alto / 2);
         $('#seccion2 .contenido').css('margin-top', contenido2_alto + 'px');
-        $('#seccion2 .pie-seccion').css('margin-top', ((window_height / 4.8) - pie_alto) + 'px');
+        $('#seccion2 .pie-seccion').css('margin-top', ((window_height / 6.4) - pie_alto) + 'px');
         // Seccion 3
         var contenido3_alto = $('#seccion3 .contenido').height();
-        //$('#seccion3 .contenido').css('margin-top', (((window_height / 2) + (window_height * 2)) - contenido3_alto) + 'px');
-        //$('#seccion3 .pie-seccion').css('margin-top', ((window_height * 3) - pie_alto) + 'px');
+        contenido3_alto = (window_height / 2) - (contenido3_alto / 1.8);
+        $('#seccion3 .contenido').css('margin-top', contenido3_alto + 'px');
+        $('#seccion3 .pie-seccion').css('margin-top', ((window_height / 6.2) - pie_alto) + 'px');
     
     }); // end of document ready
 })(jQuery); // end of jQuery name space

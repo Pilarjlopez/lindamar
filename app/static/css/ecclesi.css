@@ -166,6 +166,15 @@ nav ul a {
     border-top-color: #53961e;
 }
 
+.carousel.carousel-slider {
+    height: 450px;
+}
+
+.carousel .indicators .indicator-item {
+    height: 16px;
+    width: 16px;
+}
+
 #seccion3 {
     background-color: #e5d5ff;
     padding-top: 1rem;
@@ -183,14 +192,6 @@ nav ul a {
     border-top-width: 3px;
     border-top-style: solid;
     border-top-color: #11002b;
-}
-
-.slider .slides {
-    background-color: transparent;
-}
-
-.slider .slides li img {
-    background-position: inherit;
 }
 
 /*** Registros ***/

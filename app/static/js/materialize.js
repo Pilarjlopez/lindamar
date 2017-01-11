@@ -3591,6 +3591,7 @@ $(document).ready(function(){
           if (options.indicators) {
             // Add height if indicators are present
             $this.height(options.height + 40);
+            //$this.height(options.height * 2);
           }
           else {
             $this.height(options.height);

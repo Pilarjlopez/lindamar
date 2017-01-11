@@ -7688,7 +7688,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .slider .indicators {
-  position: absolute;
+  /*position: absolute;*/
   text-align: center;
   left: 0;
   right: 0;
