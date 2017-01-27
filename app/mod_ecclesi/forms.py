@@ -7,7 +7,6 @@ from wtforms import TextField, PasswordField # BooleanField
 # Validadores del formulario de importacion
 from wtforms.validators import Required, Email, EqualTo
 
-
 # Definir el formulario de acceso (WTForms)
 class FormularioAcceso(FlaskForm):
     email    = TextField('Email Address', [Email(), Required(message='Olvido su direccion de correo electronico?')])

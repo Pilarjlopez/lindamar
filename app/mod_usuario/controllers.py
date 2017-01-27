@@ -19,8 +19,8 @@ from app.mod_usuario.models import Usuario
 
 @login_manager.user_loader
 def user_loader(user_id):
-    """Given *user_id*, return the associated User object.
-
+    """
+    Given *user_id*, return the associated User object.
     :param unicode user_id: user_id (email) user to retrieve
     """
     return Usuario.query.filter_by(email=user_id).first()
@@ -31,8 +31,9 @@ mod_usuario = Blueprint('usuario', __name__, url_prefix='/usuario')
 # Establecer las rutas y metodos aceptados
 @mod_usuario.route('/acceso/', methods=['GET', 'POST'])
 def acceso():
-    """For GET requests, display the login form. For POSTS, login the current user
-    by processing the form."""
+    """
+    For GET requests, display the login form. For POSTS, login the current user by processing the form.
+    """
     #print db
     form = FormularioAcceso(request.form)
     
