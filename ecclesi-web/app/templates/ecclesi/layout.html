@@ -1,3 +1,8 @@
+{% if current_user.is_authenticated %}
+    {% set estilos = 'top: 0px; border-bottom: 3px solid #ffffff;' %}
+{% else %}
+    {% set estilos = 'top: 0px;' %}
+{% endif %}
 <!DOCTYPE html>
 <title>Ecclesi - Descarga</title>
 <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon_ecclesi.jpg') }}">
@@ -17,6 +22,7 @@
             <li class="divider"></li>
             <li><a href="#!"></a></li>
         </ul>
+
          <ul id="admin" class="dropdown-content">
             <li><a href="#!">Administrar Usuario</a></li>
             <li><a href="#!">Administrar Zonas Pastorales</a></li>
@@ -26,7 +32,11 @@
             <li><a href="#!">Administrar Actividades</a></li>
         </ul>
       
-        <nav style="top: 0px;">
+     
+
+        
+        <nav style="{{ estilos }}">
+
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo"><img src="{{ url_for('static', filename='img/ecclesi.svg') }}"></a>
                 <ul class="right hide-on-med-and-down">
