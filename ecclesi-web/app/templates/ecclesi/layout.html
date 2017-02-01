@@ -34,6 +34,8 @@
                 <a href="#" class="brand-logo"><img src="{{ url_for('static', filename='img/ecclesi.svg') }}"></a>
                 <ul class="right hide-on-med-and-down">
                     {% if current_user.is_authenticated %}
+                    <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">view_module</i></a></li>
+                    
                     <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">person_pin</i></a></li>
                     {% else %}
                     <li><a class="waves-effect waves-light btn btn-inicio" href="#acceso">Iniciar Sesion</a></li>
