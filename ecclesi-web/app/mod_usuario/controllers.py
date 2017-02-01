@@ -34,16 +34,13 @@ def acceso():
     """
     For GET requests, display the login form. For POSTS, login the current user by processing the form.
     """
-    #print db
     form = FormularioAcceso(request.form)
     
     if form.validate_on_submit():
         user = Usuario.query.filter_by(email=form.email.data).first()
         if user and check_password_hash(user.contrasenha, form.password.data):
             user.authenticated = True
-            db.session.add(user)
-            db.session.commit()
             login_user(user, remember=True)
-            return redirect(url_for("ecclesi.registro"))
+            return redirect(url_for("ecclesi.registro"), usuario=user)
         
     return redirect(url_for("ecclesi.descarga"))
