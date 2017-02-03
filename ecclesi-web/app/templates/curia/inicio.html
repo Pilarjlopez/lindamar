@@ -1,0 +1,35 @@
+{% extends "curia/layout.html" %}
+{% block body %}
+<div id="contenido" class="container">
+    <div class="row">
+        <div class="col s6 vitrina">
+            <h5>Noticias</h5>
+            <div class="divider"></div>
+            <div class="vitrina"></div>
+        </div>
+    <div class="col s5 offset-s1 vitrina">
+        <h5>EcclesiApp</h5>
+            <div class="divider"></div>
+            <div class="center-align vitrina">
+                <img class="responsive-img" src="{{ url_for('static', filename='img/ecclesiapp_logo.svg') }}">
+                <a class="waves-effect waves-light btn-large red" style="font-size: 20px;" href="{{ url_for('ecclesi.descarga') }}">DESCARGAR</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row">
+        <div class="col s6 vitrina">
+            <h5>Eventos</h5>
+            <div class="divider"></div>
+            <div class="vitrina"></div>
+        </div>
+    <div class="col s5 offset-s1 vitrina">
+        <h5>Redes Sociales</h5>
+            <div class="divider"></div>
+            <div class="vitrina"></div>
+        </div>
+    </div>
+
+    </div>
+</div>
+{% endblock %}

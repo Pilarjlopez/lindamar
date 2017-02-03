@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<title>Curia - Arquidiocesis de Managua</title>
+<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon_curia.jpg') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/materialize.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/icon.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/ecclesi.css') }}">
+<div class="page">
+    <div id="cabecera" class="parallax-container">
+        <div class="parallax"><img class="responsive-img" src="{{ url_for('static', filename='img/ccatedral.svg') }}"></div>
+    </div>
+    <!-- == Dropdown Structure == -->
+    <!-- Viacio Pastoral -->
+    <ul id="vicario" class="dropdown-content">
+        <li><a href="#!">Organigrama</a></li>
+        <li><a href="#!">Actividades</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Calendario de Actividades</a></li>
+    </ul>
+    <!-- Arquidiocesis -->
+    <ul id="arquidiocesis" class="dropdown-content nav">
+        <li><a href="{{ url_for('curia.catedral') }}">Catedral</a></li>
+        <li><a href="{{ url_for('curia.seminario_diocesano') }}">Seminarios Diocesanos</a></li>
+        <li class="divider"></li>
+        <li><a href="{{ url_for('curia.santuario_dio') }}">Santuarios Diocesanos</a></li>
+        <li><a class="dropdown-button" href="{{ url_for('curia.vicario_pastoral') }}" data-activates="vicario">Vicario Pastoral</a></li>
+    </ul>
+    <!-- Curia Arzobispal -->
+    <ul id="curia" class="dropdown-content">
+        <li><a href="{{ url_for('curia.consejo_gobierno') }}">Consejo de Gobierno</a></li>
+        <li><a href="{{ url_for('curia.consejo_pastoral') }}">Consejo de Pastoral</a></li>
+        <li><a href="{{ url_for('curia.colegio_consultores') }}">Colegio de Consultores</a></li>
+        <li><a href="{{ url_for('curia.tribunal_ecle') }}">Tribunal Eclesiastico</a></li>
+        <li><a href="{{ url_for('curia.consejo_presbiteral') }}">Consejo Presbiteral </a></li>
+    </ul>
+    <ul id="parroquias" class="dropdown-content">
+        <li><a href="{{ url_for('curia.zona_c') }}">Zona Central Managua</a></li>
+        <li><a href="{{ url_for('curia.zona_or') }}">Zona Oriental Managua</a></li>
+        <li class="divider"></li>
+        <li><a href="{{ url_for('curia.zona_oc') }}">Zona Occidental Managua</a></li>
+        <li><a href="{{ url_for('curia.masaya') }}">Zona Masaya</a></li>
+        <li><a href="{{ url_for('curia.carazo') }}">Zona Carazo</a></li>
+    </ul>
+
+    <div class="menu">
+        <nav id="mcuria">
+            <div class="nav-wrapper center-align">
+                <ul id="nav-mobile" class="center hide-on-med-and-down">
+                    <li id="inicio"><a href="{{ url_for('curia.inicio') }}">Inicio</a></li>
+                    <li><a href="{{ url_for('curia.obispos') }}">Obispos</a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="arquidiocesis">Arquidiocesis</a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="curia">Curia Arzobispal</a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="parroquias">Parroquias</a></li>
+                    <li><a href="{{ url_for('curia.noticias') }}">Noticias</a></li>
+                    <li><a href="{{ url_for('curia.contacto') }}">Contactenos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <div style="margin-top:100px;"></div>
+
+    {% block body %}{% endblock %}
+
+    <div style="margin-top:80px;"></div>
+    <footer class="page-footer" id="fcuria">
+        <div class="footer-copyright">
+            <div class="container center-align">
+                Copyright © 2016 Atrquidiocesis de Managua
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/ecclesi.js') }}"></script>
