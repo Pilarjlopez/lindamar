@@ -4,11 +4,11 @@ from app import db
 
 # Definir un modelo de usuario
 class Usuario(db.Model):
-    """An admin user capable of viewing reports.
-
+    """
+    An admin user capable of viewing reports.
+    
     :param str email: email address of user
     :param str password: encrypted password for the user
-
     """
     __tablename__   = 'usuario'
     
@@ -35,3 +35,20 @@ class Usuario(db.Model):
     def is_anonymous(self):
         """False, as anonymous users aren't supported."""
         return False
+    
+    def type(self):
+        return id_tipo_usuario
+    
+# Definir un modelo de usuario
+class Tipo_Usuario(db.Model):
+    
+    __tablename__   = 'tipo_usuario'
+    
+    id_tipo_usuario = db.Column(db.Integer, primary_key=True)
+    tipo            = db.Column(db.String(128),  nullable=False, unique=True)
+    id_privilegio   = db.Column(db.Integer, nullable=False)
+    
+    def is_active(self):
+        """True, as all users are active."""
+        return True
+    

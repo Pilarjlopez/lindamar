@@ -41,7 +41,7 @@ def acceso():
         if user and check_password_hash(user.contrasenha, form.password.data):
             user.authenticated = True
             login_user(user, remember=True)
-            return redirect(url_for("ecclesi.registro"))
+            return redirect(url_for("ecclesi.templo"))
         
     return redirect(url_for("ecclesi.descarga"))
 

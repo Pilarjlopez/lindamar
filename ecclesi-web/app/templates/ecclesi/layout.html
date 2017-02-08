@@ -1,4 +1,4 @@
-{% if current_user.is_authenticated %}
+{% if current_user.is_authenticated and session['visible'] %}
     {% set estilos = 'top: 0px; border-bottom: 3px solid #ffffff;' %}
 {% else %}
     {% set estilos = 'top: 0px;' %}
@@ -13,10 +13,14 @@
     <div class="navbar-fixed navbar-ecclesi">
         <!-- Dropdown Structure -->
         <ul id="usuario" class="dropdown-content">
-            <li>      
-              <img src="{{ url_for('static', filename='img/Cardenalbrenes.jpg') }}" alt="" class="circle responsive-img">
+            <li id="front">
+                {% if current_user.id_tipo_usuario == 1 %}
+                <i class="material-icons pin" style="font-size: 129px;">person_pin</i> 
+                {% else %}
+                <img id="img-user" src="{{ url_for('static', filename='img/img_user.jpg') }}" alt="" class="circle responsive-img">
+                {% endif %}
             </li>
-            <li><a href="#!"></a></li>
+            <li><a href="#!">Perfil</a></li>
             <li class="divider"></li>
             <li><a href="/usuario/denegar">Cerrar Sesion</a></li>
         </ul>
@@ -36,7 +40,13 @@
                     {% if current_user.is_authenticated %}
                     <li><a class="dropdown-button" href="#!" data-activates="admin" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">view_module</i></a></li>
                     
-                    <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">person_pin</i></a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px; height: 61px;">
+                        {% if current_user.id_tipo_usuario == 1 %}
+                        <i class="material-icons" style="font-size: 50px;">person_pin</i> 
+                        {% else %}
+                        <img src="{{ url_for('static', filename='img/img_user.jpg') }}" alt="" class="circle responsive-img" style="width: 55px;">
+                        {% endif %}
+                    </a></li>
                     {% else %}
                     <li><a class="waves-effect waves-light btn btn-inicio" href="#acceso">Iniciar Sesion</a></li>
                     {% endif %}

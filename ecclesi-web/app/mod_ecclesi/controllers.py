@@ -34,6 +34,7 @@ mod_ecclesi = Blueprint('ecclesi', __name__, url_prefix='/ecclesi')
 # Establecer las rutas y metodos aceptados
 @mod_ecclesi.route('/descarga/', methods=['GET', 'POST'])
 def descarga():
+    session['visible'] = 0;
     form = FormularioAcceso(request.form)
     return render_template("ecclesi/inicio.html", form=form)
 
@@ -42,9 +43,10 @@ def prueba():
     cat = Categoria.query.filter_by(id_categoria=2).first()
     return render_template("ecclesi/prueba.html", cat=cat)
 
-@mod_ecclesi.route('/registro/', methods=['GET', 'POST'])
+@mod_ecclesi.route('/templo/', methods=['GET', 'POST'])
 @login_required
-def registro():
+def templo():
+    session['visible'] = 1;
     return render_template("ecclesi/registro.html")
 
 @mod_ecclesi.route('/nueva/', methods=['GET', 'POST'])
