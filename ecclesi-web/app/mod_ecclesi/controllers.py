@@ -34,11 +34,7 @@ mod_ecclesi = Blueprint('ecclesi', __name__, url_prefix='/ecclesi')
 # Establecer las rutas y metodos aceptados
 @mod_ecclesi.route('/descarga/', methods=['GET', 'POST'])
 def descarga():
-<<<<<<< HEAD
-    session['visible']=0
-=======
     session['visible'] = 0;
->>>>>>> f00f7bdd06cd405f491fae928124eb7b535cf6db
     form = FormularioAcceso(request.form)
     return render_template("ecclesi/inicio.html", form=form)
 
@@ -50,30 +46,29 @@ def prueba():
 @mod_ecclesi.route('/templo/', methods=['GET', 'POST'])
 @login_required
 def templo():
-<<<<<<< HEAD
-    session['visible']=1
+    session['visible'] = 1
     return render_template("ecclesi/templo.html")
-=======
-    session['visible'] = 1;
-    return render_template("ecclesi/registro.html")
->>>>>>> f00f7bdd06cd405f491fae928124eb7b535cf6db
 
 @mod_ecclesi.route('/usuario/', methods=['GET', 'POST'])
+@login_required
 def usuario():
-    session['visible']=1
+    session['visible'] = 1
     return render_template("ecclesi/usuario.html")
 
 @mod_ecclesi.route('/zona-pastoral/', methods=['GET', 'POST'])
+@login_required
 def zpastoral():
-    session['visible']=1
+    session['visible'] = 1
     return render_template("ecclesi/zona-pastoral.html")
 
 @mod_ecclesi.route('/diocesis/', methods=['GET', 'POST'])
+@login_required
 def diocesis():
-    session['visible']=1
+    session['visible'] = 1
     return render_template("ecclesi/diocesis.html")
 
 @mod_ecclesi.route('/actividad/', methods=['GET', 'POST'])
+@login_required
 def actividad():
-    session['visible']=1
+    session['visible'] = 1
     return render_template("ecclesi/actividad.html")
