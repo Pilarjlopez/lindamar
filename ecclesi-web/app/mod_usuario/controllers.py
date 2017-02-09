@@ -44,3 +44,9 @@ def acceso():
             return redirect(url_for("ecclesi.templo"))
         
     return redirect(url_for("ecclesi.descarga"))
+
+@mod_usuario.route('/denegar/', methods=['GET', 'POST'])
+@login_required
+def denegar():
+    logout_user()
+    return redirect(url_for("ecclesi.descarga"))

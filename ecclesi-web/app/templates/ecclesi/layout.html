@@ -13,15 +13,18 @@
     <div class="navbar-fixed navbar-ecclesi">
         <!-- Dropdown Structure -->
         <ul id="usuario" class="dropdown-content">
-            <li>      
-       
-              <img src="{{ url_for('static', filename='img/Cardenalbrenes.jpg') }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-              
-        </li>
-            <li><a href="#!"></a></li>
+            <li id="front">
+                {% if current_user.id_tipo_usuario == 1 %}
+                <i class="material-icons pin" style="font-size: 129px;">person_pin</i> 
+                {% else %}
+                <img id="img-user" src="{{ url_for('static', filename='img/img_user.jpg') }}" alt="" class="circle responsive-img">
+                {% endif %}
+            </li>
+            <li><a href="#!">Perfil</a></li>
             <li class="divider"></li>
-            <li><a href="#!"></a></li>
+            <li><a href="/usuario/denegar">Cerrar Sesion</a></li>
         </ul>
+<<<<<<< HEAD
 
          <ul id="admin" class="dropdown-content">
             <li><a href="{{ url_for('ecclesi.usuario') }}">Administrar Usuario</a></li>
@@ -30,29 +33,41 @@
             <li><a href="{{ url_for('ecclesi.diocesis') }}">Administrar Diocesis</a></li>
             <li><a href="{{ url_for('ecclesi.templo') }}">Administrar Templo</a></li>
             <li><a href="{{ url_for('ecclesi.actividad') }}">Administrar Actividades</a></li>
+=======
+        
+        <ul id="admin" class="dropdown-content">
+            <li><a href="#!">Administrar Usuario</a></li>
+            <li><a href="#!">Administrar Zonas Pastorales</a></li>
+            <li><a href="#!">Administrar Diocesis</a></li>
+            <li><a href="#!">Administrar Templo</a></li>
+            <li><a href="#!">Administrar Actividades</a></li>
+>>>>>>> f00f7bdd06cd405f491fae928124eb7b535cf6db
         </ul>
       
-     
-
-        
         <nav style="{{ estilos }}">
-
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo"><img src="{{ url_for('static', filename='img/ecclesi.svg') }}"></a>
                 <ul class="right hide-on-med-and-down">
+<<<<<<< HEAD
 
                     {% if current_user.is_authenticated and session['visible'] %}
 
+=======
+                    {% if current_user.is_authenticated %}
+>>>>>>> f00f7bdd06cd405f491fae928124eb7b535cf6db
                     <li><a class="dropdown-button" href="#!" data-activates="admin" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">view_module</i></a></li>
                     
-                    <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">person_pin</i></a></li>
-
+                    <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px; height: 61px;">
+                        {% if current_user.id_tipo_usuario == 1 %}
+                        <i class="material-icons" style="font-size: 50px;">person_pin</i> 
+                        {% else %}
+                        <img src="{{ url_for('static', filename='img/img_user.jpg') }}" alt="" class="circle responsive-img" style="width: 55px;">
+                        {% endif %}
+                    </a></li>
                     {% else %}
                     <li><a class="waves-effect waves-light btn btn-inicio" href="#acceso">Iniciar Sesion</a></li>
                     {% endif %}
                 </ul>
-           
-            
             </div>
         </nav>
     </div>

@@ -682,7 +682,8 @@ if (jQuery) {
         // Position dropdown
         activates.css({
           position: 'absolute',
-          top: origin.position().top + verticalOffset + scrollYOffset,
+          //top: origin.position().top + verticalOffset + scrollYOffset,
+          top: origin.position().top + origin.position().height,
           left: leftPosition + scrollXOffset
         });
 
