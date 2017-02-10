@@ -24,26 +24,37 @@
             <li class="divider"></li>
             <li><a href="/usuario/denegar">Cerrar Sesion</a></li>
         </ul>
+<<<<<<< HEAD
 
 
          <ul id="admin" class="dropdown-content">
+=======
+        <ul id="admin" class="dropdown-content">
+>>>>>>> d41f3a34e36424efd161d47d52fb73a202fa9e48
             <li><a href="{{ url_for('ecclesi.usuario') }}">Administrar Usuario</a></li>
             <li><a href="{{ url_for('ecclesi.zpastoral') }}">Administrar Zonas Pastorales</a></li>
             <li class="divider"></li>
             <li><a href="{{ url_for('ecclesi.diocesis') }}">Administrar Diocesis</a></li>
             <li><a href="{{ url_for('ecclesi.templo') }}">Administrar Templo</a></li>
             <li><a href="{{ url_for('ecclesi.actividad') }}">Administrar Actividades</a></li>
+<<<<<<< HEAD
 
+=======
+>>>>>>> d41f3a34e36424efd161d47d52fb73a202fa9e48
         </ul>
       
         <nav style="{{ estilos }}">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo"><img src="{{ url_for('static', filename='img/ecclesi.svg') }}"></a>
                 <ul class="right hide-on-med-and-down">
+<<<<<<< HEAD
 
 
                     {% if current_user.is_authenticated and session['visible'] %}
 
+=======
+                    {% if current_user.is_authenticated %}
+>>>>>>> d41f3a34e36424efd161d47d52fb73a202fa9e48
                     <li><a class="dropdown-button" href="#!" data-activates="admin" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">view_module</i></a></li>
                     
                     <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px; height: 61px;">

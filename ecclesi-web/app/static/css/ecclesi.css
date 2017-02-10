@@ -312,6 +312,24 @@ nav ul a {
     background-color: #6f8a91;   
 }
 
+.tabs .tab a {
+    color: rgba(6, 167, 237, 0.7);
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+    background-color: transparent;
+    color: #06A7ED;
+}
+
+.tabs .tab.disabled a, .tabs .tab.disabled a:hover {
+    color: rgba(6, 167, 237, 0.7);
+    cursor: default;
+}
+
+.tabtive {
+    border-bottom: 2px solid #06A7ED;
+}
+
 #registro-nav {
     height: 64px;
 }

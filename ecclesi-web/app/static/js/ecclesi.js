@@ -57,6 +57,13 @@
         contenido3_alto = (window_height / 2) - (contenido3_alto / 1.8);
         $('#seccion3 .contenido').css('margin-top', contenido3_alto + 'px');
         $('#seccion3 .pie-seccion').css('margin-top', ((window_height / 6.2) - pie_alto) + 'px');
+        
+        $('.tabs .tab').click(function(){
+            $('.tab').each(function(index, element){
+                $(element).removeClass('tabtive');
+            });
+           $(this).addClass('tabtive');
+        });
     
     }); // end of document ready
 })(jQuery); // end of jQuery name space
