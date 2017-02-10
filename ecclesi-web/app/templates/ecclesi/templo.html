@@ -3,15 +3,17 @@
 <div id="formulario">
     <div class="nav-wrapper" id="registro-nav"></div>
     <div style="margin-top: 50px"></div>
-    <div class="container">
-        <div class="col s12">
-            <ul class="tabs">
-                <li class="tab col s3"><a class="active" href="#test1">Nuevo Templo</a></li>
-                <li class="tab col s3"><a href="#test2">Test 2</a></li>
-                <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
-                <li class="tab col s3"><a href="#test4">Test 4</a></li>
+    <div class="row" style="position: absolute; float: right; right: 0px;">
+        <div class="col s5" style="float: right;">
+            <ul class="tabs" style="height: 194px;">
+                <li class="tab col s3" style="width: 100%;"><a class="active" href="#test1">Nuevo Templo</a></li>
+                <li class="tab col s3" style="width: 100%;"><a href="#test2">Test 2</a></li>
+                <li class="tab col s3 disabled" style="width: 100%;"><a href="#test3">Disabled Tab</a></li>
+                <li class="tab col s3" style="width: 100%;"><a href="#test4">Test 4</a></li>
             </ul>
         </div>
+    </div>
+    <div class="container">
         <div id="test1" class="col panel-ecclesi">
             <div class="row">
                 <form class="col s12" style="padding: 40px;">
@@ -55,23 +57,21 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input class="input-field" type="text" ></input>
+                            <input class="input-field" type="text" />
                             <label>Dirección</label>
                         </div>
                     </div>
                   
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="email" class="validate">
+                            <input type="email" class="validate" />
                             <label>Historia</label>
                         </div>
                     </div>
-               <div class="col s2">
-              
-            </div>
                 </form>
             </div>
         </div>
+    
         <div id="test2" class="col s12">Test 2</div>
         <div id="test3" class="col s12">Test 3</div>
         <div id="test4" class="col s12">Test 4</div>
