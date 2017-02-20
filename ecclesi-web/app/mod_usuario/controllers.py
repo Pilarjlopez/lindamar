@@ -12,10 +12,12 @@ from werkzeug import check_password_hash, generate_password_hash
 from app import db
 
 # Importar modulo de formulario
+from app.mod_usuario.forms import PerfilUsuario
 from app.mod_usuario.forms import FormularioAcceso
 
 # Importar Modelos
 from app.mod_usuario.models import Usuario
+from app.mod_usuario.models import Presbitero
 
 @login_manager.user_loader
 def user_loader(user_id):
@@ -41,7 +43,7 @@ def acceso():
         if user and check_password_hash(user.contrasenha, form.password.data):
             user.authenticated = True
             login_user(user, remember=True)
-            return redirect(url_for("ecclesi.templo"))
+            return redirect(url_for("usuario.perfil"))
         
     return redirect(url_for("ecclesi.descarga"))
 
@@ -50,3 +52,11 @@ def acceso():
 def denegar():
     logout_user()
     return redirect(url_for("ecclesi.descarga"))
+
+@mod_usuario.route('/perfil/', methods=['GET', 'POST'])
+@login_required
+def perfil():
+    session['visible'] = 1
+    form = PerfilUsuario(request.form)
+    return render_template("ecclesi/perfil.html", form=form)
+    

@@ -64,6 +64,19 @@
             });
            $(this).addClass('tabtive');
         });
+        
+        var alto = 0;
+        
+        $('#tabs').children().each(function(index, element) {
+            $(element).css('top', alto);
+            alto += $(element).height();
+        });
+        $('#tabs').height(alto);
+        
+        /*var x = $('.no_edit').prev().width();
+        var y = $('.no_edit').prev().height();
+        $('.no_edit').css('margin-left', (x + 30) + 'px');
+        $('.no_edit').css('margin-top', y + 'px');*/
     
     }); // end of document ready
 })(jQuery); // end of jQuery name space

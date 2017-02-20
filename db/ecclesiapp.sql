@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 4.6.5.1
--- https://www.phpmyadmin.net/
+-- -- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 26-01-2017 a las 05:56:36
--- Versión del servidor: 10.1.20-MariaDB
--- Versión de PHP: 7.0.14
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 19-02-2017 a las 05:21:56
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -35,6 +35,15 @@ CREATE TABLE `actividad` (
   `id_templo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `actividad`
+--
+
+INSERT INTO `actividad` (`id_actividad`, `nombre`, `dia`, `hora`, `descripcion`, `id_templo`) VALUES
+(1, '', 0, 0, '', 1),
+(2, '', 0, 0, '', 2),
+(3, '', 0, 0, '', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -51,8 +60,9 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `tipo`) VALUES
-(1, 'Catedral'),
-(2, 'Parroquia');
+(1, 'Parroquia'),
+(2, 'Capilla'),
+(3, 'Catedral');
 
 -- --------------------------------------------------------
 
@@ -65,6 +75,18 @@ CREATE TABLE `departamento` (
   `nombre` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `departamento`
+--
+
+INSERT INTO `departamento` (`id_departamento`, `nombre`) VALUES
+(1, 'Managua'),
+(2, 'Masaya'),
+(3, 'Carazo'),
+(4, 'Rivas'),
+(5, 'León'),
+(6, 'Chinandega');
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +97,15 @@ CREATE TABLE `diocesis` (
   `id_diocesis` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `diocesis`
+--
+
+INSERT INTO `diocesis` (`id_diocesis`, `nombre`) VALUES
+(1, 'Diócesis de Managua'),
+(2, 'Diócesis de León'),
+(3, 'Diócesis de Granada');
 
 -- --------------------------------------------------------
 
@@ -102,6 +133,13 @@ CREATE TABLE `galeria` (
   `id_templo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `galeria`
+--
+
+INSERT INTO `galeria` (`id_galeria`, `descripcion`, `portada`, `id_templo`) VALUES
+(1, '', NULL, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +153,14 @@ CREATE TABLE `horario` (
   `id_servicio_religioso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `horario`
+--
+
+INSERT INTO `horario` (`id_horario`, `hora`, `dia`, `id_servicio_religioso`) VALUES
+(1, 0, 0, 1),
+(2, 0, 0, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -126,6 +172,26 @@ CREATE TABLE `municipio` (
   `nombre` varchar(45) DEFAULT NULL,
   `id_departamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `municipio`
+--
+
+INSERT INTO `municipio` (`id_municipio`, `nombre`, `id_departamento`) VALUES
+(1, NULL, 1),
+(2, NULL, 2),
+(3, NULL, 1),
+(4, NULL, 1),
+(5, NULL, 2),
+(6, NULL, 2),
+(7, NULL, 3),
+(8, NULL, 3),
+(9, NULL, 4),
+(10, NULL, 4),
+(11, NULL, 5),
+(12, NULL, 5),
+(13, NULL, 6),
+(14, NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -141,6 +207,13 @@ CREATE TABLE `noticia` (
   `id_templo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `noticia`
+--
+
+INSERT INTO `noticia` (`id_noticia`, `titulo`, `noticia`, `imagen`, `id_templo`) VALUES
+(1, NULL, NULL, NULL, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -150,17 +223,32 @@ CREATE TABLE `noticia` (
 CREATE TABLE `oficio_eclesiastico` (
   `id_oficio_eclesiastico` int(11) NOT NULL,
   `tipo` varchar(45) NOT NULL,
-  `id_presbistero` int(11) NOT NULL
+  `id_presbitero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `oficio_eclesiastico`
+--
+
+INSERT INTO `oficio_eclesiastico` (`id_oficio_eclesiastico`, `tipo`, `id_presbitero`) VALUES
+(1, 'Párroco', 4),
+(2, 'Vicario', 5),
+(3, 'Vicario', 6),
+(4, 'Vicario', 7),
+(5, 'Párroco', 8),
+(6, 'Párroco', 9),
+(7, 'Vicario', 10),
+(8, 'Párroco', 11),
+(9, 'Vicario', 12);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `presbistero`
+-- Estructura de tabla para la tabla `presbitero`
 --
 
-CREATE TABLE `presbistero` (
-  `id_presbistero` int(11) NOT NULL,
+CREATE TABLE `presbitero` (
+  `id_presbitero` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   `cane_confer` varchar(45) NOT NULL,
@@ -170,6 +258,26 @@ CREATE TABLE `presbistero` (
   `id_usuario` int(11) NOT NULL,
   `id_templo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `presbitero`
+--
+
+INSERT INTO `presbitero` (`id_presbitero`, `nombre`, `apellido`, `cane_confer`, `nombre_popular`, `fecha_ordenacion`, `foto_portada`, `id_usuario`, `id_templo`) VALUES
+(1, 'Milton Douglas ', 'Tobías Molina', '', '', 0, NULL, 2, 2),
+(2, 'Carlos ', ' Avilés Cantón', '', '', 0, NULL, 2, 2),
+(3, ' Raúl Antonio ', 'Zamora', '', '', 0, NULL, 3, 2),
+(4, 'Leopoldo José', 'Brenes Solórzano', '', '', 0, NULL, 2, 1),
+(5, 'Julio Santos ', 'Dávila ', '', '', 0, NULL, 2, 2),
+(6, 'Carlos ', 'Handall ', '', '', 0, NULL, 2, 1),
+(7, 'Leonel Alberto ', 'Alfaro', '', '', 0, NULL, 2, 1),
+(8, 'Juan Carlos ', 'Romero Lezama', '', '', 0, NULL, 2, 2),
+(9, 'Carlos Avilés ', 'Cantón', '', '', 0, NULL, 2, 2),
+(10, 'David ', 'López', '', '', 0, NULL, 2, 2),
+(11, 'Raúl Antonio ', 'Zamora', '', '', 0, NULL, 2, 2),
+(12, 'Erick Alvarado ', 'Cole', '', '', 0, NULL, 2, 2),
+(13, 'Rafael de la Concepción ', 'Moreno Cuadra', '', '', 0, NULL, 2, 2),
+(14, 'lui', 'aleman', '', '', 2147483647, NULL, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -203,6 +311,14 @@ CREATE TABLE `servicio_religioso` (
   `templo_id_templo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `servicio_religioso`
+--
+
+INSERT INTO `servicio_religioso` (`id_servicio_religioso`, `tipo`, `descripcion`, `templo_id_templo`) VALUES
+(1, 'Boda', '', 2),
+(2, 'Bautizo', '', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -210,9 +326,9 @@ CREATE TABLE `servicio_religioso` (
 --
 
 CREATE TABLE `templo` (
-  `id_templo` int(10) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `nombre_popular` varchar(50) DEFAULT NULL,
+  `id_templo` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `nombre_popular` varchar(150) DEFAULT NULL,
   `direccion` varchar(500) NOT NULL,
   `telefono` varchar(45) NOT NULL,
   `historia` varchar(500) DEFAULT NULL,
@@ -223,6 +339,16 @@ CREATE TABLE `templo` (
   `id_municipio` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `templo`
+--
+
+INSERT INTO `templo` (`id_templo`, `nombre`, `nombre_popular`, `direccion`, `telefono`, `historia`, `nombre_institucion`, `portada`, `institucion`, `id_zona_parroquial`, `id_municipio`, `id_categoria`) VALUES
+(1, 'Catedral Metropolitana Inmaculada Concepción de María ', 'Catedral de Managua', 'Reparto Serrano, Costado sur DGI', '(505) 2278 4223 - 2278 4232 (oficina)', NULL, '', NULL, NULL, 1, 1, 1),
+(2, 'Cristo Rey', NULL, 'Reparto Schick II Etapa, del Chaparral 1c. al norte', '(505) 2289 3911', NULL, '', NULL, NULL, 1, 1, 1),
+(3, 'El Calvario', 'Iglesia del Oriental', 'Bo. Los Ángeles, Managua Costado sur donde fue la Shell. (Mercado Oriental)', '(505) 2248 1600', NULL, '', NULL, NULL, 1, 1, 1),
+(4, 'Jesús de la Divina Misericordia ', NULL, 'Villa Fontana, Semáforo del Club Terraza \r\n2c. al oeste\r\n', '(505) 2270 6997', NULL, '', NULL, NULL, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -278,7 +404,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `contrasenha`, `nombre`, `apellido`, `is_active`, `id_tipo_usuario`) VALUES
 (1, 'admin@admin.com', 'pbkdf2:sha1:1000$CfJuntll$41578781605b8bca3dea44f84153646aa680246f', 'Admin', 'Nistrador', 0, 1),
-(2, 'mcastro.linda@gmail.com', 'pbkdf2:sha1:1000$I25uyjpj$aa8803b94e4e67c7cb3f432e10398b60ae6e0f6b', 'Isabel', 'Martinez', 0, 2);
+(2, 'leopoldo@gmail.com', 'pbkdf2:sha1:1000$CfJuntll$41578781605b8bca3dea44f84153646aa680246f', 'Leopoldo', 'Brenes', 0, 2),
+(3, '', '', '', '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -288,9 +415,19 @@ INSERT INTO `usuario` (`id_usuario`, `email`, `contrasenha`, `nombre`, `apellido
 
 CREATE TABLE `zona_parroquial` (
   `id_zona_parroquial` int(11) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
   `id_zona_pastoral` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `zona_parroquial`
+--
+
+INSERT INTO `zona_parroquial` (`id_zona_parroquial`, `nombre`, `id_zona_pastoral`) VALUES
+(1, 'Catedral Metropolitana Inmaculada Concepción de Maria', 1),
+(2, 'Parroquia San Sebastian', 1),
+(3, 'El Calvario', 1),
+(4, 'Jesús de la Divina Misericordia', 1);
 
 -- --------------------------------------------------------
 
@@ -303,6 +440,15 @@ CREATE TABLE `zona_pastoral` (
   `nombre` varchar(45) DEFAULT NULL,
   `id_diocesis` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `zona_pastoral`
+--
+
+INSERT INTO `zona_pastoral` (`id_zona_pastoral`, `nombre`, `id_diocesis`) VALUES
+(1, 'Managua Central', 1),
+(2, 'Managua Oriental', 1),
+(3, 'Managua Occidental', 1);
 
 --
 -- Índices para tablas volcadas
@@ -373,13 +519,13 @@ ALTER TABLE `noticia`
 --
 ALTER TABLE `oficio_eclesiastico`
   ADD PRIMARY KEY (`id_oficio_eclesiastico`),
-  ADD KEY `id_presbistero` (`id_presbistero`);
+  ADD KEY `id_presbitero` (`id_presbitero`);
 
 --
--- Indices de la tabla `presbistero`
+-- Indices de la tabla `presbitero`
 --
-ALTER TABLE `presbistero`
-  ADD PRIMARY KEY (`id_presbistero`),
+ALTER TABLE `presbitero`
+  ADD PRIMARY KEY (`id_presbitero`),
   ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_templo` (`id_templo`);
 
@@ -394,7 +540,7 @@ ALTER TABLE `privilegio`
 --
 ALTER TABLE `servicio_religioso`
   ADD PRIMARY KEY (`id_servicio_religioso`),
-  ADD KEY `id_templo` (`id_templo`);
+  ADD KEY `fk_oficio_religioso_templo1_idx` (`templo_id_templo`);
 
 --
 -- Indices de la tabla `templo`
@@ -448,52 +594,52 @@ ALTER TABLE `zona_pastoral`
 -- AUTO_INCREMENT de la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `departamento`
 --
 ALTER TABLE `departamento`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `diocesis`
 --
 ALTER TABLE `diocesis`
-  MODIFY `id_diocesis` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_diocesis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `galeria`
 --
 ALTER TABLE `galeria`
-  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `municipio`
 --
 ALTER TABLE `municipio`
-  MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `noticia`
 --
 ALTER TABLE `noticia`
-  MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `oficio_eclesiastico`
 --
 ALTER TABLE `oficio_eclesiastico`
-  MODIFY `id_oficio_eclesiastico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_oficio_eclesiastico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT de la tabla `presbistero`
+-- AUTO_INCREMENT de la tabla `presbitero`
 --
-ALTER TABLE `presbistero`
-  MODIFY `id_presbistero` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `presbitero`
+  MODIFY `id_presbitero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `privilegio`
 --
@@ -503,7 +649,7 @@ ALTER TABLE `privilegio`
 -- AUTO_INCREMENT de la tabla `templo`
 --
 ALTER TABLE `templo`
-  MODIFY `id_templo` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_templo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `tipo_actividad`
 --
@@ -518,17 +664,17 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `zona_parroquial`
 --
 ALTER TABLE `zona_parroquial`
-  MODIFY `id_zona_parroquial` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_zona_parroquial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `zona_pastoral`
 --
 ALTER TABLE `zona_pastoral`
-  MODIFY `id_zona_pastoral` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_zona_pastoral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
@@ -537,19 +683,19 @@ ALTER TABLE `zona_pastoral`
 -- Filtros para la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  ADD CONSTRAINT `actividad_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `foto`
 --
 ALTER TABLE `foto`
-  ADD CONSTRAINT `foto_galeria` FOREIGN KEY (`id_galeria`) REFERENCES `galeria` (`id_galeria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_foto_galeria1` FOREIGN KEY (`id_galeria`) REFERENCES `galeria` (`id_galeria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `galeria`
 --
 ALTER TABLE `galeria`
-  ADD CONSTRAINT `galeria_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `templo_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `horario`
@@ -573,20 +719,20 @@ ALTER TABLE `noticia`
 -- Filtros para la tabla `oficio_eclesiastico`
 --
 ALTER TABLE `oficio_eclesiastico`
-  ADD CONSTRAINT `id_presbistero` FOREIGN KEY (`id_presbistero`) REFERENCES `presbistero` (`id_presbistero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `id_presbitero` FOREIGN KEY (`id_presbitero`) REFERENCES `presbitero` (`id_presbitero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `presbistero`
+-- Filtros para la tabla `presbitero`
 --
-ALTER TABLE `presbistero`
-  ADD CONSTRAINT `id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `presbistero_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `presbitero`
+  ADD CONSTRAINT `name_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `pesb_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `servicio_religioso`
 --
 ALTER TABLE `servicio_religioso`
-  ADD CONSTRAINT `servicio_religioso_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_oficio_religioso_templo1` FOREIGN KEY (`templo_id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `templo`
@@ -612,7 +758,7 @@ ALTER TABLE `tipo_usuario`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `id_tipo_usuario` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `user_id_tipo_usuario` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `zona_parroquial`

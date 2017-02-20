@@ -1,56 +1,78 @@
 {% extends "ecclesi/layout.html" %}
-{% block body %}
+
+{% macro render_field(field, placeholder=None) %}
+{% if field.errors %}
+<div>
+{% elif field.flags.error %}
+<div>
+{% else %}
+<div>
+{% endif %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+</div>
+{% endmacro %}
+
+{% block body %}    
 <div id="formulario">
     <div class="nav-wrapper" id="registro-nav"></div>
     <div style="margin-top: 50px"></div>
-    <div class="container">
-        <div class="col s12">
-            <ul class="tabs">
-                <li class="tab col s3"><a class="active" href="#test1">Nuevo usuario</a></li>
-                <li class="tab col s3"><a href="#test2">tipo de usuario</a></li>
-                <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
-                <li class="tab col s3"><a href="#test4">Test 4</a></li>
+    
+    <div class="row">
+    
+        <div class="col s2"></div>
+
+        <div class="col s8">
+            <div id="test1" class="col panel-ecclesi">
+                <div class="row">
+                    <form class="col s12" style="padding: 40px;">
+                        {{ form.csrf_token }}
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="input-field">
+                                    {{ render_field(form.nombre, placeholder="Nombre", id="nombre", class="validate") }}
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="input-field">
+                                    {{ render_field(form.apellido, placeholder="Apellido", id="apellido", class="validate") }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="input-field">
+                                    {{ render_field(form.correo, placeholder="Correo Electronico", id="correo", class="validate") }}
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="input-field">
+                                    {{ render_field(form.contra, placeholder="Contraseña", id="contra", class="validate") }}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="test2" class="col s12">Test 2</div>
+            <div id="test3" class="col s12">Test 3</div>
+            <div id="test4" class="col s12">Test 4</div>
+        </div>
+
+        <div class="col s2">
+            <ul class="tabs" id="tabs">
+                <li class="tab tabtive"><a href="#test1">Nuevo Usuario</a></li>
+                <li class="tab"><a href="#test2">Horarios de Misa</a></li>
+                <li class="tab"><a href="#test3">Horarios de Confesion</a></li>
+                <li class="tab"><a href="#test4">Evento</a></li>
             </ul>
         </div>
-        <div id="test1" class="col panel-ecclesi">
-            <div class="row">
-                <form class="col s12" style="padding: 40px;">
-                    <div class="col s6">
-                    <div class="row">
-                        <div class="input-field">
-                            <input type="text" class="materialize-textarea">
-                            <label>Nombre y apellido</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field">
-                            <input type="text" class="materialize-textarea">
-                            <label>Nombre Popular</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field">
-                            <input type="password" class="validate">
-                            <label>Teléfono</label>
-                        </div>
-                    </div>
-                   
-                    </div>
-                    </div>
-                
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input class="input-field" type="text" ></input>
-                            <label>Dirección</label>
-                        </div>
-                    </div>
-             
-                </form>
-            </div>
-        </div>
-        <div id="test2" class="col s12">Test 2</div>
-        <div id="test3" class="col s12">Test 3</div>
-        <div id="test4" class="col s12">Test 4</div>
+
     </div>
+    
 </div>
+    
+<style> body { background-color: #6F8A91; } </style>
+
 {% endblock %}
