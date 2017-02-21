@@ -222,24 +222,16 @@ INSERT INTO `noticia` (`id_noticia`, `titulo`, `noticia`, `imagen`, `id_templo`)
 
 CREATE TABLE `oficio_eclesiastico` (
   `id_oficio_eclesiastico` int(11) NOT NULL,
-  `tipo` varchar(45) NOT NULL,
-  `id_presbitero` int(11) NOT NULL
+  `tipo` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `oficio_eclesiastico`
 --
 
-INSERT INTO `oficio_eclesiastico` (`id_oficio_eclesiastico`, `tipo`, `id_presbitero`) VALUES
-(1, 'Párroco', 4),
-(2, 'Vicario', 5),
-(3, 'Vicario', 6),
-(4, 'Vicario', 7),
-(5, 'Párroco', 8),
-(6, 'Párroco', 9),
-(7, 'Vicario', 10),
-(8, 'Párroco', 11),
-(9, 'Vicario', 12);
+INSERT INTO `oficio_eclesiastico` (`id_oficio_eclesiastico`, `tipo`) VALUES
+(1, 'Párroco'),
+(2, 'Vicario');
 
 -- --------------------------------------------------------
 
@@ -256,28 +248,17 @@ CREATE TABLE `presbitero` (
   `fecha_ordenacion` int(11) NOT NULL,
   `foto_portada` varchar(45) DEFAULT NULL,
   `id_usuario` int(11) NOT NULL,
-  `id_templo` int(11) NOT NULL
+  `id_templo` int(11) NOT NULL,
+  `id_oficio_eclesiastico` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `presbitero`
 --
 
-INSERT INTO `presbitero` (`id_presbitero`, `nombre`, `apellido`, `cane_confer`, `nombre_popular`, `fecha_ordenacion`, `foto_portada`, `id_usuario`, `id_templo`) VALUES
-(1, 'Milton Douglas ', 'Tobías Molina', '', '', 0, NULL, 2, 2),
-(2, 'Carlos ', ' Avilés Cantón', '', '', 0, NULL, 2, 2),
-(3, ' Raúl Antonio ', 'Zamora', '', '', 0, NULL, 3, 2),
-(4, 'Leopoldo José', 'Brenes Solórzano', '', '', 0, NULL, 2, 1),
-(5, 'Julio Santos ', 'Dávila ', '', '', 0, NULL, 2, 2),
-(6, 'Carlos ', 'Handall ', '', '', 0, NULL, 2, 1),
-(7, 'Leonel Alberto ', 'Alfaro', '', '', 0, NULL, 2, 1),
-(8, 'Juan Carlos ', 'Romero Lezama', '', '', 0, NULL, 2, 2),
-(9, 'Carlos Avilés ', 'Cantón', '', '', 0, NULL, 2, 2),
-(10, 'David ', 'López', '', '', 0, NULL, 2, 2),
-(11, 'Raúl Antonio ', 'Zamora', '', '', 0, NULL, 2, 2),
-(12, 'Erick Alvarado ', 'Cole', '', '', 0, NULL, 2, 2),
-(13, 'Rafael de la Concepción ', 'Moreno Cuadra', '', '', 0, NULL, 2, 2),
-(14, 'lui', 'aleman', '', '', 2147483647, NULL, 2, 2);
+INSERT INTO `presbitero` (`id_presbitero`, `nombre`, `apellido`, `cane_confer`, `nombre_popular`, `fecha_ordenacion`, `foto_portada`, `id_usuario`, `id_templo`, `id_oficio_eclesiastico`) VALUES
+(4, 'Leopoldo José', 'Brenes Solórzano', '', '', 0, NULL, 2, 1, 1),
+(5, 'Julio Santos ', 'Dávila ', '', '', 0, NULL, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -515,19 +496,13 @@ ALTER TABLE `noticia`
   ADD KEY `id_templo` (`id_templo`);
 
 --
--- Indices de la tabla `oficio_eclesiastico`
---
-ALTER TABLE `oficio_eclesiastico`
-  ADD PRIMARY KEY (`id_oficio_eclesiastico`),
-  ADD KEY `id_presbitero` (`id_presbitero`);
-
---
 -- Indices de la tabla `presbitero`
 --
 ALTER TABLE `presbitero`
   ADD PRIMARY KEY (`id_presbitero`),
   ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_templo` (`id_templo`);
+  ADD KEY `id_templo` (`id_templo`),
+  ADD KEY `id_oficio_eclesiastico` (`id_oficio_eclesiastico`);
 
 --
 -- Indices de la tabla `privilegio`
@@ -689,25 +664,25 @@ ALTER TABLE `actividad`
 -- Filtros para la tabla `foto`
 --
 ALTER TABLE `foto`
-  ADD CONSTRAINT `fk_foto_galeria1` FOREIGN KEY (`id_galeria`) REFERENCES `galeria` (`id_galeria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `foto_id_galeria` FOREIGN KEY (`id_galeria`) REFERENCES `galeria` (`id_galeria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `galeria`
 --
 ALTER TABLE `galeria`
-  ADD CONSTRAINT `templo_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `galeria_templo_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `horario`
 --
 ALTER TABLE `horario`
-  ADD CONSTRAINT `id_servicio_religioso` FOREIGN KEY (`id_servicio_religioso`) REFERENCES `servicio_religioso` (`id_servicio_religioso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `horario_id_servicio_religioso` FOREIGN KEY (`id_servicio_religioso`) REFERENCES `servicio_religioso` (`id_servicio_religioso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `municipio`
 --
 ALTER TABLE `municipio`
-  ADD CONSTRAINT `id_departamento` FOREIGN KEY (`id_departamento`) REFERENCES `departamento` (`id_departamento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `municipio_id_departamento` FOREIGN KEY (`id_departamento`) REFERENCES `departamento` (`id_departamento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `noticia`
@@ -716,61 +691,56 @@ ALTER TABLE `noticia`
   ADD CONSTRAINT `noticia_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `oficio_eclesiastico`
---
-ALTER TABLE `oficio_eclesiastico`
-  ADD CONSTRAINT `id_presbitero` FOREIGN KEY (`id_presbitero`) REFERENCES `presbitero` (`id_presbitero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `presbitero`
 --
 ALTER TABLE `presbitero`
-  ADD CONSTRAINT `name_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `pesb_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `presbitero_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `presbitero_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `presbitero_id_oficio_eclesiastico` FOREIGN KEY (`id_oficio_eclesiastico`) REFERENCES `oficio_eclesiastico` (`id_oficio_eclesiastico`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `servicio_religioso`
 --
 ALTER TABLE `servicio_religioso`
-  ADD CONSTRAINT `fk_oficio_religioso_templo1` FOREIGN KEY (`templo_id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `oficio_religioso_id_templo` FOREIGN KEY (`templo_id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `templo`
 --
 ALTER TABLE `templo`
-  ADD CONSTRAINT `id_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `id_municipio` FOREIGN KEY (`id_municipio`) REFERENCES `municipio` (`id_municipio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `id_zona_parroquial` FOREIGN KEY (`id_zona_parroquial`) REFERENCES `zona_parroquial` (`id_zona_parroquial`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `templo_id_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `templo_id_municipio` FOREIGN KEY (`id_municipio`) REFERENCES `municipio` (`id_municipio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `templo_id_zona_parroquial` FOREIGN KEY (`id_zona_parroquial`) REFERENCES `zona_parroquial` (`id_zona_parroquial`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tipo_actividad`
 --
 ALTER TABLE `tipo_actividad`
-  ADD CONSTRAINT `id_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `tipo_actividad_id_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  ADD CONSTRAINT `id_privilegio` FOREIGN KEY (`id_privilegio`) REFERENCES `privilegio` (`id_privilegio`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `tipo_usuario_id_privilegio` FOREIGN KEY (`id_privilegio`) REFERENCES `privilegio` (`id_privilegio`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `user_id_tipo_usuario` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `usuario_id_tipo_usuario` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `zona_parroquial`
 --
 ALTER TABLE `zona_parroquial`
-  ADD CONSTRAINT `id_zona_pastoral` FOREIGN KEY (`id_zona_pastoral`) REFERENCES `zona_pastoral` (`id_zona_pastoral`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `zona_parroquial_id_zona_pastoral` FOREIGN KEY (`id_zona_pastoral`) REFERENCES `zona_pastoral` (`id_zona_pastoral`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `zona_pastoral`
 --
 ALTER TABLE `zona_pastoral`
-  ADD CONSTRAINT `id_diocesis` FOREIGN KEY (`id_diocesis`) REFERENCES `diocesis` (`id_diocesis`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `zona_pastoral_id_diocesis` FOREIGN KEY (`id_diocesis`) REFERENCES `diocesis` (`id_diocesis`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

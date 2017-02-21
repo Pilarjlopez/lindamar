@@ -1,18 +1,5 @@
 {% extends "ecclesi/layout.html" %}
 
-{% macro render_field(field, placeholder=None) %}
-{% if field.errors %}
-<div>
-{% elif field.flags.error %}
-<div>
-{% else %}
-<div>
-{% endif %}
-    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
-    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
-</div>
-{% endmacro %}
-
 {% block body %}    
 <div id="formulario">
     <div class="nav-wrapper" id="registro-nav"></div>
@@ -24,7 +11,6 @@
             
             <div id="test1" class="col panel-ecclesi">
                 <form class="col s12" style="padding: 40px;">
-                    {{ form.csrf_token }}
                     <div class="col s6">
                         <div class="input-field">
                             <p class="no_edit">{{current_user.nombre}}</p>
@@ -41,6 +27,18 @@
                         <div class="input-field">
                             <input disabled class="no_edit" type="password" value="{{current_user.nombre}}"/>
                             <label class="active">Contraseña:</label>
+                        </div>
+                        <div class="input-field">
+                            <p class="no_edit">{{presbitero.nombre_popular}}</p>
+                            <label class="active">Nombre Popular:</label>
+                        </div>
+                        <div class="input-field">
+                            <p class="no_edit">{{presbitero.cane_confer}}</p>
+                            <label class="active">Carnet CONFER:</label>
+                        </div>
+                        <div class="input-field">
+                            <p class="no_edit">{{presbitero.foto_portada}}</p>
+                            <label class="active">Foto:</label>
                         </div>
                     </div>
                     <div class="col s6">

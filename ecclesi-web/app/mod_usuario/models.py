@@ -36,7 +36,8 @@ class Usuario(db.Model):
         """False, as anonymous users aren't supported."""
         return False
     
-    def type(self):
+    def get_type(self):
+        """Return the type od user authenticated."""
         return self.id_tipo_usuario 
     
 # Definir un modelo de usuario

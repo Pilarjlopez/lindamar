@@ -43,6 +43,7 @@ def acceso():
         if user and check_password_hash(user.contrasenha, form.password.data):
             user.authenticated = True
             login_user(user, remember=True)
+            session['usuario'] = user.email
             return redirect(url_for("usuario.perfil"))
         
     return redirect(url_for("ecclesi.descarga"))
@@ -57,6 +58,9 @@ def denegar():
 @login_required
 def perfil():
     session['visible'] = 1
-    form = PerfilUsuario(request.form)
-    return render_template("ecclesi/perfil.html", form=form)
-    
+    user = user_loader(session['usuario'])
+    if user.id_tipo_usuario == 2:
+        presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+        return render_template("ecclesi/perfil.html", presbitero=presbitero)
+    else:
+        return render_template("ecclesi/perfil.html")
