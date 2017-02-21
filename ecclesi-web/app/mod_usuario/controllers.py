@@ -12,6 +12,7 @@ from werkzeug import check_password_hash, generate_password_hash
 from app import db
 
 # Importar modulo de formulario
+from app.mod_usuario.forms import Perfilusuario 
 from app.mod_usuario.forms import FormularioAcceso
 
 # Importar Modelos
@@ -50,3 +51,10 @@ def acceso():
 def denegar():
     logout_user()
     return redirect(url_for("ecclesi.descarga"))
+
+@mod_usuario.route('/perfil/', methods=['GET', 'POST'])
+@login_required
+def perfil():
+    session['visible'] = 1
+    form = Perfilusuario(request.form)
+    return render_template("ecclesi/usuario.html")

@@ -16,7 +16,7 @@ SQLALCHEMY_DATABASE_URI = 'mysql://{}:{}@localhost/{}'.format(USR, PWD, DBN)
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 DATABASE_CONNECT_OPTIONS = {}
 
-# Hilos de la aplicacion. Una suposicion general comuun es 
+# Hilos de la aplicacion. Una suposicion general comun es 
 # usar 2 por nucleos de procesamiento disponibles - para manejar 
 # las peticiones entrantes utilizando uno y la realizacion de 
 # operaciones en segundo plano utilizando la otra.

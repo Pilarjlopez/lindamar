@@ -11,3 +11,11 @@ from wtforms.validators import Required, Email, EqualTo
 class FormularioAcceso(Form):
     email    = TextField('Email Address', [Email(), Required(message='Olvido su direccion de correo electronico?')])
     password = PasswordField('Password', [Required(message='Debe de proveer una clave. ;-)')]) 
+    
+class Perfilusuario(Form):
+    nombre = TextField('Nombre'),[Required(message='Ingrese su nombre')]
+    apellido = TextField('Apellido'),[Required(message='Ingrese su Apellido')]
+    correo   = TextField('Correo', [Email(), Required(message='Digita tu correo electronico')])
+    contra = PasswordField('Contrasena', [Required(message='Ingrese una contrasena de 10 caracteres o mas.')]) 
+
+    

@@ -1,4 +1,16 @@
 {% extends "ecclesi/layout.html" %}
+{% macro render_field(field, placeholder=None) %}
+{% if field.errors %}
+<div>
+{% elif field.flags.error %}
+<div>
+{% else %}
+<div>
+{% endif %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+</div>
+{% endmacro %}
 {% block body %}
 <div id="formulario">
     <div class="nav-wrapper" id="registro-nav"></div>
@@ -35,14 +47,6 @@
                         </div>
                     </div>
                    
-                    </div>
-                    </div>
-                
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input class="input-field" type="text" ></input>
-                            <label>Dirección</label>
-                        </div>
                     </div>
              
                 </form>
