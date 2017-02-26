@@ -61,14 +61,15 @@ class Presbitero(db.Model):
     :param str email: email address of user
     :param str password: encrypted password for the user
     """
-    __tablename__   = 'presbitero'
+    __tablename__           = 'presbitero'
     
-    id_presbitero   = db.Column(db.Integer, primary_key=True)
-    nombre          = db.Column(db.String(128), nullable=False)
-    apellido        = db.Column(db.String(128), nullable=False)
-    cane_confer     = db.Column(db.String(128), nullable=False, unique=True)
-    nombre_popular  = db.Column(db.String(128), nullable=False)
-    fecha_ordenacion= db.Column(db.Integer, nullable=True)
-    foto_portada    = db.Column(db.String(128), nullable=False)
-    id_usuario      = db.Column(db.Integer, nullable=False)
-    id_templo       = db.Column(db.Integer, nullable=False)
+    id_presbitero           = db.Column(db.Integer, primary_key=True)
+    nombre                  = db.Column(db.String(128), nullable=False)
+    apellido                = db.Column(db.String(128), nullable=False)
+    cane_confer             = db.Column(db.String(128), nullable=False, unique=True)
+    nombre_popular          = db.Column(db.String(128), nullable=False)
+    fecha_ordenacion        = db.Column(db.Integer, nullable=True)
+    foto_portada            = db.Column(db.String(128), nullable=False)
+    id_usuario              = db.Column(db.Integer, nullable=False)
+    id_templo               = db.Column(db.Integer, nullable=False)
+    id_oficio_eclesiastico  = db.Column(db.Integer, nullable=False)

@@ -203,15 +203,15 @@
     <div class="modal-content">
         <div class="row">
             <form class="col s12" method="POST" action="{{ url_for('usuario.acceso') }}" accept-charset="UTF-8" role="form">
-                {{ form.csrf_token }}
+                {{ contenido.form.csrf_token }}
                 <div class="row">
                     <div class="input-field col s12">
-                        {{ render_field(form.email, placeholder="Email", id="email", class="validate") }}
+                        {{ render_field(contenido.form.email, placeholder="Email", id="email", class="validate") }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        {{ render_field(form.password, placeholder="Contraseña", id="password", class="validate") }}
+                        {{ render_field(contenido.form.password, placeholder="Contraseña", id="password", class="validate") }}
                     </div>
                 </div>
                 <div class="row">

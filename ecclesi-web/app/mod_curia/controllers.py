@@ -55,8 +55,6 @@ def vicario_pastoral():
     return render_template("/curia/arquidiocesis/vicario-pastoral.html")
 
 ### Rutas del menu de curia arzobispal
-    
-
 
 @mod_curia.route('/curia-arzobispal/consejo-gobierno/', methods=['GET', 'POST'])
 def consejo_gobierno():

@@ -14,11 +14,7 @@
         <!-- Dropdown Structure -->
         <ul id="usuario" class="dropdown-content">
             <li id="front">
-                {% if current_user.id_tipo_usuario == 1 %}
-                <i class="material-icons pin" style="font-size: 129px;">person_pin</i> 
-                {% else %}
-                <img id="img-user" src="{{ url_for('static', filename='img/img_user.jpg') }}" alt="" class="circle responsive-img">
-                {% endif %}
+                <img id="img-user" src="{{ url_for('static', filename='img/' + contenido.presbitero.foto_portada) }}" alt="" class="circle responsive-img">
             </li>
             <li><a href="#!">Perfil</a></li>
             <li class="divider"></li>
@@ -45,7 +41,7 @@
                         {% if current_user.id_tipo_usuario == 1 %}
                         <i class="material-icons" style="font-size: 50px;">person_pin</i> 
                         {% else %}
-                        <img src="{{ url_for('static', filename='img/img_user.jpg') }}" alt="" class="circle responsive-img" style="width: 55px;">
+                        <img src="{{ url_for('static', filename='img/' + contenido.presbitero.foto_portada ) }}" class="circle responsive-img" style="width: 55px;">
                         {% endif %}
                     </a></li>
                     {% else %}

@@ -18,6 +18,8 @@ from app.mod_usuario.forms import FormularioAcceso
 # Importar Modelos
 from app.mod_usuario.models import Usuario
 from app.mod_usuario.models import Presbitero
+from app.mod_ecclesi.models import Templo
+from app.mod_ecclesi.models import Oficio
 
 @login_manager.user_loader
 def user_loader(user_id):
@@ -61,6 +63,9 @@ def perfil():
     user = user_loader(session['usuario'])
     if user.id_tipo_usuario == 2:
         presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
-        return render_template("ecclesi/perfil.html", presbitero=presbitero)
+        templo     = Templo.query.filter_by(id_templo=presbitero.id_templo).first()
+        oficio     = Oficio.query.filter_by(id_oficio_eclesiastico=presbitero.id_oficio_eclesiastico).first()
+        contenido = {presbitero, templo, oficio}
+        return render_template("ecclesi/presbitero/perfil.html", contenido=contenido)
     else:
-        return render_template("ecclesi/perfil.html")
+        return render_template("ecclesi/usuario/perfil.html")
