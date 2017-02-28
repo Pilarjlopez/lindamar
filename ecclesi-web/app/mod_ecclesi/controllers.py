@@ -33,16 +33,16 @@ mod_ecclesi = Blueprint('ecclesi', __name__, url_prefix='/ecclesi')
 # Establecer las rutas y metodos aceptados
 @mod_ecclesi.route('/descarga/', methods=['GET', 'POST'])
 def descarga():
+    contenido = {}
     session['visible'] = 0
     form = FormularioAcceso(request.form)
-    #if session['usuario']:
-    #    user = user_loader(session['usuario'])
-    #    if user.id_tipo_usuario == 2:
-    #        presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
-    #else:
     presbitero = {'foto_portada':'ecclesi_marcador.svg'}
-    contenido = {{presbitero}, {form}}
-    return render_template("ecclesi/inicio.html", contenido=contenido)
+    if 'usuario' in session:
+        user = user_loader(session['usuario'])
+        if user.id_tipo_usuario == 2:
+            presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+    
+    return render_template("ecclesi/inicio.html", form=form, presbitero=presbitero)
 
 @mod_ecclesi.route('/prueba/', methods=['GET', 'POST'])
 def prueba():

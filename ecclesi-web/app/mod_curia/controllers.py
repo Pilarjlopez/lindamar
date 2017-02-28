@@ -97,8 +97,3 @@ def masaya():
 @mod_curia.route('/parroquias/carazo/', methods=['GET', 'POST'])
 def carazo():
     return render_template("curia/parroquias/carazo.html") 
-
-
-
-
-    

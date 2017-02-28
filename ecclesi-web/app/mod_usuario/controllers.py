@@ -4,6 +4,7 @@ from flask import Blueprint, request, render_template, flash, g, session, redire
 # importar flask login
 from app import login_manager
 from flask_login import (current_user, login_required, login_user, logout_user, confirm_login, fresh_login_required)
+from datetime import datetime, timedelta
 
 # Importar clave/ayudantes de encriptacion
 from werkzeug import check_password_hash, generate_password_hash
@@ -63,9 +64,9 @@ def perfil():
     user = user_loader(session['usuario'])
     if user.id_tipo_usuario == 2:
         presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+        presbitero.fecha_ordenacion = datetime.fromtimestamp(presbitero.fecha_ordenacion).strftime('%d/%m/%Y')
         templo     = Templo.query.filter_by(id_templo=presbitero.id_templo).first()
         oficio     = Oficio.query.filter_by(id_oficio_eclesiastico=presbitero.id_oficio_eclesiastico).first()
-        contenido = {presbitero, templo, oficio}
-        return render_template("ecclesi/presbitero/perfil.html", contenido=contenido)
+        return render_template("ecclesi/presbitero/perfil.html", presbitero=presbitero, templo=templo, oficio=oficio)
     else:
         return render_template("ecclesi/usuario/perfil.html")

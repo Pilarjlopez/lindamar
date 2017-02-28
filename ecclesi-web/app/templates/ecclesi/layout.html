@@ -14,18 +14,20 @@
         <!-- Dropdown Structure -->
         <ul id="usuario" class="dropdown-content">
             <li id="front">
-                <img id="img-user" src="{{ url_for('static', filename='img/' + contenido.presbitero.foto_portada) }}" alt="" class="circle responsive-img">
+                <img id="img-user" src="{{ url_for('static', filename='img/' + presbitero.foto_portada) }}" alt="" class="circle responsive-img">
             </li>
-            <li><a href="#!">Perfil</a></li>
+            <li><a href="{{ url_for('ecclesi.usuario') }}">Perfil</a></li>
             <li class="divider"></li>
             <li><a href="/usuario/denegar">Cerrar Sesion</a></li>
         </ul>
         
         <ul id="admin" class="dropdown-content">
+            {% if current_user.id_tipo_usuario == 1 %}
             <li><a href="{{ url_for('ecclesi.usuario') }}">Administrar Usuario</a></li>
             <li><a href="{{ url_for('ecclesi.zpastoral') }}">Administrar Zonas Pastorales</a></li>
             <li class="divider"></li>
             <li><a href="{{ url_for('ecclesi.diocesis') }}">Administrar Diocesis</a></li>
+            {% endif %}
             <li><a href="{{ url_for('ecclesi.templo') }}">Administrar Templo</a></li>
             <li><a href="{{ url_for('ecclesi.actividad') }}">Administrar Actividades</a></li>
         </ul>
@@ -33,6 +35,7 @@
         <nav style="{{ estilos }}">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo"><img src="{{ url_for('static', filename='img/ecclesi.svg') }}"></a>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     {% if current_user.is_authenticated %}
                     <li><a class="dropdown-button" href="#!" data-activates="admin" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">view_module</i></a></li>
@@ -41,7 +44,22 @@
                         {% if current_user.id_tipo_usuario == 1 %}
                         <i class="material-icons" style="font-size: 50px;">person_pin</i> 
                         {% else %}
-                        <img src="{{ url_for('static', filename='img/' + contenido.presbitero.foto_portada ) }}" class="circle responsive-img" style="width: 55px;">
+                        <img src="{{ url_for('static', filename='img/' + presbitero.foto_portada ) }}" class="circle responsive-img" style="width: 55px;">
+                        {% endif %}
+                    </a></li>
+                    {% else %}
+                    <li><a class="waves-effect waves-light btn btn-inicio" href="#acceso">Iniciar Sesion</a></li>
+                    {% endif %}
+                </ul>
+                <ul class="side-nav" id="mobile-nav">
+                    {% if current_user.is_authenticated %}
+                    <li><a class="dropdown-button" href="#!" data-activates="admin" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">view_module</i></a></li>
+                    
+                    <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px; height: 61px;">
+                        {% if current_user.id_tipo_usuario == 1 %}
+                        <i class="material-icons" style="font-size: 50px;">person_pin</i> 
+                        {% else %}
+                        <img src="{{ url_for('static', filename='img/' + presbitero.foto_portada ) }}" class="circle responsive-img" style="width: 55px;">
                         {% endif %}
                     </a></li>
                     {% else %}
