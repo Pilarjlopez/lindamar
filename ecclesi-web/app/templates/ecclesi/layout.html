@@ -51,21 +51,7 @@
                     <li><a class="waves-effect waves-light btn btn-inicio" href="#acceso">Iniciar Sesion</a></li>
                     {% endif %}
                 </ul>
-                <ul class="side-nav" id="mobile-nav">
-                    {% if current_user.is_authenticated %}
-                    <li><a class="dropdown-button" href="#!" data-activates="admin" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">view_module</i></a></li>
-                    
-                    <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px; height: 61px;">
-                        {% if current_user.id_tipo_usuario == 1 %}
-                        <i class="material-icons" style="font-size: 50px;">person_pin</i> 
-                        {% else %}
-                        <img src="{{ url_for('static', filename='img/' + presbitero.foto_portada ) }}" class="circle responsive-img" style="width: 55px;">
-                        {% endif %}
-                    </a></li>
-                    {% else %}
-                    <li><a class="waves-effect waves-light btn btn-inicio" href="#acceso">Iniciar Sesion</a></li>
-                    {% endif %}
-                </ul>
+                
             </div>
         </nav>
     </div>

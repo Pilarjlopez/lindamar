@@ -70,5 +70,10 @@ def perfil():
         #return render_template("ecclesi/presbitero/perfil.html", presbitero=presbitero, templo=templo, oficio=oficio)
         return presbitero.foto_poetada
     else:
+<<<<<<< HEAD
         return render_template("ecclesi/usuario/perfil.html")
 
+=======
+        presbitero = {'foto_portada':'ecclesi_marcador.svg'}
+        return render_template("ecclesi/usuario/perfil.html", presbitero=presbitero)
+>>>>>>> 2e3b04a82d1585037d8c648b1099e77ab0e39250
