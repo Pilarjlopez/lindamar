@@ -12,11 +12,12 @@ from werkzeug import check_password_hash, generate_password_hash
 from app import db
 
 # Importar modulo de formulario
-from app.mod_usuario.forms import Perfilusuario 
+from app.mod_usuario.forms import PerfilUsuario
 from app.mod_usuario.forms import FormularioAcceso
 
 # Importar Modelos
 from app.mod_usuario.models import Usuario
+from app.mod_usuario.models import Presbitero
 
 @login_manager.user_loader
 def user_loader(user_id):
@@ -42,7 +43,8 @@ def acceso():
         if user and check_password_hash(user.contrasenha, form.password.data):
             user.authenticated = True
             login_user(user, remember=True)
-            return redirect(url_for("ecclesi.templo"))
+            session['usuario'] = user.email
+            return redirect(url_for("usuario.perfil"))
         
     return redirect(url_for("ecclesi.descarga"))
 
@@ -56,5 +58,17 @@ def denegar():
 @login_required
 def perfil():
     session['visible'] = 1
-    form = Perfilusuario(request.form)
-    return render_template("ecclesi/usuario.html")
+    user = user_loader(session['usuario'])
+    if user.id_tipo_usuario == 2:
+        presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+        return render_template("ecclesi/presbitero/perfil.html", presbitero=presbitero)
+    else:
+        return render_template("ecclesi/usuario/perfil.html")
+
+@mod_usuario.route('/editaru/', methods=['GET', 'POST'])
+@login_required
+def editaru():
+    userp.form = PerfilUsuario(request.form)
+    user = user_loader(session['usuario'])
+    userp.presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+    return render_template("ecclesi/usuario.editar.html", editaru=userp)

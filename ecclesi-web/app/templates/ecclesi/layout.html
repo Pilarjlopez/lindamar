@@ -1,5 +1,5 @@
 {% if current_user.is_authenticated and session['visible'] %}
-    {% set estilos = 'top: 0px; border-bottom: 3px solid #ffffff;' %}
+    {% set estilos = 'top: 0px; border-bottom: 3px solid #ffffff; background-color: #6F8A91;' %}
 {% else %}
     {% set estilos = 'top: 0px;' %}
 {% endif %}
@@ -56,13 +56,6 @@
         </nav>
     </div>
     {% block body %}{% endblock %}
-    <!-- footer class="page-footer" id="fcuria">
-        <div class="footer-copyright">
-            <div class="container center-align">
-                Copyright © 2016 Atrquidiocesis de Managua
-            </div>
-        </div>
-    </footer -->
 </div>
 <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>

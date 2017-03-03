@@ -4,18 +4,17 @@ from flask_wtf import Form # , RecaptchaField
 # Los elementos de formulario de importacion como de campo de texto y BooleanField (opcional)
 from wtforms import TextField, PasswordField # BooleanField
 
-# Validadores del formulario de importacion
+#  Importacion de Validadores del formulario
 from wtforms.validators import Required, Email, EqualTo
 
 # Definir el formulario de acceso (WTForms)
 class FormularioAcceso(Form):
     email    = TextField('Email Address', [Email(), Required(message='Olvido su direccion de correo electronico?')])
     password = PasswordField('Password', [Required(message='Debe de proveer una clave. ;-)')]) 
-    
-class Perfilusuario(Form):
-    nombre = TextField('Nombre'),[Required(message='Ingrese su nombre')]
-    apellido = TextField('Apellido'),[Required(message='Ingrese su Apellido')]
-    correo   = TextField('Correo', [Email(), Required(message='Digita tu correo electronico')])
-    contra = PasswordField('Contrasena', [Required(message='Ingrese una contrasena de 10 caracteres o mas.')]) 
 
-    
+class PerfilUsuario(Form):
+    nombre   = TextField('Nombre', [Required(message='El Nombre es requerido.')])
+    apellido = TextField('Apellido', [Required(message='El Apellido es requerido.')])
+    correo   = TextField('Correo Electronico', [Email(), Required(message='El Correo Electronico es requerido.')])
+    contra   = TextField('Contrasena', [Required(message='La Contrasena es requerida.')])
+

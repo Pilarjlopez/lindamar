@@ -31,7 +31,7 @@ input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #06A7ED;
-  box-shadow: 0;
+  box-shadow: 0 1px 0 0 #06A7ED;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -76,7 +76,7 @@ input[type=search]:focus.valid,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea:focus.valid {
   border-bottom: 1px solid #06A7ED;
-  box-shadow: 0;
+  box-shadow: 0 1px 0 0 #06A7ED;
 }
 
 input:not([type]).valid + label:after,
@@ -301,6 +301,16 @@ nav ul a {
 }
 
 /*** Registros ***/
+.border-panel {
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+
+.container .row {
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+
 #img-user {
     max-width: 60%;
     margin-left: 20%;
@@ -310,6 +320,15 @@ nav ul a {
 
 #formulario {
     background-color: #6f8a91;   
+}
+
+.tabs {
+    position: fixed;
+}
+
+.tabs .tab {
+    display: block;
+    position: absolute;
 }
 
 .tabs .tab a {
@@ -335,10 +354,8 @@ nav ul a {
 }
 
 .panel-ecclesi {
+    width: 100%;
     background-color: #fff;
-    margin: auto;
-    overflow-y: auto;
-    border-radius: 2px;
     will-change: top, opacity;
 }
 
@@ -363,4 +380,8 @@ nav ul a {
     margin-left: 20%;
     margin-top: 20%;
     margin-bottom: 20%;
+}
+
+.no_edit {
+    font-size: 20px;
 }
