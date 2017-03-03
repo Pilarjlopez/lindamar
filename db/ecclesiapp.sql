@@ -1,11 +1,11 @@
--- -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- phpMyAdmin SQL Dump
+-- version 4.6.6
+-- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 19-02-2017 a las 05:21:56
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.6.15
+-- Servidor: localhost
+-- Tiempo de generación: 03-03-2017 a las 03:35:47
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 7.0.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -257,8 +257,8 @@ CREATE TABLE `presbitero` (
 --
 
 INSERT INTO `presbitero` (`id_presbitero`, `nombre`, `apellido`, `cane_confer`, `nombre_popular`, `fecha_ordenacion`, `foto_portada`, `id_usuario`, `id_templo`, `id_oficio_eclesiastico`) VALUES
-(4, 'Leopoldo José', 'Brenes Solórzano', '', '', 0, NULL, 2, 1, 1),
-(5, 'Julio Santos ', 'Dávila ', '', '', 0, NULL, 2, 2, 2);
+(1, 'Leopoldo José', 'Brenes Solórzano', '7342', 'Polito', 123456789, 'img_user.jpg', 2, 1, 1),
+(2, 'Julio Santos ', 'Dávila ', '1234', 'Nombre Popular', 987654321, 'presb.png', 3, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -384,9 +384,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `contrasenha`, `nombre`, `apellido`, `is_active`, `id_tipo_usuario`) VALUES
-(1, 'admin@admin.com', 'pbkdf2:sha1:1000$CfJuntll$41578781605b8bca3dea44f84153646aa680246f', 'Admin', 'Nistrador', 0, 1),
-(2, 'leopoldo@gmail.com', 'pbkdf2:sha1:1000$CfJuntll$41578781605b8bca3dea44f84153646aa680246f', 'Leopoldo', 'Brenes', 0, 2),
-(3, '', '', '', '', 0, 2);
+(1, 'admin@admin.com', 'pbkdf2:sha1:1000$CfJuntll$41578781605b8bca3dea44f84153646aa680246f', 'Admin', 'Nistrador', 1, 1),
+(2, 'leopoldo@gmail.com', 'pbkdf2:sha1:1000$nfzAwZWX$c0299090704e840b0b8231788d89467ba9d5a0f8', 'Leopoldo', 'Brenes', 1, 2),
+(3, 'sanjulio@mail.net', 'pbkdf2:sha1:1000$WewIMsXW$dafdca7488b483d6331bf9a63bdc4702491a2d51', 'Julio', 'Santos ', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -606,142 +606,10 @@ ALTER TABLE `municipio`
 ALTER TABLE `noticia`
   MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `oficio_eclesiastico`
---
-ALTER TABLE `oficio_eclesiastico`
-  MODIFY `id_oficio_eclesiastico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
 -- AUTO_INCREMENT de la tabla `presbitero`
 --
 ALTER TABLE `presbitero`
-  MODIFY `id_presbitero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT de la tabla `privilegio`
---
-ALTER TABLE `privilegio`
-  MODIFY `id_privilegio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT de la tabla `templo`
---
-ALTER TABLE `templo`
-  MODIFY `id_templo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `tipo_actividad`
---
-ALTER TABLE `tipo_actividad`
-  MODIFY `id_tipo_actividad` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `tipo_usuario`
---
-ALTER TABLE `tipo_usuario`
-  MODIFY `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `zona_parroquial`
---
-ALTER TABLE `zona_parroquial`
-  MODIFY `id_zona_parroquial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `zona_pastoral`
---
-ALTER TABLE `zona_pastoral`
-  MODIFY `id_zona_pastoral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `actividad`
---
-ALTER TABLE `actividad`
-  ADD CONSTRAINT `id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `foto`
---
-ALTER TABLE `foto`
-  ADD CONSTRAINT `foto_id_galeria` FOREIGN KEY (`id_galeria`) REFERENCES `galeria` (`id_galeria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `galeria`
---
-ALTER TABLE `galeria`
-  ADD CONSTRAINT `galeria_templo_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `horario`
---
-ALTER TABLE `horario`
-  ADD CONSTRAINT `horario_id_servicio_religioso` FOREIGN KEY (`id_servicio_religioso`) REFERENCES `servicio_religioso` (`id_servicio_religioso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `municipio`
---
-ALTER TABLE `municipio`
-  ADD CONSTRAINT `municipio_id_departamento` FOREIGN KEY (`id_departamento`) REFERENCES `departamento` (`id_departamento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `noticia`
---
-ALTER TABLE `noticia`
-  ADD CONSTRAINT `noticia_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `presbitero`
---
-ALTER TABLE `presbitero`
-  ADD CONSTRAINT `presbitero_id_templo` FOREIGN KEY (`id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `presbitero_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `presbitero_id_oficio_eclesiastico` FOREIGN KEY (`id_oficio_eclesiastico`) REFERENCES `oficio_eclesiastico` (`id_oficio_eclesiastico`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `servicio_religioso`
---
-ALTER TABLE `servicio_religioso`
-  ADD CONSTRAINT `oficio_religioso_id_templo` FOREIGN KEY (`templo_id_templo`) REFERENCES `templo` (`id_templo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `templo`
---
-ALTER TABLE `templo`
-  ADD CONSTRAINT `templo_id_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `templo_id_municipio` FOREIGN KEY (`id_municipio`) REFERENCES `municipio` (`id_municipio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `templo_id_zona_parroquial` FOREIGN KEY (`id_zona_parroquial`) REFERENCES `zona_parroquial` (`id_zona_parroquial`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `tipo_actividad`
---
-ALTER TABLE `tipo_actividad`
-  ADD CONSTRAINT `tipo_actividad_id_actividad` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `tipo_usuario`
---
-ALTER TABLE `tipo_usuario`
-  ADD CONSTRAINT `tipo_usuario_id_privilegio` FOREIGN KEY (`id_privilegio`) REFERENCES `privilegio` (`id_privilegio`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_id_tipo_usuario` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `zona_parroquial`
---
-ALTER TABLE `zona_parroquial`
-  ADD CONSTRAINT `zona_parroquial_id_zona_pastoral` FOREIGN KEY (`id_zona_pastoral`) REFERENCES `zona_pastoral` (`id_zona_pastoral`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `zona_pastoral`
---
-ALTER TABLE `zona_pastoral`
-  ADD CONSTRAINT `zona_pastoral_id_diocesis` FOREIGN KEY (`id_diocesis`) REFERENCES `diocesis` (`id_diocesis`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+  MODIFY `id_presbitero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

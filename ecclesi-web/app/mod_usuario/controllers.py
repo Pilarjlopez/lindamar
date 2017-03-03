@@ -69,4 +69,5 @@ def perfil():
         oficio     = Oficio.query.filter_by(id_oficio_eclesiastico=presbitero.id_oficio_eclesiastico).first()
         return render_template("ecclesi/presbitero/perfil.html", presbitero=presbitero, templo=templo, oficio=oficio)
     else:
-        return render_template("ecclesi/usuario/perfil.html")
+        presbitero = {'foto_portada':'ecclesi_marcador.svg'}
+        return render_template("ecclesi/usuario/perfil.html", presbitero=presbitero)
