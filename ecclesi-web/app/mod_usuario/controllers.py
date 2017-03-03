@@ -4,6 +4,7 @@ from flask import Blueprint, request, render_template, flash, g, session, redire
 # importar flask login
 from app import login_manager
 from flask_login import (current_user, login_required, login_user, logout_user, confirm_login, fresh_login_required)
+from datetime import datetime, timedelta
 
 # Importar clave/ayudantes de encriptacion
 from werkzeug import check_password_hash, generate_password_hash
@@ -18,6 +19,8 @@ from app.mod_usuario.forms import FormularioAcceso
 # Importar Modelos
 from app.mod_usuario.models import Usuario
 from app.mod_usuario.models import Presbitero
+from app.mod_ecclesi.models import Templo
+from app.mod_ecclesi.models import Oficio
 
 @login_manager.user_loader
 def user_loader(user_id):
@@ -61,14 +64,11 @@ def perfil():
     user = user_loader(session['usuario'])
     if user.id_tipo_usuario == 2:
         presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
-        return render_template("ecclesi/presbitero/perfil.html", presbitero=presbitero)
+        presbitero.fecha_ordenacion = datetime.fromtimestamp(presbitero.fecha_ordenacion).strftime('%d/%m/%Y')
+        templo     = Templo.query.filter_by(id_templo=presbitero.id_templo).first()
+        oficio     = Oficio.query.filter_by(id_oficio_eclesiastico=presbitero.id_oficio_eclesiastico).first()
+        #return render_template("ecclesi/presbitero/perfil.html", presbitero=presbitero, templo=templo, oficio=oficio)
+        return presbitero.foto_poetada
     else:
         return render_template("ecclesi/usuario/perfil.html")
 
-@mod_usuario.route('/editaru/', methods=['GET', 'POST'])
-@login_required
-def editaru():
-    userp.form = PerfilUsuario(request.form)
-    user = user_loader(session['usuario'])
-    userp.presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
-    return render_template("ecclesi/usuario.editar.html", editaru=userp)

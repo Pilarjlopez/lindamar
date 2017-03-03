@@ -8,6 +8,10 @@ body {
     background-color: #06A7ED;
 }
 
+.btn:hover, .btn-large:hover {
+    background-color: #06A7ED;
+}
+
 .btn:focus, .btn-large:focus,
 .btn-floating:focus {
     background-color: transparent;
@@ -112,7 +116,7 @@ textarea.materialize-textarea:focus.valid + label:after {
 
 /*** Estilos Curia ***/
 #mcuria {
-    background-color: #2196f3;
+    background-color: #06A7ED;
     text-align: center;
 }
 
@@ -122,11 +126,15 @@ textarea.materialize-textarea:focus.valid + label:after {
 }
 
 #fcuria {
-    background-color: #2196f3;
+    background-color: #06A7ED;
 }
 
 nav ul a {
     padding: 0 60px;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #06A7ED;
 }
 
 .dropdown-content {
@@ -186,18 +194,18 @@ nav ul a {
 
 #acceso input[type=text]:focus:not([readonly]),
 #acceso input[type=password]:focus:not([readonly]) {
-    border-bottom: 1px solid #06a7ed;
-    box-shadow: 0 1px 0 0 #06a7ed;
+    border-bottom: 1px solid #06A7ED;
+    box-shadow: 0 1px 0 0 #06A7ED;
 }
 
 #acceso input[type=text]:focus:not([readonly]) + label,
 #acceso input[type=password]:focus:not([readonly]) + label {
-    color: #06a7ed;
+    color: #06A7ED;
 }
 
 #acceso button {
     width: 100%;
-    background-color: #06a7ed;
+    background-color: #06A7ED;
     padding: 0;
 }
 
@@ -241,7 +249,7 @@ nav ul a {
 /* Secciones */
 #seccion1 .pie-seccion {
     margin-top: 580px;
-    background-color: #06a7ed;
+    background-color: #06A7ED;
     height: 40px;
     color: #FFFFFF;
 }
@@ -322,15 +330,6 @@ nav ul a {
     background-color: #6f8a91;   
 }
 
-.tabs {
-    position: fixed;
-}
-
-.tabs .tab {
-    display: block;
-    position: absolute;
-}
-
 .tabs .tab a {
     color: rgba(6, 167, 237, 0.7);
 }
@@ -384,4 +383,30 @@ nav ul a {
 
 .no_edit {
     font-size: 20px;
+}
+
+.switch label input[type=checkbox]:checked + .lever {
+    background-color: #06B5FF;
+}
+
+.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #06A7ED;
+    left: 24px;
+}
+
+@media only screen and (min-width: 993px) {
+    .tabs {
+        position: fixed;
+    }
+
+    .tabs .tab {
+        display: block;
+        position: absolute;
+    }
+}
+
+@media only screen and (max-width: 992px) {    
+    .row .col {
+        padding: 0px;
+    }
 }

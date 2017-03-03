@@ -37,6 +37,6 @@ def signin():
 
 @mod_auth.route('/nada/', methods=['GET', 'POST'])
 def nada():
-    passwd = "123123"
+    passwd = "1234"
     pw_hash = generate_password_hash(passwd)
     return pw_hash

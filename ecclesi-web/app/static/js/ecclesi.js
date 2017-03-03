@@ -9,10 +9,11 @@
         $('.modal').modal();
         //$('.modal-trigger').leanModal();
         $('.scrollspy').scrollSpy();
-        //$('.button-collapse').sideNav({'edge': 'left'});
-        //$('.datepicker').pickadate({selectYears: 20});
+        $('.button-collapse').sideNav();
+        $('.datepicker').pickadate({selectYears: 100});
         //$('select').not('.disabled').material_select();
-         $('select').material_select();
+        $('select').material_select();
+        $('.dropdown-button').dropdown();
         
         $(window).scroll(function() {
             var altura_cabecera = $('.parallax-container').outerHeight(true);

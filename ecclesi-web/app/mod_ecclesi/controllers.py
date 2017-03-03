@@ -16,9 +16,8 @@ from app.mod_usuario.forms import FormularioAcceso
 
 # Importar modulo de modelos
 from app.mod_ecclesi.models import Categoria
-
-# Importar Modelos
 from app.mod_usuario.models import Usuario
+from app.mod_usuario.models import Presbitero
 
 @login_manager.user_loader
 def user_loader(user_id):
@@ -34,9 +33,16 @@ mod_ecclesi = Blueprint('ecclesi', __name__, url_prefix='/ecclesi')
 # Establecer las rutas y metodos aceptados
 @mod_ecclesi.route('/descarga/', methods=['GET', 'POST'])
 def descarga():
+    contenido = {}
     session['visible'] = 0
     form = FormularioAcceso(request.form)
-    return render_template("ecclesi/inicio.html", form=form)
+    presbitero = {'foto_portada':'ecclesi_marcador.svg'}
+    if 'usuario' in session:
+        user = user_loader(session['usuario'])
+        if user.id_tipo_usuario == 2:
+            presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+    
+    return render_template("ecclesi/inicio.html", form=form, presbitero=presbitero)
 
 @mod_ecclesi.route('/prueba/', methods=['GET', 'POST'])
 def prueba():
