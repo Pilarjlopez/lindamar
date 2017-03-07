@@ -67,13 +67,7 @@ def perfil():
         presbitero.fecha_ordenacion = datetime.fromtimestamp(presbitero.fecha_ordenacion).strftime('%d/%m/%Y')
         templo     = Templo.query.filter_by(id_templo=presbitero.id_templo).first()
         oficio     = Oficio.query.filter_by(id_oficio_eclesiastico=presbitero.id_oficio_eclesiastico).first()
-        #return render_template("ecclesi/presbitero/perfil.html", presbitero=presbitero, templo=templo, oficio=oficio)
-        return presbitero.foto_poetada
+        return render_template("ecclesi/presbitero/perfil.html", presbitero=presbitero, templo=templo, oficio=oficio)
     else:
-<<<<<<< HEAD
-        return render_template("ecclesi/usuario/perfil.html")
-
-=======
         presbitero = {'foto_portada':'ecclesi_marcador.svg'}
         return render_template("ecclesi/usuario/perfil.html", presbitero=presbitero)
->>>>>>> 2e3b04a82d1585037d8c648b1099e77ab0e39250

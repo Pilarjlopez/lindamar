@@ -9,8 +9,9 @@
         <div class="col s12 m12 l3"> <!-- Note that "m4 l3" was added -->
             <!-- Grey navigation panel -->
             <ul class="tabs" id="tabs">
-                <li class="tab tabtive"><a href="#tab1">Perfil Presbitero</a></li>
-                <li class="tab"><a href="#tab2">Editar Perfil</a></li>
+                <li class="tab tabtive"><a href="#tab1">Editar Templo</a></li>
+                <li class="tab"><a href="#tab2">Galeria </a></li>
+                <li class="tab"><a href="#tab2">Galeria </a></li>
                 <!-- li class="tab"><a href="#test3">Horarios de Confesion</a></li>
                 <li class="tab"><a href="#test4">Evento</a></li -->
             </ul>
@@ -22,43 +23,46 @@
             <div style="padding: 40px;">
                 <div class="col s12 m12 l6">
                     <div class="input-field">
-                        <p class="no_edit">{{current_user.nombre}}</p>
+                        <p class="no_edit">{{templo.nombre}}</p>
                         <label class="active">Nombre:</label>
                     </div>
                     <div class="input-field">
-                        <p class="no_edit">{{current_user.apellido}}</p>
-                        <label class="active">Apellido:</label>
+                        <p class="no_edit">{{templo.nombre_popular}}</p>
+                        <label class="active">Nombre popular:</label>
                     </div>
                     <div class="input-field">
-                        <p class="no_edit">{{current_user.email}}</p>
-                        <label class="active">Correo Electronico:</label>
+                        <p class="no_edit">{{templo.direccion}}</p>
+                        <label class="active">Dirección:</label>
                     </div>
-                    <div class="input-field">
-                        <input disabled class="no_edit" type="password" value="{{presbitero.cane_confer}}"/>
-                        <label class="active">Contraseña:</label>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="input-field">
-                        <p class="no_edit">{{presbitero.nombre_popular}}</p>
-                        <label class="active">Nombre Popular:</label>
-                    </div>
-                    <div class="input-field">
-                        <p class="no_edit">{{presbitero.cane_confer}}</p>
-                        <label class="active">Carnet CONFER:</label>
-                    </div>
-                    <div class="input-field">
-                        <p class="no_edit">{{presbitero.fecha_ordenacion}}</p>
-                        <label class="active">Fecha de Ordenacion:</label>
+                   <div class="input-field">
+                        <p class="no_edit">{{templo.telefono}}</p>
+                        <label class="active">Telefono:</label>
                     </div>
                     <div class="divider"></div>
                     <div class="input-field">
-                        <p class="no_edit">{{oficio.tipo}}</p>
-                        <label class="active">Oficio Ecleciastico:</label>
+                        <p class="no_edit">{{templo.historia}}</p>
+                        <label class="active">Historia:</label>
+                    </div>
+                    <div class="input-field">
+                        <p class="no_edit">{{templo.nomplombre_institucion}}</p>
+                        <label class="active">Nombre Institucion:</label>
+                    </div>
+                    <div class="input-field">
+                        <p class="no_edit">{{templo.portada}}</p>
+                        <label class="active">Foto Portada:</label>
                     </div>
                     <div class="divider"></div>
                     <div class="input-field">
-                        <p class="no_edit">{{templo.nombre}}</p>
-                        <label class="active">Parroquia:</label>
+                        <p class="no_edit">{{templo.id_zona_parroquial}}</p>
+                        <label class="active">Zona Parroquial:</label>
+                    </div>
+                    <div class="input-field">
+                        <p class="no_edit">{{templo.id_municipio}}</p>
+                        <label class="active">Municipio:</label>
+                    </div>
+                    <div class="input-field">
+                        <p class="no_edit">{{templo.id_categoria}}</p>
+                        <label class="active">Categoria:</label>
                     </div>
                 </div>
                 <div class="col s12 m12 l6">
@@ -118,20 +122,6 @@
                             <div class="input-field">
                                 <input type="date" value="{{presbitero.fecha_ordenacion}}" id="ordenacion" class="datepicker">
                                 <label class="active" for="ordenacion">Fecha de Ordenacion</label>
-                            </div>
-                        </div>
-
-                        <div class="section">
-                            <h5>Oficio Eclesiastico</h5>
-                            <div class="divider"></div>
-                            <div class="input-field">
-                                <select>
-                                    <option value="" disabled>Choose your option</option>
-                                    <option value="1" selected>{{oficio.tipo}}</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
-                                </select>
-                                <label>Oficio Ecleciastico</label>
                             </div>
                         </div>
                         <div class="section">

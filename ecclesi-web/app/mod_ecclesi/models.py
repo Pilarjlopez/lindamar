@@ -25,7 +25,7 @@ class Templo(db.Model):
     historia           = db.Column(db.String(128), nullable=False)
     nombre_institucion = db.Column(db.String(128), nullable=False)
     portada            = db.Column(db.String(128), nullable=False)
-    institucion        = db.Column(db.String(128), nullable=False)
+    #georeferencia      = db.Column(db.String(128), nullable=False)
     id_zona_parroquial = db.Column(db.Integer, nullable=False)
     id_municipio       = db.Column(db.Integer, nullable=False)
     id_categoria       = db.Column(db.Integer, nullable=False)

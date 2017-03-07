@@ -18,6 +18,7 @@ from app.mod_usuario.forms import FormularioAcceso
 from app.mod_ecclesi.models import Categoria
 from app.mod_usuario.models import Usuario
 from app.mod_usuario.models import Presbitero
+from app.mod_ecclesi.models import Templo
 
 @login_manager.user_loader
 def user_loader(user_id):
@@ -53,7 +54,13 @@ def prueba():
 @login_required
 def templo():
     session['visible'] = 1
-    return render_template("ecclesi/templo.html")
+    presbitero = {'foto_portada':'ecclesi_marcador.svg'}
+    if 'usuario' in session:
+        user = user_loader(session['usuario'])
+        if user.id_tipo_usuario == 2:
+            presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+    templo=Templo.query.filter_by(id_templo=presbitero.id_templo)        
+    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo)
 
 @mod_ecclesi.route('/usuario/', methods=['GET', 'POST'])
 @login_required
