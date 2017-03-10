@@ -10,8 +10,7 @@
             <!-- Grey navigation panel -->
             <ul class="tabs" id="tabs">
                 <li class="tab tabtive"><a href="#tab1">Templo</a></li>
-                <li class="tab"><a href="#tab2">Galeria </a></li>
-                <li class="tab"><a href="#tab2">Galeria </a></li>
+                <li class="tab"><a href="#tab2">Editar Templo</a></li>
                 <!-- li class="tab"><a href="#test3">Horarios de Confesion</a></li>
                 <li class="tab"><a href="#test4">Evento</a></li -->
             </ul>
@@ -52,15 +51,15 @@
                     {% endif %}
                     <div class="divider"></div>
                     <div class="input-field">
-                        <p class="no_edit">{{templo.id_zona_parroquial}}</p>
+                        <p class="no_edit">{{parroquial.nombre}}</p>
                         <label class="active">Zona Parroquial:</label>
                     </div>
                     <div class="input-field">
-                        <p class="no_edit">{{templo.id_municipio}}</p>
+                        <p class="no_edit">{{municipio.nombre}}</p>
                         <label class="active">Municipio:</label>
                     </div>
                     <div class="input-field">
-                        <p class="no_edit">{{templo.id_categoria}}</p>
+                        <p class="no_edit">{{categoria.tipo}}</p>
                         <label class="active">Categoria:</label>
                     </div>
                 </div>
@@ -79,48 +78,56 @@
                     <div class="col s12 m12 l6">
 
                         <div class="section">
-                            <h5>Usuario</h5>
+                            <h5>Templo</h5>
                             <div class="divider"></div>
                             <div class="input-field">
-                                <input name="nombre" value="{{current_user.nombre}}" id="nombre" type="text" class="validate">
+                                <input name="nombre" value="{{templo.nombre}}" id="nombre" type="text" class="validate">
                                 <label class="active" for="nombre">Nombre</label>
                             </div>
                             <div class="input-field">
-                                <input name="apellido" value="{{current_user.apellido}}" id="apellido" type="text" class="validate">
-                                <label class="active" for="apellido">Apellido</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="email" value="{{current_user.email}}" id="email" type="text" class="validate">
-                                <label class="active" for="email">Correo Electronico</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="contrasehna" value="{{presbitero.cane_confer}}" id="contrasehna" type="password" class="validate">
-                                <label class="active" for="contrasehna">Contraseña</label>
-                            </div>
-                            <div class="switch">
-                                <label>
-                                    Inviseble
-                                    <input type="checkbox">
-                                    <span class="lever"></span>
-                                    Visible
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="section">
-                            <h5>Presbitero</h5>
-                            <div class="divider"></div>
-                            <div class="input-field">
-                                <input name="popular" value="{{presbitero.nombre_popular}}" id="popular" type="text" class="validate">
+                                <input name="popular" value="{{templo.nombre_popular}}" id="popular" type="text" class="validate">
                                 <label class="active" for="popular">Nombre Popular</label>
                             </div>
                             <div class="input-field">
-                                <input name="confer" value="{{presbitero.cane_confer}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Carnet CONFER</label>
+                                <input name="confer" value="{{templo.direccion}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Dirección</label>
                             </div>
                             <div class="input-field">
-                                <input type="date" value="{{presbitero.fecha_ordenacion}}" id="ordenacion" class="datepicker">
-                                <label class="active" for="ordenacion">Fecha de Ordenacion</label>
+                                <input name="confer" value="{{templo.telefono}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Telefono</label>
+                            </div>
+                            <div class="input-field">
+                                <input name="confer" value="{{templo.historia}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Historia</label>
+                            </div>
+                            {% if templo.nomplombre_institucion %}
+                            <div class="input-field">
+                                <input name="confer" value="{{templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Nombre Institucion</label>
+                            </div>
+                            {% endif %}
+                            <div class="divider"></div>
+                            <div class="input-field">
+                                <input name="confer" value="{{parroquial.nombre}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Zona Parroquial</label>
+                            </div>
+                            <div class="input-field">
+                                <select>
+                                    <option value="" disabled>Choose your option</option>
+                                    <option value="1" selected>{{municipio.nombre}}</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                                <label>Municipio</label>
+                            </div>
+                            <div class="input-field">
+                                <select>
+                                    <option value="" disabled>Choose your option</option>
+                                    <option value="1" selected>{{categoria.tipo}}</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                                <label>Categoria</label>
                             </div>
                         </div>
                         <div class="section">

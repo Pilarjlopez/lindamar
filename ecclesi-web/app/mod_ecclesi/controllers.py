@@ -65,12 +65,9 @@ def templo():
     
     templo      = Templo.query.filter_by(id_templo=presbitero.id_templo).first()
     municipio   = Municipio.query.filter_by(id_municipio=templo.id_municipio).first()
-    pastoral    = Zona_Parroquial.query.filter_by(id_zona_parroquial=templo.id_zona_parroquial).first()
+    parroquial  = Zona_Parroquial.query.filter_by(id_zona_parroquial=templo.id_zona_parroquial).first()
     categoria   = Categoria.query.filter_by(id_categoria=templo.id_categoria).first()
-    templo.id_municipio = municipio.nombre
-    templo.id_zona_parroquial = pastoral.nombre
-    templo.id_categoria = categoria.tipo
-    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo)
+    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, categoria=categoria, municipio=municipio, parroquial=parroquial)
 
 @mod_ecclesi.route('/usuario/', methods=['GET', 'POST'])
 @login_required
