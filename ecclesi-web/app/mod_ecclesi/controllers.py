@@ -15,10 +15,12 @@ from app import db
 from app.mod_usuario.forms import FormularioAcceso
 
 # Importar modulo de modelos
+from app.mod_ecclesi.models import Templo
+from app.mod_ecclesi.models import Municipio
+from app.mod_ecclesi.models import Zona_Parroquial
 from app.mod_ecclesi.models import Categoria
 from app.mod_usuario.models import Usuario
 from app.mod_usuario.models import Presbitero
-from app.mod_ecclesi.models import Templo
 
 @login_manager.user_loader
 def user_loader(user_id):
@@ -54,12 +56,20 @@ def prueba():
 @login_required
 def templo():
     session['visible'] = 1
+    
     presbitero = {'foto_portada':'ecclesi_marcador.svg'}
     if 'usuario' in session:
         user = user_loader(session['usuario'])
         if user.id_tipo_usuario == 2:
             presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
-    templo=Templo.query.filter_by(id_templo=presbitero.id_templo)        
+    
+    templo      = Templo.query.filter_by(id_templo=presbitero.id_templo).first()
+    municipio   = Municipio.query.filter_by(id_municipio=templo.id_municipio).first()
+    pastoral    = Zona_Parroquial.query.filter_by(id_zona_parroquial=templo.id_zona_parroquial).first()
+    categoria   = Categoria.query.filter_by(id_categoria=templo.id_categoria).first()
+    templo.id_municipio = municipio.nombre
+    templo.id_zona_parroquial = pastoral.nombre
+    templo.id_categoria = categoria.tipo
     return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo)
 
 @mod_ecclesi.route('/usuario/', methods=['GET', 'POST'])

@@ -315,7 +315,7 @@ CREATE TABLE `templo` (
   `historia` varchar(500) DEFAULT NULL,
   `nombre_institucion` varchar(100) NOT NULL,
   `portada` varchar(45) DEFAULT NULL,
-  `institucion` varchar(45) DEFAULT NULL,
+  `georeferencia` varchar(45) DEFAULT NULL,
   `id_zona_parroquial` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL

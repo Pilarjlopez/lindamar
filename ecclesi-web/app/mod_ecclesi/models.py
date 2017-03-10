@@ -25,7 +25,7 @@ class Templo(db.Model):
     historia           = db.Column(db.String(128), nullable=False)
     nombre_institucion = db.Column(db.String(128), nullable=False)
     portada            = db.Column(db.String(128), nullable=False)
-    #georeferencia      = db.Column(db.String(128), nullable=False)
+    institucion        = db.Column(db.String(128), nullable=False)
     id_zona_parroquial = db.Column(db.Integer, nullable=False)
     id_municipio       = db.Column(db.Integer, nullable=False)
     id_categoria       = db.Column(db.Integer, nullable=False)
@@ -36,4 +36,16 @@ class Oficio(db.Model):
     id_oficio_eclesiastico = db.Column(db.Integer, primary_key=True)
     tipo                   = db.Column(db.String(128), nullable=False)
 
-	
+# Definir modelo de Munnicipio
+class Municipio(db.Model):
+    __tablename__   = 'municipio'
+    id_municipio    = db.Column(db.Integer, primary_key=True)
+    nombre          = db.Column(db.String(128), nullable=False)
+    id_departamento = db.Column(db.Integer, nullable=False)
+
+# Definir modelo de Zona Parroquial
+class Zona_Parroquial(db.Model):
+    __tablename__           = 'zona_parroquial'
+    id_zona_parroquial      = db.Column(db.Integer, primary_key=True)
+    nombre                  = db.Column(db.String(128), nullable=False)
+    id_zona_pastoral        = db.Column(db.Integer, nullable=False)

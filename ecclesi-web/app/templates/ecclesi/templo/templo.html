@@ -9,7 +9,7 @@
         <div class="col s12 m12 l3"> <!-- Note that "m4 l3" was added -->
             <!-- Grey navigation panel -->
             <ul class="tabs" id="tabs">
-                <li class="tab tabtive"><a href="#tab1">Editar Templo</a></li>
+                <li class="tab tabtive"><a href="#tab1">Templo</a></li>
                 <li class="tab"><a href="#tab2">Galeria </a></li>
                 <li class="tab"><a href="#tab2">Galeria </a></li>
                 <!-- li class="tab"><a href="#test3">Horarios de Confesion</a></li>
@@ -38,19 +38,18 @@
                         <p class="no_edit">{{templo.telefono}}</p>
                         <label class="active">Telefono:</label>
                     </div>
-                    <div class="divider"></div>
+                    {% if templo.historia %}
                     <div class="input-field">
                         <p class="no_edit">{{templo.historia}}</p>
                         <label class="active">Historia:</label>
                     </div>
+                    {% endif %}
+                    {% if templo.nomplombre_institucion %}
                     <div class="input-field">
                         <p class="no_edit">{{templo.nomplombre_institucion}}</p>
                         <label class="active">Nombre Institucion:</label>
                     </div>
-                    <div class="input-field">
-                        <p class="no_edit">{{templo.portada}}</p>
-                        <label class="active">Foto Portada:</label>
-                    </div>
+                    {% endif %}
                     <div class="divider"></div>
                     <div class="input-field">
                         <p class="no_edit">{{templo.id_zona_parroquial}}</p>
@@ -67,7 +66,7 @@
                 </div>
                 <div class="col s12 m12 l6">
                     <div class="input-field">
-                        <img class="materialboxed" width="420" src="{{ url_for('static', filename='img/' + presbitero.foto_portada ) }}">
+                        <img class="materialboxed" width="420" src="{{ url_for('static', filename='img/' + templo.portada ) }}">
                     </div>
                 </div>
             </div>
@@ -135,7 +134,7 @@
                 </form>
                 <div class="col s12 m12 l6">
                     <div class="input-field">
-                        <img width="420" src="{{ url_for('static', filename='img/' + presbitero.foto_portada ) }}">
+                        <img width="420" src="{{ url_for('static', filename='img/' + templo.portada ) }}">
                         <form action="#">
                             <div class="file-field input-field btn-floating btn-large waves-effect waves-light" style="top:-90px; left:10px;">
                                 <i class="material-icons">add</i>
