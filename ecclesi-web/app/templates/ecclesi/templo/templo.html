@@ -11,68 +11,80 @@
             <ul class="tabs" id="tabs">
                 <li class="tab tabtive"><a href="#tab1">Templo</a></li>
                 <li class="tab"><a href="#tab2">Editar Templo</a></li>
+                <li class="tab"><a href="#tab3">Galeria</a></li>
+                <li class="tab"><a href="#tab4">Servicios Eclesiasticos</a></li>
+                <li class="tab"><a href="#tab5">Actividades</a></li>
+                <li class="tab"><a href="#tab6">Noticias</a></li>
                 <!-- li class="tab"><a href="#test3">Horarios de Confesion</a></li>
                 <li class="tab"><a href="#test4">Evento</a></li -->
             </ul>
         </div>
         
-        <div id="tab1" class="col s12 m12 l9 panel-ecclesi"> <!-- Note that "m8 l9" was added -->
-            <!-- Teal page content -->
-            <!-- div  class="col s12 m8 l9 " -->
-            <div style="padding: 40px;">
-                <div class="col s12 m12 l6">
+            <div id="tab1" class="col s12 m12 l9 panel-ecclesi">
+                <!-- Templo -->
+                <div style="padding: 40px;">
+                    <div class="col s12 m12 l6">
+                    <h5>Templo</h5>
+                    <div class="divider"></div>
                     <div class="input-field">
-                        <p class="no_edit">{{templo.nombre}}</p>
+                        <p class="no_edit">{{templo.Templo.nombre}}</p>
                         <label class="active">Nombre:</label>
                     </div>
                     <div class="input-field">
-                        <p class="no_edit">{{templo.nombre_popular}}</p>
+                        <p class="no_edit">{{templo.Templo.nombre_popular}}</p>
                         <label class="active">Nombre popular:</label>
                     </div>
                     <div class="input-field">
-                        <p class="no_edit">{{templo.direccion}}</p>
+                        <p class="no_edit">{{templo.Templo.direccion}}</p>
                         <label class="active">Dirección:</label>
                     </div>
                    <div class="input-field">
-                        <p class="no_edit">{{templo.telefono}}</p>
+                        <p class="no_edit">{{templo.Templo.telefono}}</p>
                         <label class="active">Telefono:</label>
                     </div>
-                    {% if templo.historia %}
+                    {% if templo.Templo.historia %}
                     <div class="input-field">
-                        <p class="no_edit">{{templo.historia}}</p>
+                        <p class="no_edit">{{templo.Templo.historia}}</p>
                         <label class="active">Historia:</label>
                     </div>
                     {% endif %}
-                    {% if templo.nomplombre_institucion %}
+                    {% if templo.Templo.nomplombre_institucion %}
                     <div class="input-field">
-                        <p class="no_edit">{{templo.nomplombre_institucion}}</p>
+                        <p class="no_edit">{{templo.Templo.nomplombre_institucion}}</p>
                         <label class="active">Nombre Institucion:</label>
                     </div>
                     {% endif %}
+                    <h5>Zona Parroquial</h5>
                     <div class="divider"></div>
                     <div class="input-field">
-                        <p class="no_edit">{{parroquial.nombre}}</p>
+                        <p class="no_edit">{{templo.Zona_Parroquial.nombre}}</p>
                         <label class="active">Zona Parroquial:</label>
                     </div>
+                    <h5>Municipio</h5>
+                    <div class="divider"></div>
                     <div class="input-field">
-                        <p class="no_edit">{{municipio.nombre}}</p>
+                        <p class="no_edit">{{templo.Municipio.nombre}}</p>
                         <label class="active">Municipio:</label>
                     </div>
+                    <h5>Categoria</h5>
+                    <div class="divider"></div>
                     <div class="input-field">
-                        <p class="no_edit">{{categoria.tipo}}</p>
+                        <p class="no_edit">{{templo.Categoria.tipo}}</p>
                         <label class="active">Categoria:</label>
                     </div>
                 </div>
                 <div class="col s12 m12 l6">
+                    <h5>Imagen Portada</h5>
+                    <div class="divider"></div>
                     <div class="input-field">
-                        <img class="materialboxed" width="420" src="{{ url_for('static', filename='img/' + templo.portada ) }}">
+                        <img width="420" src="{{ url_for('static', filename='img/' + templo.Templo.portada ) }}">
                     </div>
                 </div>
             </div>
         </div>
         
-        <div id="tab2" class="col s12 m12 l9 panel-ecclesi"> <!-- Note that "m8 l9" was added -->
-            <!-- Teal page content -->
+        <div id="tab2" class="col s12 m12 l9 panel-ecclesi">
+            <!-- Editar Templo -->
             <div style="padding: 40px;">
                 <form >
                     <div class="col s12 m12 l6">
@@ -81,51 +93,54 @@
                             <h5>Templo</h5>
                             <div class="divider"></div>
                             <div class="input-field">
-                                <input name="nombre" value="{{templo.nombre}}" id="nombre" type="text" class="validate">
+                                <input name="nombre" value="{{templo.Templo.nombre}}" id="nombre" type="text" class="validate">
                                 <label class="active" for="nombre">Nombre</label>
                             </div>
                             <div class="input-field">
-                                <input name="popular" value="{{templo.nombre_popular}}" id="popular" type="text" class="validate">
+                                <input name="popular" value="{{templo.Templo.nombre_popular}}" id="popular" type="text" class="validate">
                                 <label class="active" for="popular">Nombre Popular</label>
                             </div>
                             <div class="input-field">
-                                <input name="confer" value="{{templo.direccion}}" id="confer" type="text" class="validate">
+                                <input name="confer" value="{{templo.Templo.direccion}}" id="confer" type="text" class="validate">
                                 <label class="active" for="confer">Dirección</label>
                             </div>
                             <div class="input-field">
-                                <input name="confer" value="{{templo.telefono}}" id="confer" type="text" class="validate">
+                                <input name="confer" value="{{templo.Templo.telefono}}" id="confer" type="text" class="validate">
                                 <label class="active" for="confer">Telefono</label>
                             </div>
                             <div class="input-field">
-                                <input name="confer" value="{{templo.historia}}" id="confer" type="text" class="validate">
+                                <input name="confer" value="{{templo.Templo.historia}}" id="confer" type="text" class="validate">
                                 <label class="active" for="confer">Historia</label>
                             </div>
                             {% if templo.nomplombre_institucion %}
                             <div class="input-field">
-                                <input name="confer" value="{{templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
+                                <input name="confer" value="{{templo.Templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
                                 <label class="active" for="confer">Nombre Institucion</label>
                             </div>
                             {% endif %}
+                            <h5>Zona Parroquial</h5>
                             <div class="divider"></div>
                             <div class="input-field">
-                                <input name="confer" value="{{parroquial.nombre}}" id="confer" type="text" class="validate">
+                                <input name="confer" value="{{templo.Zona_Parroquial.nombre}}" id="confer" type="text" class="validate">
                                 <label class="active" for="confer">Zona Parroquial</label>
                             </div>
+                            <h5>Municipio</h5>
+                            <div class="divider"></div>
                             <div class="input-field">
                                 <select>
-                                    <option value="" disabled>Choose your option</option>
-                                    <option value="1" selected>{{municipio.nombre}}</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                    {% for item in municipio %}
+                                    <option value="{{item.id_municipio}}" {%if item.id_municipio == templo.Templo.id_municipio%} selected {%endif%}>{{item.nombre}}</option>
+                                    {% endfor %}
                                 </select>
                                 <label>Municipio</label>
                             </div>
+                            <h5>Categoria</h5>
+                            <div class="divider"></div>
                             <div class="input-field">
                                 <select>
-                                    <option value="" disabled>Choose your option</option>
-                                    <option value="1" selected>{{categoria.tipo}}</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                    {% for item in categoria %}
+                                    <option value="{{item.id_categoria}}" {%if item.id_categoria == templo.Templo.id_categoria%} selected {%endif%}>{{item.tipo}}</option>
+                                    {% endfor %}
                                 </select>
                                 <label>Categoria</label>
                             </div>
@@ -140,8 +155,10 @@
                     </div>
                 </form>
                 <div class="col s12 m12 l6">
+                    <h5>Imagen Portada</h5>
+                    <div class="divider"></div>
                     <div class="input-field">
-                        <img width="420" src="{{ url_for('static', filename='img/' + templo.portada ) }}">
+                        <img width="420" src="{{ url_for('static', filename='img/' + templo.Templo.portada ) }}">   
                         <form action="#">
                             <div class="file-field input-field btn-floating btn-large waves-effect waves-light" style="top:-90px; left:10px;">
                                 <i class="material-icons">add</i>
@@ -152,7 +169,221 @@
                 </div>
             </div>
         </div>
+        
+        <div id="tab3" class="col s12 m12 l9 panel-ecclesi">
+            <!-- Galeria -->
+            <div style="padding: 40px;">
+                <form >
+                    <div class="col s12 m12 l6">
 
+                        <div class="section">
+                            <h5>Galeria</h5>
+                            <div class="divider"></div>
+                            <div class="input-field">
+                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <label class="active" for="nombre">Album</label>
+                            </div>                     
+                           
+                            <div class="input-field">
+                                <input name="confer" value="" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Historia</label>
+                            </div>
+                            {% if templo.nomplombre_institucion %}
+                            <div class="input-field">
+                                <input name="confer" value="{{templo.Templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Nombre Institucion</label>
+                            </div>
+                            {% endif %}
+                            <div class="divider"></div>
+                                                                                   
+                        </div>
+                        <div class="section">
+                            <div class="input-field">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Actualizar
+                                  <i class="material-icons right">done</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                      <div class="col s12 m8 offset-m2 l6 offset-l3">
+                        <div class="card-panel grey lighten-5 z-depth-1">
+                          <div class="row valign-wrapper">
+                            <div class="col s2">
+                              <img src="{{ url_for('static', filename='img/' + templo.Templo.portada ) }}" alt=""  class="circle responsive-img"> <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s10">
+                              <span class="black-text">
+                                   <p class="no_edit">{{templo.Galeria.descripcion}}</p>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    
+                </form>
+                
+            </div>
+        </div>
+        
+        <div id="tab4" class="col s12 m12 l9 panel-ecclesi"> <!-- Note that "m8 l9" was added -->
+            <!-- Teal page content -->
+            <div style="padding: 40px;">
+                <form >
+                    <div class="col s12 m12 l6">
+                        <div class="input-field">
+                            <select>
+                                {% for item in servicio_religioso %}
+                                <option value="{{item.id_servicio_religioso}}" {%if item.id_servicio_religioso == templo.Templo.id_servicio_religioso%} selected {%endif%}>{{item.tipo}}</option>
+                                {% endfor %}
+                            </select>
+                            <label>Tipo</label>
+                        </div>
+                        <div class="input-field">
+                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <label class="active" for="nombre">Descripcion</label>
+                            </div>
+                        <div class="input-field">
+                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <label class="active" for="nombre">Hora</label>
+                            </div>
+                        <div class="input-field">
+                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <label class="active" for="nombre">Dia</label>
+                            </div>
+                        <div class="section">
+                            <div class="input-field">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
+                                  <i class="material-icons right">done</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <table>
+                            <thead>
+                              <tr>
+                                  <th>Servicio</th>
+                                  <th>Descripcion</th>
+                                  <th>Hora</th>
+                                  <th>Dia</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr>
+                                <td>{{templo.Servicio_Religioso.tipo}}</td>
+                                <td>{{templo.Servicio_Religioso.descripcion}}</td>
+                                <td>{{templo.Horario.hora}}</td>
+                                <td>{{templo.Servicio_Religioso.dia}}</td>
+
+                              </tr>
+                              <tr>
+                                <td>{{templo.Servicio_Religioso.tipo}}</td>
+                                <td>{{templo.Servicio_Religioso.descripcion}}</td>
+                                <td>{{templo.Servicio_Religioso.hora}}</td>
+                                <td>{{templo.Servicio_Religioso.dia}}</td>
+
+                              </tr>
+                              <tr>
+                                <td>{{templo.Servicio_Religioso.tipo}}</td>
+                                <td>{{templo.Servicio_Religioso.descripcion}}</td>
+                                <td>{{templo.Servicio_Religioso.hora}}</td>
+                                <td>{{templo.Servicio_Religioso.dia}}</td>
+
+                              </tr>
+                            </tbody>
+                          </table>
+                </form>
+            </div>
+        </div>
+        
+        <div id="tab5" class="col s12 m12 l9 panel-ecclesi">
+            <!-- Teal page content -->
+            <div style="padding: 40px;">
+                <form >
+                    <div class="col s12 m12 l6">
+                        
+                        <div class="input-field">
+                            <select>
+                                {% for item in tipo_actividad %}
+                                <option value="{{item.id_tipo_actividad}}" {%if item.id_tipo_actividad == templo.Actividad.id_tipo_actividad%} selected {%endif%}>{{item.tipo}}</option>
+                                {% endfor %}
+                            </select>
+                            <label>Tipo</label>
+                        </div>
+                        <div class="input-field">
+                            <input name="nombre" value="" id="nombre" type="text" class="validate">
+                            <label class="active" for="nombre">Dia</label>
+                        </div>
+                        <div class="input-field">
+                            <input name="nombre" value="" id="nombre" type="text" class="validate">
+                            <label class="active" for="nombre">Hora</label>
+                        </div>
+                        <div class="input-field">
+                            <input name="nombre" value="" id="nombre" type="text" class="validate">
+                            <label class="active" for="nombre">Descripcion</label>
+                        </div>
+                        <div class="section">
+                            <div class="input-field">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
+                                  <i class="material-icons right">done</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="col s12 m12 l6">
+                    <div class="input-field">
+                        <form action="#">
+                                                      
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab6" class="col s12 m12 l9 panel-ecclesi"> <!-- Note that "m8 l9" was added -->
+            <!-- Teal page content -->
+            <div style="padding: 40px;">
+                <form >
+                    <div class="col s12 m12 l6">
+
+                        <div class="section">
+                           <div class="input-field">
+                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <label class="active" for="nombre">Titular</label>
+                            </div>
+                            <div class="input-field">
+                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <label class="active" for="nombre">Descripcion</label>
+                            </div>
+                            <div class="input-field">
+                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <label class="active" for="nombre">Imagen</label>
+                            </div>
+                            <div class="section">
+                            <div class="input-field">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
+                                  <i class="material-icons right">done</i>
+                                </button>
+                            </div>
+                        </div>
+                            
+                        </div>
+                        <div class="section">
+                            
+                        </div>
+                    </div>
+                </form>
+                <div class="col s12 m12 l6">
+                    <div class="input-field">
+                        <form action="#">
+                                                       
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
     

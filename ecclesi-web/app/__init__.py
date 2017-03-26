@@ -7,6 +7,9 @@ from flask_login import LoginManager
 # Importar SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
+# Importar FireBase
+from firebase import firebase
+
 # Define el objeto de aplicacion WSGI
 app = Flask(__name__)
 
@@ -19,6 +22,9 @@ login_manager.init_app(app)
 # Define el objeto de base de datos que se desea importar
 # por los modulos y controloadores
 db = SQLAlchemy(app)
+
+# Definir la coneccion a los nodos de FireBase
+firebase = firebase.FirebaseApplication('https://ecclesiapp-fe5b2.firebaseio.com/', None)
 
 # Ejemplo de como hacerse cargo de un error HTTP
 @app.errorhandler(404)

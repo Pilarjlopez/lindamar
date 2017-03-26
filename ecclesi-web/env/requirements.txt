@@ -4,4 +4,5 @@ Flask-SQLAlchemy==2.1
 Flask-Login==0.4.0
 Flask-WTF==0.12
 PyMySQL==0.7.9
-python-firebase==1.2
+
+    

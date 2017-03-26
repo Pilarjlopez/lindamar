@@ -5,6 +5,9 @@ DEBUG = True
 import os
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
+# Declaracion de mandato de datos
+import signal
+
 # Definir la base de datos - estamos trabajando con
 USR  = "root"
 PWD  = "root"
@@ -15,6 +18,10 @@ SQLALCHEMY_DATABASE_URI = 'mysql://{}:{}@localhost/{}'.format(USR, PWD, DBN)
 
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 DATABASE_CONNECT_OPTIONS = {}
+
+# String de connecion para FireBase
+#FIREBASE_URL = ('https://ecclesiapp-fe5b2.firebaseio.com/', None)
+FIREBASE_URL = ('https://ecclesiapp-fe5b2.firebaseio.com/', None)
 
 # Hilos de la aplicacion. Una suposicion general comun es 
 # usar 2 por nucleos de procesamiento disponibles - para manejar 

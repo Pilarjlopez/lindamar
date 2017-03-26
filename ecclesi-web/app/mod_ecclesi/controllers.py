@@ -8,6 +8,12 @@ from flask_login import (current_user, login_required, login_user, logout_user, 
 # Importar clave / ayudantes de encriptacion
 from werkzeug import check_password_hash, generate_password_hash
 
+# Importar FireBase
+#from pyfirebase import Firebase
+
+# Definir la coneccion a los nodos de FireBase
+#firebase = Firebase('https://ecclesiapp-fe5b2.firebaseio.com/')
+
 # Importar el objeto de base de datos desde el modulo principal de la aplicacion
 from app import db
 
@@ -19,6 +25,12 @@ from app.mod_ecclesi.models import Templo
 from app.mod_ecclesi.models import Municipio
 from app.mod_ecclesi.models import Zona_Parroquial
 from app.mod_ecclesi.models import Categoria
+from app.mod_ecclesi.models import Galeria
+from app.mod_ecclesi.models import Foto
+from app.mod_ecclesi.models import Actividad
+from app.mod_ecclesi.models import Tipo_Actividad
+from app.mod_ecclesi.models import Servicio_Religioso
+from app.mod_ecclesi.models import Horario
 from app.mod_usuario.models import Usuario
 from app.mod_usuario.models import Presbitero
 
@@ -62,12 +74,15 @@ def templo():
         user = user_loader(session['usuario'])
         if user.id_tipo_usuario == 2:
             presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+            
+    templo = db.session.query(Templo, Municipio, Zona_Parroquial, Categoria, Galeria, Actividad, Servicio_Religioso, Horario).join(Templo.municipio, Templo.zona_parroquial, Templo.categoria, Templo.galeria, Templo.actividad, Templo.servicio_religioso, Servicio_Religioso.horario).filter(Templo.id_templo == presbitero.id_templo).order_by(Templo.id_templo).first()
     
-    templo      = Templo.query.filter_by(id_templo=presbitero.id_templo).first()
-    municipio   = Municipio.query.filter_by(id_municipio=templo.id_municipio).first()
-    parroquial  = Zona_Parroquial.query.filter_by(id_zona_parroquial=templo.id_zona_parroquial).first()
-    categoria   = Categoria.query.filter_by(id_categoria=templo.id_categoria).first()
-    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, categoria=categoria, municipio=municipio, parroquial=parroquial)
+    tipo_actividad      = Tipo_Actividad.query.all()
+    servicio_religioso  = Servicio_Religioso.query.all()
+    municipio           = Municipio.query.filter_by(id_departamento=1).all()
+    categoria           = Categoria.query.all()
+    
+    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, municipio=municipio, categoria=categoria, tipo_actividad=tipo_actividad,servicio_religioso=servicio_religioso, horario=horario)
 
 @mod_ecclesi.route('/usuario/', methods=['GET', 'POST'])
 @login_required
