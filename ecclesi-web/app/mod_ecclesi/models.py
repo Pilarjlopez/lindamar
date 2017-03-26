@@ -117,8 +117,7 @@ class Templo(db.Model):
     id_galeria         = db.Column(db.Integer, db.ForeignKey('galeria.id_galeria'), nullable=False)
     id_actividad       = db.Column(db.Integer, db.ForeignKey('actividad.id_actividad'), nullable=False)
     id_servicio_religioso = db.Column(db.Integer, db.ForeignKey('servicio_religioso.id_servicio_religioso'), nullable=False)
-    id_horario = db.Column(db.Integer, db.ForeignKey('servicio_religioso.id_servicio_religioso'), nullable=False)
-
+    
     
     zona_parroquial    = db.relationship('Zona_Parroquial')
     municipio          = db.relationship('Municipio')
@@ -126,7 +125,7 @@ class Templo(db.Model):
     galeria            = db.relationship('Galeria')
     actividad          = db.relationship('Actividad')
     servicio_religioso = db.relationship('Servicio_Religioso')
-    horario            = db.relationship('Horario')
+   
     
 
     
