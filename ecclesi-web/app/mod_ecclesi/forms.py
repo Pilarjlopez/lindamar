@@ -11,3 +11,8 @@ from wtforms.validators import Required, Email, EqualTo
 class FormularioAcceso(FlaskForm):
     email    = TextField('Email Address', [Email(), Required(message='Olvido su direccion de correo electronico?')])
     password = PasswordField('Password', [Required(message='Debe de proveer una clave. ;-)')]) 
+    
+class FormularioTemplo(FlaskForm):
+    email    = TextField('Email Address', [Email(), Required(message='Olvido su direccion de correo electronico?')])
+    password = PasswordField('Password', [Required(message='Debe de proveer una clave. ;-)')]) 
+

@@ -330,8 +330,12 @@ nav ul a {
     background-color: #6f8a91;   
 }
 
+.tab {
+    width: 25%;
+}
+
 .tabs .tab a {
-    color: rgba(6, 167, 237, 0.7);
+    color: rgba(6, 167, 237, 1);
 }
 
 .tabs .tab a:hover, .tabs .tab a.active {

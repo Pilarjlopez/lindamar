@@ -9,22 +9,22 @@
         <div class="col s12 m12 l3"> <!-- Note that "m4 l3" was added -->
             <!-- Grey navigation panel -->
             <ul class="tabs" id="tabs">
-                <li class="tab tabtive"><a href="#tab1">Templo</a></li>
-                <li class="tab"><a href="#tab2">Editar Templo</a></li>
-                <li class="tab"><a href="#tab3">Galeria</a></li>
-                <li class="tab"><a href="#tab4">Servicios Eclesiasticos</a></li>
-                <li class="tab"><a href="#tab5">Actividades</a></li>
-                <li class="tab"><a href="#tab6">Noticias</a></li>
+                <li class="tab tabtive" style="width: 25%;"><a href="#tab1">Templo</a></li>
+                <li class="tab" style="width: 25%;"><a href="#tab2">Editar Templo</a></li>
+                <li class="tab" style="width: 25%;"><a href="#tab3">Galeria</a></li>
+                <li class="tab" style="width: 25%;"><a href="#tab4">Servicios Eclesiasticos</a></li>
+                <li class="tab" style="width: 25%;"><a href="#tab5">Actividades</a></li>
+                <li class="tab" style="width: 25%;"><a href="#tab6">Noticias</a></li>
                 <!-- li class="tab"><a href="#test3">Horarios de Confesion</a></li>
                 <li class="tab"><a href="#test4">Evento</a></li -->
             </ul>
         </div>
         
-            <div id="tab1" class="col s12 m12 l9 panel-ecclesi">
-                <!-- Templo -->
-                <div style="padding: 40px;">
-                    <div class="col s12 m12 l6">
-                    <h5>Templo</h5>
+        <div id="tab1" class="col s12 m12 l9 panel-ecclesi">
+            <!-- Templo -->
+            <div style="padding: 40px;">
+                <div class="col s12 m12 l6">
+                    <h5>Templo <small>{{templo.Categoria.tipo}}</small></h5>
                     <div class="divider"></div>
                     <div class="input-field">
                         <p class="no_edit">{{templo.Templo.nombre}}</p>
@@ -48,6 +48,7 @@
                         <label class="active">Historia:</label>
                     </div>
                     {% endif %}
+                    
                     {% if templo.Templo.nomplombre_institucion %}
                     <div class="input-field">
                         <p class="no_edit">{{templo.Templo.nomplombre_institucion}}</p>
@@ -66,12 +67,6 @@
                         <p class="no_edit">{{templo.Municipio.nombre}}</p>
                         <label class="active">Municipio:</label>
                     </div>
-                    <h5>Categoria</h5>
-                    <div class="divider"></div>
-                    <div class="input-field">
-                        <p class="no_edit">{{templo.Categoria.tipo}}</p>
-                        <label class="active">Categoria:</label>
-                    </div>
                 </div>
                 <div class="col s12 m12 l6">
                     <h5>Imagen Portada</h5>
@@ -86,7 +81,8 @@
         <div id="tab2" class="col s12 m12 l9 panel-ecclesi">
             <!-- Editar Templo -->
             <div style="padding: 40px;">
-                <form >
+                <form action="url_for('ecclesi.guardar_templo')" method="post">
+                    <input type="hidden" name="portada" value="">
                     <div class="col s12 m12 l6">
 
                         <div class="section">
@@ -100,49 +96,43 @@
                                 <input name="popular" value="{{templo.Templo.nombre_popular}}" id="popular" type="text" class="validate">
                                 <label class="active" for="popular">Nombre Popular</label>
                             </div>
-                            <div class="input-field">
-                                <input name="confer" value="{{templo.Templo.direccion}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Dirección</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="confer" value="{{templo.Templo.telefono}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Telefono</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="confer" value="{{templo.Templo.historia}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Historia</label>
-                            </div>
-                            {% if templo.nomplombre_institucion %}
-                            <div class="input-field">
-                                <input name="confer" value="{{templo.Templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Nombre Institucion</label>
-                            </div>
-                            {% endif %}
-                            <h5>Zona Parroquial</h5>
-                            <div class="divider"></div>
-                            <div class="input-field">
-                                <input name="confer" value="{{templo.Zona_Parroquial.nombre}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Zona Parroquial</label>
-                            </div>
-                            <h5>Municipio</h5>
-                            <div class="divider"></div>
-                            <div class="input-field">
-                                <select>
-                                    {% for item in municipio %}
-                                    <option value="{{item.id_municipio}}" {%if item.id_municipio == templo.Templo.id_municipio%} selected {%endif%}>{{item.nombre}}</option>
-                                    {% endfor %}
-                                </select>
-                                <label>Municipio</label>
-                            </div>
                             <h5>Categoria</h5>
                             <div class="divider"></div>
                             <div class="input-field">
-                                <select>
+                                <select name="categoria">
                                     {% for item in categoria %}
                                     <option value="{{item.id_categoria}}" {%if item.id_categoria == templo.Templo.id_categoria%} selected {%endif%}>{{item.tipo}}</option>
                                     {% endfor %}
                                 </select>
                                 <label>Categoria</label>
+                            </div>
+                            <div class="input-field">
+                                <input name="direccion" value="{{templo.Templo.direccion}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Dirección</label>
+                            </div>
+                            <div class="input-field">
+                                <input name="telefono" value="{{templo.Templo.telefono}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Telefono</label>
+                            </div>
+                            <div class="input-field">
+                                <input name="historia" value="{{templo.Templo.historia}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Historia</label>
+                            </div>
+                            {% if templo.nomplombre_institucion %}
+                            <div class="input-field">
+                                <input name="institucion" value="{{templo.Templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
+                                <label class="active" for="confer">Nombre Institucion</label>
+                            </div>
+                            {% endif %}
+                            <h5>Municipio</h5>
+                            <div class="divider"></div>
+                            <div class="input-field">
+                                <select name="municipio">
+                                    {% for item in municipio %}
+                                    <option value="{{item.id_municipio}}" {%if item.id_municipio == templo.Templo.id_municipio%} selected {%endif%}>{{item.nombre}}</option>
+                                    {% endfor %}
+                                </select>
+                                <label>Municipio</label>
                             </div>
                         </div>
                         <div class="section">
