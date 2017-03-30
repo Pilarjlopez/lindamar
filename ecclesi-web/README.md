@@ -12,7 +12,7 @@ Actualice su sistema operativo.
 * Mageia
 ```bashscript
 $ su -c "urpmi.update -a && urpmi --auto-select"
-$ su -c "urpmi -y git python-pip mariadb gcc gcc-c++ make cmake lib64python-devel"
+$ su -c "urpmi git python-pip mariadb gcc gcc-c++ make cmake lib64python-devel"
 ```
 
 * Fedora
