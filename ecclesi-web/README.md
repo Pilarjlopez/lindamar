@@ -1,4 +1,4 @@
-# ecclesi
+# EcclesiApp - SistemaWeb
 ### Sitio Web de la Curia Arzobispal y Sistema de geolocalizacion de templos Catolicos en Nicaragua.
 
 Lo siguiente es un pequeño startup para instalar y hacer funciona el citio web y el sistema de maneral local.
@@ -17,7 +17,7 @@ $ su -c "dnf -y install git pip mariadb-server build-essential python-dev python
 
 * Mageia
 ```bashscript
-$ su -c "urpmu"
+$ su -c "urpmi.update"
 $ su -c "urpmi -y git python-pip mariadb gcc gcc-c++ make cmake lib64python-devel"
 ```
     
