@@ -9,22 +9,22 @@ Intalaciond de librerias, aplicacciones y frameworks necesarias por el sistema o
 
 Actualice su sistema operativo.
 
+* Mageia
+```bashscript
+$ su -c "urpmi.update"
+$ su -c "urpmi -y git python-pip mariadb gcc gcc-c++ make cmake lib64python-devel"
+```
+
 * Fedora
 ```bashscript
 $ su -c "dnf -y update"
 $ su -c "dnf -y install git pip mariadb-server build-essential python-dev python2.7-dev"
 ```
 
-* Mageia
-```bashscript
-$ su -c "urpmi.update"
-$ su -c "urpmi -y git python-pip mariadb gcc gcc-c++ make cmake lib64python-devel"
-```
-    
 ## Clona o copia el repo
 
 ```bashscript
-$ git clone 
+$ git clone https://github.com/lindamar/ecclesi.git
 ```
 
 ## Instala las dependenencias de python
