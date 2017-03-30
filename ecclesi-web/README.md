@@ -12,13 +12,13 @@ Actualice su sistema operativo.
 * Fedora
 ```bashscript
 $ su -c "dnf -y update"
-$ su -c "dnf -y install git pip mariadb build-essential python-dev python2.7-dev"
+$ su -c "dnf -y install git pip mariadb-server build-essential python-dev python2.7-dev"
 ```
 
 * Mageia
 ```bashscript
 $ su -c "urpmu"
-$ su -c "urpmi -y git pip mariadb build-essential python-dev python2.7-dev"
+$ su -c "urpmi -y git python-pip mariadb gcc gcc-c++ make cmake lib64python-devel"
 ```
     
 ## Clona o copia el repo
