@@ -1,3 +1,6 @@
+import json
+import pprint
+
 # Importar las dependencias de flask
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for
 
@@ -87,8 +90,9 @@ def templo():
 @mod_ecclesi.route('/guardar_templo/', methods=['GET', 'POST'])
 @login_required
 def guardar_templo():
-    form = LoginForm(request.form)
-    return redirect(url_for("usuario.perfil"))
+    pp = pprint.PrettyPrinter(indent=4)
+    form  = request.form
+    return form['popular']
 
 @mod_ecclesi.route('/usuario/', methods=['GET', 'POST'])
 @login_required

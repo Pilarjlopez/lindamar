@@ -81,7 +81,7 @@
         <div id="tab2" class="col s12 m12 l9 panel-ecclesi">
             <!-- Editar Templo -->
             <div style="padding: 40px;">
-                <form action="url_for('ecclesi.guardar_templo')" method="post">
+                <form action="{{url_for('ecclesi.guardar_templo')}}" method="post">
                     <input type="hidden" name="portada" value="">
                     <div class="col s12 m12 l6">
 
@@ -152,7 +152,6 @@
                         <form action="#">
                             <div class="file-field input-field btn-floating btn-large waves-effect waves-light" style="top:-90px; left:10px;">
                                 <i class="material-icons">add</i>
-                                <input type="file" name="foto_portada">
                             </div>                            
                         </form>
                     </div>
@@ -164,28 +163,27 @@
             <!-- Galeria -->
             <div style="padding: 40px;">
                 <form >
+                    
                     <div class="col s12 m12 l6">
-
                         <div class="section">
                             <h5>Galeria</h5>
                             <div class="divider"></div>
                             <div class="input-field">
-                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <input name="" value="" id="nombre" type="text" class="validate">
                                 <label class="active" for="nombre">Album</label>
                             </div>                     
                            
                             <div class="input-field">
-                                <input name="confer" value="" id="confer" type="text" class="validate">
+                                <input name="" value="" id="confer" type="text" class="validate">
                                 <label class="active" for="confer">Historia</label>
                             </div>
                             {% if templo.nomplombre_institucion %}
                             <div class="input-field">
-                                <input name="confer" value="{{templo.Templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
+                                <input name="" value="{{templo.Templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
                                 <label class="active" for="confer">Nombre Institucion</label>
                             </div>
                             {% endif %}
                             <div class="divider"></div>
-                                                                                   
                         </div>
                         <div class="section">
                             <div class="input-field">
@@ -196,23 +194,22 @@
                         </div>
                     </div>
                     
-                      <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <div class="col s12 m8 offset-m2 l6 offset-l3">
                         <div class="card-panel grey lighten-5 z-depth-1">
-                          <div class="row valign-wrapper">
-                            <div class="col s2">
-                              <img src="{{ url_for('static', filename='img/' + templo.Templo.portada ) }}" alt=""  class="circle responsive-img"> <!-- notice the "circle" class -->
+                            <div class="row valign-wrapper">
+                                <div class="col s2">
+                                    <img src="{{ url_for('static', filename='img/' + templo.Templo.portada ) }}" alt=""  class="circle responsive-img">
+                                </div>
+                                <div class="col s10">
+                                    <span class="black-text">
+                                        <p class="no_edit">{{templo.Galeria.descripcion}}</p>
+                                    </span>
+                                </div>
                             </div>
-                            <div class="col s10">
-                              <span class="black-text">
-                                   <p class="no_edit">{{templo.Galeria.descripcion}}</p>
-                              </span>
-                            </div>
-                          </div>
                         </div>
-                      </div>
+                    </div>
                     
                 </form>
-                
             </div>
         </div>
         
@@ -220,6 +217,7 @@
             <!-- Teal page content -->
             <div style="padding: 40px;">
                 <form >
+                    
                     <div class="col s12 m12 l6">
                         <div class="input-field">
                             <select>
@@ -230,59 +228,57 @@
                             <label>Tipo</label>
                         </div>
                         <div class="input-field">
-                                <input name="nombre" value="" id="nombre" type="text" class="validate">
-                                <label class="active" for="nombre">Descripcion</label>
-                            </div>
+                            <input name="" value="" id="nombre" type="text" class="validate">
+                            <label class="active" for="nombre">Descripcion</label>
+                        </div>
                         <div class="input-field">
-                                <input name="nombre" value="" id="nombre" type="text" class="validate">
-                                <label class="active" for="nombre">Hora</label>
-                            </div>
+                            <input name="" value="" id="nombre" type="text" class="validate">
+                            <label class="active" for="nombre">Hora</label>
+                        </div>
                         <div class="input-field">
-                                <input name="nombre" value="" id="nombre" type="text" class="validate">
-                                <label class="active" for="nombre">Dia</label>
-                            </div>
+                            <input name="" value="" id="nombre" type="text" class="validate">
+                            <label class="active" for="nombre">Dia</label>
+                        </div>
                         <div class="section">
                             <div class="input-field">
                                 <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
-                                  <i class="material-icons right">done</i>
+                                    <i class="material-icons right">done</i>
                                 </button>
                             </div>
                         </div>
                     </div>
-                     <table>
-                            <thead>
-                              <tr>
-                                  <th>Servicio</th>
-                                  <th>Descripcion</th>
-                                  <th>Hora</th>
-                                  <th>Dia</th>
-                              </tr>
-                            </thead>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Descripcion</th>
+                                <th>Hora</th>
+                                <th>Dia</th>
+                            </tr>
+                        </thead>
+                         <tbody>
+                             <tr>
+                                 <td>{{templo.Servicio_Religioso.tipo}}</td>
+                                 <td>{{templo.Servicio_Religioso.descripcion}}</td>
+                                 <td></td>
+                                 <td>{{templo.Servicio_Religioso.dia}}</td>
 
-                            <tbody>
-                              <tr>
-                                <td>{{templo.Servicio_Religioso.tipo}}</td>
-                                <td>{{templo.Servicio_Religioso.descripcion}}</td>
-                                <td></td>
-                                <td>{{templo.Servicio_Religioso.dia}}</td>
-
-                              </tr>
-                              <tr>
-                                <td>{{templo.Servicio_Religioso.tipo}}</td>
-                                <td>{{templo.Servicio_Religioso.descripcion}}</td>
-                                <td></td>
-                                <td>{{templo.Servicio_Religioso.dia}}</td>
-
-                              </tr>
-                              <tr>
-                                <td>{{templo.Servicio_Religioso.tipo}}</td>
-                                <td>{{templo.Servicio_Religioso.descripcion}}</td>
-                                <td></td>
-                                <td>{{templo.Servicio_Religioso.dia}}</td>
-
-                              </tr>
-                            </tbody>
-                          </table>
+                             </tr>
+                             <tr>
+                                 <td>{{templo.Servicio_Religioso.tipo}}</td>
+                                 <td>{{templo.Servicio_Religioso.descripcion}}</td>
+                                 <td></td>
+                                 <td>{{templo.Servicio_Religioso.dia}}</td>
+                             </tr>
+                             <tr>
+                                 <td>{{templo.Servicio_Religioso.tipo}}</td>
+                                 <td>{{templo.Servicio_Religioso.descripcion}}</td>
+                                 <td></td>
+                                 <td>{{templo.Servicio_Religioso.dia}}</td>
+                             </tr>
+                         </tbody>
+                    </table>
+                    
                 </form>
             </div>
         </div>
@@ -302,15 +298,15 @@
                             <label>Tipo</label>
                         </div>
                         <div class="input-field">
-                            <input name="nombre" value="" id="nombre" type="text" class="validate">
+                            <input name="" value="" id="nombre" type="text" class="validate">
                             <label class="active" for="nombre">Dia</label>
                         </div>
                         <div class="input-field">
-                            <input name="nombre" value="" id="nombre" type="text" class="validate">
+                            <input name="" value="" id="nombre" type="text" class="validate">
                             <label class="active" for="nombre">Hora</label>
                         </div>
                         <div class="input-field">
-                            <input name="nombre" value="" id="nombre" type="text" class="validate">
+                            <input name="" value="" id="nombre" type="text" class="validate">
                             <label class="active" for="nombre">Descripcion</label>
                         </div>
                         <div class="section">
@@ -340,25 +336,24 @@
 
                         <div class="section">
                            <div class="input-field">
-                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <input name="" value="" id="nombre" type="text" class="validate">
                                 <label class="active" for="nombre">Titular</label>
                             </div>
                             <div class="input-field">
-                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <input name="" value="" id="nombre" type="text" class="validate">
                                 <label class="active" for="nombre">Descripcion</label>
                             </div>
                             <div class="input-field">
-                                <input name="nombre" value="" id="nombre" type="text" class="validate">
+                                <input name="" value="" id="nombre" type="text" class="validate">
                                 <label class="active" for="nombre">Imagen</label>
                             </div>
                             <div class="section">
-                            <div class="input-field">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
-                                  <i class="material-icons right">done</i>
-                                </button>
+                                <div class="input-field">
+                                    <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
+                                      <i class="material-icons right">done</i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                            
                         </div>
                         <div class="section">
                             
