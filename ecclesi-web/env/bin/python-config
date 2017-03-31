@@ -1,4 +1,4 @@
-#!/home/sam/Documentos/mono/ecclisi/ecclesi/env/bin/python
+#!/home/piccolina/Documentos/ecclesi/ecclesi-web/env/bin/python
 
 import sys
 import getopt

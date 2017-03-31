@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-03-2017 a las 03:35:47
+-- Tiempo de generación: 31-03-2017 a las 05:42:48
 -- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 7.0.16
+-- Versión de PHP: 7.0.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,17 +32,17 @@ CREATE TABLE `actividad` (
   `dia` int(11) NOT NULL,
   `hora` int(11) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
-  `id_templo` int(11) NOT NULL
+  `id_tipo_actividad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `actividad`
 --
 
-INSERT INTO `actividad` (`id_actividad`, `nombre`, `dia`, `hora`, `descripcion`, `id_templo`) VALUES
-(1, '', 0, 0, '', 1),
-(2, '', 0, 0, '', 2),
-(3, '', 0, 0, '', 2);
+INSERT INTO `actividad` (`id_actividad`, `nombre`, `dia`, `hora`, `descripcion`, `id_tipo_actividad`) VALUES
+(1, 'Kermes', 2, 123456789, 'kermese antes de semana santa', 1),
+(2, 'viacrucis', 12345678, 123456789, 'salida del viacrucis ', 2),
+(3, '', 123456789, 123456789, 'asdfghjk', 2);
 
 -- --------------------------------------------------------
 
@@ -128,17 +128,19 @@ CREATE TABLE `foto` (
 
 CREATE TABLE `galeria` (
   `id_galeria` int(11) NOT NULL,
-  `descripcion` varchar(45) NOT NULL,
-  `portada` varchar(45) DEFAULT NULL,
-  `id_templo` int(11) NOT NULL
+  `descripcion` varchar(100) NOT NULL,
+  `portada` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `galeria`
 --
 
-INSERT INTO `galeria` (`id_galeria`, `descripcion`, `portada`, `id_templo`) VALUES
-(1, '', NULL, 1);
+INSERT INTO `galeria` (`id_galeria`, `descripcion`, `portada`) VALUES
+(1, 'Catedral de Managua, fotografias ', NULL),
+(2, 'segundo templo', NULL),
+(3, 'tercer templo', NULL),
+(4, 'cuarto templo', NULL);
 
 -- --------------------------------------------------------
 
@@ -178,12 +180,12 @@ CREATE TABLE `municipio` (
 --
 
 INSERT INTO `municipio` (`id_municipio`, `nombre`, `id_departamento`) VALUES
-(1, NULL, 1),
-(2, NULL, 2),
-(3, NULL, 1),
-(4, NULL, 1),
-(5, NULL, 2),
-(6, NULL, 2),
+(1, 'Managua', 1),
+(2, 'Masaya', 2),
+(3, 'San Francisco Libre', 1),
+(4, 'Ciudad Sandino', 1),
+(5, 'Niquinomo', 2),
+(6, 'Nindiri', 2),
 (7, NULL, 3),
 (8, NULL, 3),
 (9, NULL, 4),
@@ -257,7 +259,7 @@ CREATE TABLE `presbitero` (
 --
 
 INSERT INTO `presbitero` (`id_presbitero`, `nombre`, `apellido`, `cane_confer`, `nombre_popular`, `fecha_ordenacion`, `foto_portada`, `id_usuario`, `id_templo`, `id_oficio_eclesiastico`) VALUES
-(1, 'Leopoldo José', 'Brenes Solórzano', '7342', 'Polito', 123456789, 'img_user.jpg', 2, 1, 1),
+(1, 'Leopoldo José', 'Brenes Solórzano', '123', 'Polito', 123456789, 'img_user.jpg', 2, 1, 1),
 (2, 'Julio Santos ', 'Dávila ', '1234', 'Nombre Popular', 987654321, 'presb.png', 3, 2, 2);
 
 -- --------------------------------------------------------
@@ -288,17 +290,17 @@ INSERT INTO `privilegio` (`id_privilegio`, `tipo`) VALUES
 CREATE TABLE `servicio_religioso` (
   `id_servicio_religioso` int(11) NOT NULL,
   `tipo` varchar(45) NOT NULL,
-  `descripcion` varchar(45) NOT NULL,
-  `templo_id_templo` int(11) NOT NULL
+  `descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `servicio_religioso`
 --
 
-INSERT INTO `servicio_religioso` (`id_servicio_religioso`, `tipo`, `descripcion`, `templo_id_templo`) VALUES
-(1, 'Boda', '', 2),
-(2, 'Bautizo', '', 1);
+INSERT INTO `servicio_religioso` (`id_servicio_religioso`, `tipo`, `descripcion`) VALUES
+(0, 'Bautizo', 'los primeros domingos del mes'),
+(1, 'Confesion', 'sacramento'),
+(2, 'Misa', 'Eucaristia');
 
 -- --------------------------------------------------------
 
@@ -315,33 +317,24 @@ CREATE TABLE `templo` (
   `historia` varchar(500) DEFAULT NULL,
   `nombre_institucion` varchar(100) NOT NULL,
   `portada` varchar(45) DEFAULT NULL,
-  `georeferencia` varchar(45) DEFAULT NULL,
+  `institucion` varchar(45) DEFAULT NULL,
   `id_zona_parroquial` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
-  `id_categoria` int(11) NOT NULL
+  `id_categoria` int(11) NOT NULL,
+  `id_galeria` int(11) NOT NULL,
+  `id_actividad` int(11) NOT NULL,
+  `id_servicio_religioso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `templo`
 --
 
-INSERT INTO `templo` (`id_templo`, `nombre`, `nombre_popular`, `direccion`, `telefono`, `historia`, `nombre_institucion`, `portada`, `institucion`, `id_zona_parroquial`, `id_municipio`, `id_categoria`) VALUES
-(1, 'Catedral Metropolitana Inmaculada Concepción de María ', 'Catedral de Managua', 'Reparto Serrano, Costado sur DGI', '(505) 2278 4223 - 2278 4232 (oficina)', NULL, '', NULL, NULL, 1, 1, 1),
-(2, 'Cristo Rey', NULL, 'Reparto Schick II Etapa, del Chaparral 1c. al norte', '(505) 2289 3911', NULL, '', NULL, NULL, 1, 1, 1),
-(3, 'El Calvario', 'Iglesia del Oriental', 'Bo. Los Ángeles, Managua Costado sur donde fue la Shell. (Mercado Oriental)', '(505) 2248 1600', NULL, '', NULL, NULL, 1, 1, 1),
-(4, 'Jesús de la Divina Misericordia ', NULL, 'Villa Fontana, Semáforo del Club Terraza \r\n2c. al oeste\r\n', '(505) 2270 6997', NULL, '', NULL, NULL, 1, 1, 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tipo_actividad`
---
-
-CREATE TABLE `tipo_actividad` (
-  `id_tipo_actividad` int(11) NOT NULL,
-  `tipo` varchar(45) NOT NULL,
-  `id_actividad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `templo` (`id_templo`, `nombre`, `nombre_popular`, `direccion`, `telefono`, `historia`, `nombre_institucion`, `portada`, `institucion`, `id_zona_parroquial`, `id_municipio`, `id_categoria`, `id_galeria`, `id_actividad`, `id_servicio_religioso`) VALUES
+(1, 'Catedral Metropolitana Inmaculada Concepción de María ', 'Catedral de Managua', 'Reparto Serrano, Costado sur DGI', '(505) 2278 4223 - 2278 4232 (oficina)', 'Historia', '', 'catedralm.jpg', NULL, 1, 1, 3, 1, 1, 1),
+(2, 'Cristo Rey', NULL, 'Reparto Schick II Etapa, del Chaparral 1c. al norte', '(505) 2289 3911', NULL, '', NULL, NULL, 1, 1, 1, 2, 2, 2),
+(3, 'El Calvario', 'Iglesia del Oriental', 'Bo. Los Ángeles, Managua Costado sur donde fue la Shell. (Mercado Oriental)', '(505) 2248 1600', NULL, '', NULL, NULL, 1, 1, 1, 3, 2, 1),
+(4, 'Jesús de la Divina Misericordia ', NULL, 'Villa Fontana, Semáforo del Club Terraza \r\n2c. al oeste\r\n', '(505) 2270 6997', NULL, '', NULL, NULL, 1, 1, 2, 4, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -366,6 +359,25 @@ INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `tipo`, `id_privilegio`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo__actividad`
+--
+
+CREATE TABLE `tipo__actividad` (
+  `id_tipo_actividad` int(11) NOT NULL,
+  `tipo` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tipo__actividad`
+--
+
+INSERT INTO `tipo__actividad` (`id_tipo_actividad`, `tipo`) VALUES
+(1, 'Kermes'),
+(2, 'Recital');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -385,7 +397,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `contrasenha`, `nombre`, `apellido`, `is_active`, `id_tipo_usuario`) VALUES
 (1, 'admin@admin.com', 'pbkdf2:sha1:1000$CfJuntll$41578781605b8bca3dea44f84153646aa680246f', 'Admin', 'Nistrador', 1, 1),
-(2, 'leopoldo@gmail.com', 'pbkdf2:sha1:1000$nfzAwZWX$c0299090704e840b0b8231788d89467ba9d5a0f8', 'Leopoldo', 'Brenes', 1, 2),
+(2, 'leopoldo@gmail.com', 'pbkdf2:sha1:1000$qUUCXP0X$69dc3936d1fcb33d7233595ddc93164543687ad6', 'Leopoldo', 'Brenes', 1, 2),
 (3, 'sanjulio@mail.net', 'pbkdf2:sha1:1000$WewIMsXW$dafdca7488b483d6331bf9a63bdc4702491a2d51', 'Julio', 'Santos ', 1, 2);
 
 -- --------------------------------------------------------
@@ -439,8 +451,7 @@ INSERT INTO `zona_pastoral` (`id_zona_pastoral`, `nombre`, `id_diocesis`) VALUES
 -- Indices de la tabla `actividad`
 --
 ALTER TABLE `actividad`
-  ADD PRIMARY KEY (`id_actividad`),
-  ADD KEY `id_templo` (`id_templo`);
+  ADD PRIMARY KEY (`id_actividad`);
 
 --
 -- Indices de la tabla `categoria`
@@ -471,8 +482,7 @@ ALTER TABLE `foto`
 -- Indices de la tabla `galeria`
 --
 ALTER TABLE `galeria`
-  ADD PRIMARY KEY (`id_galeria`),
-  ADD KEY `id_templo` (`id_templo`);
+  ADD PRIMARY KEY (`id_galeria`);
 
 --
 -- Indices de la tabla `horario`
@@ -514,8 +524,7 @@ ALTER TABLE `privilegio`
 -- Indices de la tabla `servicio_religioso`
 --
 ALTER TABLE `servicio_religioso`
-  ADD PRIMARY KEY (`id_servicio_religioso`),
-  ADD KEY `fk_oficio_religioso_templo1_idx` (`templo_id_templo`);
+  ADD PRIMARY KEY (`id_servicio_religioso`);
 
 --
 -- Indices de la tabla `templo`
@@ -527,18 +536,17 @@ ALTER TABLE `templo`
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
--- Indices de la tabla `tipo_actividad`
---
-ALTER TABLE `tipo_actividad`
-  ADD PRIMARY KEY (`id_tipo_actividad`),
-  ADD KEY `id_actividad` (`id_actividad`);
-
---
 -- Indices de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
   ADD PRIMARY KEY (`id_tipo_usuario`),
   ADD KEY `id_privilegio` (`id_privilegio`);
+
+--
+-- Indices de la tabla `tipo__actividad`
+--
+ALTER TABLE `tipo__actividad`
+  ADD PRIMARY KEY (`id_tipo_actividad`);
 
 --
 -- Indices de la tabla `usuario`
@@ -589,7 +597,7 @@ ALTER TABLE `diocesis`
 -- AUTO_INCREMENT de la tabla `galeria`
 --
 ALTER TABLE `galeria`
-  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --

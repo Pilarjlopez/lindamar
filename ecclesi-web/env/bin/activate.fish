@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/sam/Documentos/mono/ecclisi/ecclesi/env"
+set -gx VIRTUAL_ENV "/home/piccolina/Documentos/ecclesi/ecclesi-web/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
