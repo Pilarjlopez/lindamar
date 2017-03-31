@@ -27,6 +27,8 @@ from app.mod_usuario.forms import FormularioAcceso
 from app.mod_ecclesi.models import Templo
 from app.mod_ecclesi.models import Municipio
 from app.mod_ecclesi.models import Zona_Parroquial
+from app.mod_ecclesi.models import Diocesis
+from app.mod_ecclesi.models import Noticia
 from app.mod_ecclesi.models import Categoria
 from app.mod_ecclesi.models import Galeria
 from app.mod_ecclesi.models import Foto
@@ -109,10 +111,32 @@ def zpastoral():
 @login_required
 def diocesis():
     session['visible'] = 1
-    return render_template("ecclesi/diocesis.html")
+    
+    presbitero = {'foto_portada':'ecclesi_marcador.svg'}
+    if 'usuario' in session:
+        user = user_loader(session['usuario'])
+        if user.id_tipo_usuario == 2:
+            presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+            
+    return render_template("ecclesi/admin/admin_diocesis.html", presbitero=presbitero)
+
+@mod_ecclesi.route('/noticia/', methods=['GET', 'POST'])
+@login_required
+def noticia():
+    session['visible'] = 1
+    
+    presbitero = {'foto_portada':'ecclesi_marcador.svg'}
+    if 'usuario' in session:
+        user = user_loader(session['usuario'])
+        if user.id_tipo_usuario == 2:
+            presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
+            
+    return render_template("ecclesi/admin/admin_noticias.html", presbitero=presbitero)
 
 @mod_ecclesi.route('/actividad/', methods=['GET', 'POST'])
 @login_required
 def actividad():
     session['visible'] = 1
     return render_template("ecclesi/actividades.html")
+
+
