@@ -47,7 +47,7 @@ $ pip install -r requirements.txt
 ## Generar el Entorno Virtual
 
 ```bashscript
-$ su - 'virtualenv env'
+$ su -c 'virtualenv env'
 ```
 
 ## Ejecute el servidor de desarrollo
