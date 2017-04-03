@@ -1,4 +1,4 @@
-# ecclesi
+# EcclesiApp - SistemaWeb
 ### Sitio Web de la Curia Arzobispal y Sistema de geolocalizacion de templos Catolicos en Nicaragua.
 
 Lo siguiente es un pequeño startup para instalar y hacer funciona el citio web y el sistema de maneral local.
@@ -9,22 +9,24 @@ Intalaciond de librerias, aplicacciones y frameworks necesarias por el sistema o
 
 Actualice su sistema operativo.
 
-* Fedora
+> Mageia
+
 ```bashscript
-$ su -c "dnf -y update"
-$ su -c "dnf -y install git pip mariadb build-essential python-dev python2.7-dev"
+$ su -c "urpmi.update -a && urpmi --auto-select"
+$ su -c "urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64python-devel"
 ```
 
-* Mageia
+> Fedora
+
 ```bashscript
-$ su -c "urpmu"
-$ su -c "urpmi -y git pip mariadb build-essential python-dev python2.7-dev"
+$ su -c "dnf -y update"
+$ su -c "dnf -y install git pip mariadb-server build-essential python-dev python2.7-dev"
 ```
-    
+
 ## Clona o copia el repo
 
 ```bashscript
-$ git clone 
+$ git clone https://github.com/lindamar/ecclesi.git
 ```
 
 ## Instala las dependenencias de python
@@ -40,6 +42,12 @@ Y ejecuta el siguiente comando para instalar las depencias.
 
 ```bashscript
 $ pip install -r requirements.txt
+```
+
+## Generar el Entorno Virtual
+
+```bashscript
+$ su -c 'virtualenv env'
 ```
 
 ## Ejecute el servidor de desarrollo
