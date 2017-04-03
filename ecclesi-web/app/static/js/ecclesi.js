@@ -78,6 +78,24 @@
         var y = $('.no_edit').prev().height();
         $('.no_edit').css('margin-left', (x + 30) + 'px');
         $('.no_edit').css('margin-top', y + 'px');*/
+
+        $('.switch').change(function() {
+            if($('.contrasehna_switch').is(':checked')) $('.contrasehna').attr('type', 'text');
+            else $('.contrasehna').attr('type', 'password');
+        });
+
+        $('#nuevo_usuario_tipo').change(function() {
+            $('#nuevo_usuario_tipo option:selected').each(function() {
+                if( $(this).val() == 2) { 
+                    $('#form_presb').removeClass('hide'); 
+                    $('#contra_user').addClass('hide');
+                }
+                else {
+                    $('#form_presb').addClass('hide');
+                    $('#contra_user').removeClass('hide');
+                }
+            });
+        });
     
     }); // end of document ready
 })(jQuery); // end of jQuery name space

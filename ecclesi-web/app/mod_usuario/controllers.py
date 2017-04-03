@@ -15,9 +15,11 @@ from app import db
 # Importar modulo de formulario
 from app.mod_usuario.forms import PerfilUsuario
 from app.mod_usuario.forms import FormularioAcceso
+from app.mod_usuario.forms import NuevoUsuario
 
 # Importar Modelos
 from app.mod_usuario.models import Usuario
+from app.mod_usuario.models import Tipo_Usuario
 from app.mod_usuario.models import Presbitero
 from app.mod_ecclesi.models import Templo
 from app.mod_ecclesi.models import Oficio
@@ -47,7 +49,7 @@ def acceso():
             user.authenticated = True
             login_user(user, remember=True)
             session['usuario'] = user.email
-            return redirect(url_for("usuario.perfil"))
+            return redirect(url_for('usuario.perfil'))
         
     return redirect(url_for("ecclesi.descarga"))
 
@@ -67,7 +69,16 @@ def perfil():
         presbitero.fecha_ordenacion = datetime.fromtimestamp(presbitero.fecha_ordenacion).strftime('%d/%m/%Y')
         templo     = Templo.query.filter_by(id_templo=presbitero.id_templo).first()
         oficio     = Oficio.query.filter_by(id_oficio_eclesiastico=presbitero.id_oficio_eclesiastico).first()
-        return render_template("ecclesi/presbitero/perfil.html", presbitero=presbitero, templo=templo, oficio=oficio)
+        return render_template('ecclesi/presbitero/perfil.html', presbitero=presbitero, templo=templo, oficio=oficio)
     else:
-        presbitero = {'foto_portada':'ecclesi_marcador.svg'}
-        return render_template("ecclesi/usuario/perfil.html", presbitero=presbitero)
+        form = NuevoUsuario(request.form)
+        presbitero   = {'foto_portada':'person.svg'}
+        tipo_usuario = Tipo_Usuario.query.all()
+        oficio       = Oficio.query.all()
+        return render_template('ecclesi/usuario/perfil.html', presbitero=presbitero, tipo_usuario=tipo_usuario, oficio=oficio, form=form)
+
+@mod_usuario.route('/nuevo/', methods=['GET', 'POST'])
+@login_required
+def nuevo():
+    form = NuevoUsuario(request.form)
+    return "Nuevo Usuario"
