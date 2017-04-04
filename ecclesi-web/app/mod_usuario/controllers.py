@@ -71,14 +71,29 @@ def perfil():
         oficio     = Oficio.query.filter_by(id_oficio_eclesiastico=presbitero.id_oficio_eclesiastico).first()
         return render_template('ecclesi/presbitero/perfil.html', presbitero=presbitero, templo=templo, oficio=oficio)
     else:
-        form = NuevoUsuario(request.form)
-        presbitero   = {'foto_portada':'person.svg'}
-        tipo_usuario = Tipo_Usuario.query.all()
-        oficio       = Oficio.query.all()
-        return render_template('ecclesi/usuario/perfil.html', presbitero=presbitero, tipo_usuario=tipo_usuario, oficio=oficio, form=form)
+        nuevo_usuario = NuevoUsuario()
+        presbitero    = {'foto_portada':'person.svg'}
+        tipo_usuario  = Tipo_Usuario.query.all()
+        oficio        = Oficio.query.all()
+        return render_template('ecclesi/usuario/perfil.html', presbitero=presbitero, tipo_usuario=tipo_usuario, oficio=oficio, nuevo_usuario=nuevo_usuario)
 
-@mod_usuario.route('/nuevo/', methods=['GET', 'POST'])
+@mod_usuario.route('/nuevo/', methods=['GET', 'POST', 'HEAD'])
 @login_required
 def nuevo():
-    form = NuevoUsuario(request.form)
-    return "Nuevo Usuario"
+    form = request.form
+    """
+    form, retrieves variables when using POST
+    """
+    try:
+
+    #if form['tipo_usuario'] == 2:
+    #    presbitero = Presbitero.add()
+    
+        usuario = Usuario( email=form['email'], contrasenha=generate_password_hash(form['contrasenha']), nombre=form['nombre'], apellido=form['apellido'], is_active=1, id_tipo_usuario=form['tipo_usuario'] )
+        db.session.add(usuario)
+        db.session.commit()
+
+    except Exception as e:
+        print(e)
+        
+    return request.method
