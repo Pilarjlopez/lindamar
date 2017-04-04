@@ -6,7 +6,7 @@ from app import login_manager
 from flask_login import (current_user, login_required, login_user, logout_user, confirm_login, fresh_login_required)
 from datetime import datetime, timedelta
 
-# Importar clave/ayudantes de encriptacion
+# Importar clave / ayudantes de encriptacion
 from werkzeug import check_password_hash, generate_password_hash
 
 # Importar el objeto de base de datos desde el modulo principal de la aplicacion
@@ -81,19 +81,17 @@ def perfil():
 @login_required
 def nuevo():
     form = request.form
-    """
-    form, retrieves variables when using POST
-    """
-    try:
-
-    #if form['tipo_usuario'] == 2:
-    #    presbitero = Presbitero.add()
-    
-        usuario = Usuario( email=form['email'], contrasenha=generate_password_hash(form['contrasenha']), nombre=form['nombre'], apellido=form['apellido'], is_active=1, id_tipo_usuario=form['tipo_usuario'] )
+    if form['tipo_usuario'] == 2:
+        usuario = Usuario(form['email'], generate_password_hash(form['confer']), form['nombre'], form['apellido'], 1, form['tipo_usuario'])
+        db.session.add(usuario)
+        db.session.commit()
+        usuario = Usuario.query(ObjectRes).order_by(ObjectRes.id.desc()).first()
+        presbitero = Presbitero(usuario.nombre, usuario.apellido, form['confer'], form['popular'], form['ordenacion'], form['portada'], usuario.id_usuario, 0, form['oficio'])
+        db.session.add(presbitero)
+        db.session.commit()
+    else:
+        usuario = Usuario(form['email'], generate_password_hash(form['contrasehna']), form['nombre'], form['apellido'], 1, form['tipo_usuario'])
         db.session.add(usuario)
         db.session.commit()
 
-    except Exception as e:
-        print(e)
-        
-    return request.method
+    return usuario['id_usuario']

@@ -1,3 +1,3 @@
 # Ejecutar un servidor de prueba.
 from app import app
-app.run(host='127.0.0.1', port=8080, debug=True)
+app.run(host='192.168.123.4', port=8080, debug=True)

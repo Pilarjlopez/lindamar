@@ -260,7 +260,7 @@
                                     <label class="active" for="confer">Carnet CONFER</label>
                                 </div>
                                 <div class="input-field">
-                                    <input type="date" value="{{presbitero.fecha_ordenacion}}" id="ordenacion" class="datepicker">
+                                    <input name="ordenacion " type="date" value="{{presbitero.fecha_ordenacion}}" id="ordenacion" class="datepicker">
                                     <label class="active" for="ordenacion">Fecha de Ordenacion</label>
                                 </div>
                             </div>
@@ -269,13 +269,13 @@
                                 <h5>Oficio Eclesiastico</h5>
                                 <div class="divider"></div>
                                 <div class="input-field">
-                                    <select>
-                                        <option value="0">Choose your option</option>
+                                    <select name="oficio" id="oficio">
+                                        <option value="0">Escoge una opcion</option>
                                         {% for item in oficio %}
                                         <option value="{{ item.id_oficio_eclesiastico }}">{{ item.tipo }}</option>
                                         {% endfor %}
                                     </select>
-                                    <label>Oficio Ecleciastico</label>
+                                    <label class="active" for="oficio">Oficio Ecleciastico</label>
                                 </div>
                             </div>
                         </div>
@@ -285,7 +285,7 @@
                                 <!-- form action="#" -->
                                     <div class="file-field input-field btn-floating btn-large waves-effect waves-light" style="top:-90px; left:10px;">
                                         <i class="material-icons">add</i>
-                                        <input type="file" name="foto_portada">
+                                        <input type="file" name="portada">
                                     </div>                            
                                 <!-- /form -->
                             </div>
