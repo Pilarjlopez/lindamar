@@ -94,4 +94,4 @@ def nuevo():
         db.session.add(usuario)
         db.session.commit()
 
-    return usuario['id_usuario']
+    return usuario.id_usuario
