@@ -86,7 +86,7 @@ def nuevo():
         db.session.add(usuario)
         db.session.commit()
         usuario = Usuario.query(ObjectRes).order_by(ObjectRes.id.desc()).first()
-        presbitero = Presbitero(usuario.nombre, usuario.apellido, form['confer'], form['popular'], form['ordenacion'], form['portada'], usuario.id_usuario, 0, form['oficio'])
+        presbitero = Presbitero(usuario.nombre, usuario.apellido, form['confer'], form['popular'], time.mktime(datetime.datetime.strptime(form['ordenacion'], "%d %m, %Y").timetuple()), form['portada'], usuario.id_usuario, 0, form['oficio'])
         db.session.add(presbitero)
         db.session.commit()
     else:
