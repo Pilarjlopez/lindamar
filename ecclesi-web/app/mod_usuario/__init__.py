@@ -7,6 +7,9 @@ from flask_login import LoginManager
 # Importar SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 
+# Importar FireBase
+from firebase import firebase
+
 # Definir la aplicacion del objeto WSGI
 app = Flask(__name__)
 
@@ -15,6 +18,9 @@ app.config.from_object('config')
 
 # Definir el objeto de base de datos que se importa por modulos y controladores
 db = SQLAlchemy(app)
+
+# Definir la coneccion a los nodos de FireBase
+firebase = firebase.FirebaseApplication('https://ecclesiapp-fe5b2.firebaseio.com', None)
 
 login_manager = LoginManager()
 login_manager.init_app(app)

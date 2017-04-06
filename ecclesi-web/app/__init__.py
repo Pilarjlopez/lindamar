@@ -24,7 +24,7 @@ login_manager.init_app(app)
 db = SQLAlchemy(app)
 
 # Definir la coneccion a los nodos de FireBase
-firebase = firebase.FirebaseApplication('https://ecclesiapp-fe5b2.firebaseio.com/', None)
+firebase = firebase.FirebaseApplication('https://ecclesiapp-fe5b2.firebaseio.com', None)
 
 # Ejemplo de como hacerse cargo de un error HTTP
 @app.errorhandler(404)

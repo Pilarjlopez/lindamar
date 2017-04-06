@@ -21,7 +21,7 @@ DATABASE_CONNECT_OPTIONS = {}
 
 # String de connecion para FireBase
 #FIREBASE_URL = ('https://ecclesiapp-fe5b2.firebaseio.com/', None)
-FIREBASE_URL = ('https://ecclesiapp-fe5b2.firebaseio.com/', None)
+FIREBASE_URL = ('https://ecclesiapp-fe5b2.firebaseio.com', None)
 
 # Hilos de la aplicacion. Una suposicion general comun es 
 # usar 2 por nucleos de procesamiento disponibles - para manejar 

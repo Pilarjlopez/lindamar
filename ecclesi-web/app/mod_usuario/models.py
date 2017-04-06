@@ -81,9 +81,11 @@ class Presbitero(db.Model):
     nombre_popular          = db.Column(db.String(128), nullable=False)
     fecha_ordenacion        = db.Column(db.Integer, nullable=True)
     foto_portada            = db.Column(db.String(128), nullable=True)
-    id_usuario              = db.Column(db.Integer, nullable=False)
+    id_usuario              = db.Column(db.Integer, db.ForeignKey('usuario.id_usuario'), nullable=False)
     id_templo               = db.Column(db.Integer, nullable=True)
     id_oficio_eclesiastico  = db.Column(db.Integer, nullable=False)
+
+    usuario                 = db.relationship('Usuario')
 
     def __init__(self, nombre=None, apellido=None, cane_confer=None, nombre_popular=None, fecha_ordenacion=None, foto_portada=None, id_usuario=None, id_templo=None, id_oficio_eclesiastico=None):
         self.nombre                 = nombre

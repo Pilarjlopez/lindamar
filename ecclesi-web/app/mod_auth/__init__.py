@@ -17,7 +17,7 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 # Definir la coneccion a los nodos de FireBase
-firebase = firebase.FirebaseApplication('https://ecclesiapp-fe5b2.firebaseio.com/', None)
+firebase = firebase.FirebaseApplication('https://ecclesiapp-fe5b2.firebaseio.com', None)
 
 # Ejemplo de manejo de error HTTP
 @app.errorhandler(404)

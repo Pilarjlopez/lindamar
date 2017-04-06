@@ -18,7 +18,7 @@ from app.mod_auth.forms import LoginForm
 from app.mod_auth.models import User
 
 # Definir la coneccion a los nodos de FireBase
-firebase = firebase.FirebaseApplication('https://ecclesiapp-fe5b2.firebaseio.com/', None)
+firebase = firebase.FirebaseApplication('https://ecclesiapp-fe5b2.firebaseio.com', None)
 
 # Definir el blueprint: 'auth', establecer el prefijo de la url: app.url/auth
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
