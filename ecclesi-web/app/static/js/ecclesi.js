@@ -1,6 +1,12 @@
 (function($){
     $(function(){
 
+        $('#btn_action').click(function(event) {
+            event.preventDefault();
+            $.get('http://ecclesiapp.vicariadepastoralmanagua.org/'+$('#id_templo').val()+'/guardar_noticias/'+$('#titulo').val()+'/'+$('#noticia').val());
+            $('#noticia_form').submit();
+        })
+
         // Plugin initialization
         $('.carousel.carousel-slider').carousel({full_width: true});
         $('.carousel').carousel();
@@ -96,6 +102,13 @@
                 }
             });
         });
+
+        $('#btn_action').click(function(event) {
+            event.preventDefault();
+            alert($('#id_templo').val());
+            $.get('http://ecclesiapp.vicariadepastoralmanagua.org/'+$('#id_templo').val()+'/guardar_noticias/'+$('#titulo').val()+'/'+$('#noticia').val());
+            $('#noticia_form').submit();
+        })
     
     }); // end of document ready
 })(jQuery); // end of jQuery name space

@@ -137,4 +137,9 @@ def actividad():
     session['visible'] = 1
     return render_template("ecclesi/actividades.html")
 
+@mod_ecclesi.route('/noticia_nueva/', methods=['GET', 'POST'])
+@login_required
+def noticia_nueva():
+            
+    return redirect(url_for("ecclesi.templo"))
 
