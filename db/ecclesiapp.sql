@@ -32,6 +32,7 @@ CREATE TABLE `actividad` (
   `dia` int(11) NOT NULL,
   `hora` int(11) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
+  `id_templo` int(11) NOT NULL,
   `id_tipo_actividad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,10 +40,10 @@ CREATE TABLE `actividad` (
 -- Volcado de datos para la tabla `actividad`
 --
 
-INSERT INTO `actividad` (`id_actividad`, `nombre`, `dia`, `hora`, `descripcion`, `id_tipo_actividad`) VALUES
-(1, 'Kermes', 2, 123456789, 'kermese antes de semana santa', 1),
-(2, 'viacrucis', 12345678, 123456789, 'salida del viacrucis ', 2),
-(3, '', 123456789, 123456789, 'asdfghjk', 2);
+INSERT INTO `actividad` (`id_actividad`, `nombre`, `dia`, `hora`, `descripcion`, `id_templo`, `id_tipo_actividad`) VALUES
+(1, 'Kermes', 123456789, 123456789, 'kermese antes de semana santa', 1, 1),
+(2, 'Viacrucis', 12345678, 123456789, 'salida del viacrucis ', 1, 2),
+(3, 'Penitencial', 123456789, 123456789, 'asdfghjk', 2, 2);
 
 -- --------------------------------------------------------
 

@@ -109,7 +109,7 @@ class Diocesis(db.Model):
 class Noticia(db.Model):
     __tablename__       = 'noticia'
     id_noticia          = db.Column(db.Integer, primary_key=True)
-    nombre              = db.Column(db.String(45),nullable=False)    
+    nombre              = db.Column(db.String(45),nullable=False)
     
 # Definir modelo de Templo
 class Templo(db.Model):

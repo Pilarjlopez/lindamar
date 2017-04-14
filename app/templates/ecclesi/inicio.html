@@ -1,0 +1,208 @@
+{% extends "ecclesi/layout.html" %}
+
+{% macro render_field(field, placeholder=None) %}
+{% if field.errors %}
+<div>
+{% elif field.flags.error %}
+<div>
+{% else %}
+<div>
+{% endif %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+</div>
+{% endmacro %}
+    
+{% block body %}
+
+<div id="roller">
+    <ul class="table-of-contents">
+        <li><a href="#seccion1"></a></li>
+        <li><a href="#seccion2"></a></li>
+        <li><a href="#seccion3"></a></li>
+    </ul>
+</div>
+
+<!-- == SECCION I == -->
+<div id="seccion1" class="parallax-container block scrollspy">
+    <div class="parallax">
+        <img src="{{ url_for('static', filename='img/nica.svg') }}" style="display: block; transform: translate3d(-50%, 194px, 0px); z-index: -1;">
+        <div class="contenido">
+            <div class="center-align container">
+                <h1 class="center-align" style="color: #666666;">EcclesiApp</h1>
+                <h5 style="color: #666666;">La aplicaci&oacute;n que te ayudara a encontrar Iglesias en toda Nicaragua, podras ver la ubicacion y datos importantes como horarios de Misa y confesiones, ademas podras ver tambien fotos de la iglesia, datos historicos y eventos que se realizaran en la iglesia que selecciones. Descarga completamente gratis esta App. </h5>
+                <br/>
+                <a class="waves-effect waves-light btn-large red" style="font-size: 30px;">DESCARGAR <i class="material-icons">android</i></a>
+            </div>
+        </div>
+    </div>
+    <div class="pie-seccion">
+        <p class="center-align">¿Como funciona EcclesiApp?</p>
+    </div>
+</div>
+
+<div id="seccion2" class="block section scrollspy">
+        <div  class="contenido">
+            <div class="grid_12 center-align">
+                <div class="carousel carousel-slider center" data-indicators="true" style="height: 400px;">
+                   
+                    <div class="carousel-item red white-text " href="#one!">
+                              <div class="row panel-centrado">
+                                 <div class="col s3 l2 ">
+                                  <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
+                                    </div>
+                                    <div class="card-content">
+                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                                      <p><a href="#">This is a link</a></p>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                  </div>
+                                 </div>
+                                  
+                                 <div class="col s3 l2">
+                                  <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
+                                    </div>
+                                    <div class="card-content">
+                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                                      <p><a href="#">This is a link</a></p>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                  </div>
+                                 </div>
+                                  
+                                 <div class="col s3 l2">
+                                  <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
+                                    </div>
+                                    <div class="card-content">
+                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                                      <p><a href="#">This is a link</a></p>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                  </div>
+                                 </div>              
+                                </div>
+                    </div>
+                    <div class="carousel-item none white-text" href="#two!">
+                      <h2>Second Panel</h2>
+                      <p class="white-text">This is your second panel</p>
+                        
+                        <div class="row">
+                                 <div class="col s3 l2">
+                                  <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
+                                    </div>
+                                    <div class="card-content">
+                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                                      <p><a href="#">This is a link</a></p>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                  </div>
+                                 </div>
+                                  
+                                 <div class="col s3 l2">
+                                  <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
+                                    </div>
+                                    <div class="card-content">
+                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                                      <p><a href="#">This is a link</a></p>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                  </div>
+                                 </div>
+                                  
+                                 <div class="col s3 l2">
+                                  <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <img class="activator" src="{{ url_for('static', filename='img/3_v5.svg') }}">
+                                    </div>
+                                    <div class="card-content">
+                                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                                      <p><a href="#">This is a link</a></p>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                                    </div>
+                                  </div>
+                                 </div>              
+                            </div>
+                    </div>
+                    <div class="carousel-item none white-text" href="#three!">
+                      <h2>Third Panel</h2>
+                      <p class="white-text">This is your third panel</p>
+                    </div>
+                    <div class="carousel-item none white-text" href="#four!">
+                      <h2>Fourth Panel</h2>
+                      <p class="white-text">This is your fourth panel</p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    <div class="pie-seccion" style="margin-top:200px;">
+        <p class="center-align">Contactenos!</p>
+    </div>
+</div>
+
+<div id="seccion3" class="block section scrollspy">
+        <div class="contenido">
+            <div class="grid_12 center-align">
+
+            </div>
+        </div>
+    <div class="pie-seccion" style="margin-top:200px;">
+        <p class="center-align">Arquidiocesis de Managua - EcclesiApp</p>
+    </div>
+</div>
+
+<!-- Esctructura Modal del Fomulario de Acceso -->
+<div id="acceso" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <form class="col s12" method="POST" action="{{ url_for('usuario.acceso') }}" accept-charset="UTF-8" role="form">
+                {{ form.csrf_token }}
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ render_field(form.email, placeholder="Email", id="email", class="validate") }}
+                        <!-- label for="email">Usuario</label -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ render_field(form.password, placeholder="Contraseña", id="password", class="validate") }}
+                        <!-- label for="password">Contraseña</label -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Iniciar Sessión</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

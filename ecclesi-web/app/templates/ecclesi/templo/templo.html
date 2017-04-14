@@ -10,9 +10,6 @@
             <!-- Grey navigation panel -->
             <ul class="tabs" id="tabs">
                 <li class="tab tabtive" style="width: 25%;"><a href="#tab1">Templo</a></li>
-                <li class="tab" style="width: 25%;"><a href="#tab2">Editar Templo</a></li>
-                <li class="tab" style="width: 25%;"><a href="#tab3">Galeria</a></li>
-                <li class="tab" style="width: 25%;"><a href="#tab4">Servicios Eclesiasticos</a></li>
                 <li class="tab" style="width: 25%;"><a href="#tab5">Actividades</a></li>
                 <li class="tab" style="width: 25%;"><a href="#tab6">Noticias</a></li>
                 
@@ -79,211 +76,6 @@
             </div>
         </div>
         
-        <div id="tab2" class="col s12 m12 l9 panel-ecclesi">
-            <!-- Editar Templo -->
-            <div style="padding: 40px;">
-                <form action="{{url_for('ecclesi.guardar_templo')}}" method="post">
-                    <input type="hidden" name="portada" value="">
-                    <div class="col s12 m12 l6">
-
-                        <div class="section">
-                            <h5>Templo</h5>
-                            <div class="divider"></div>
-                            <div class="input-field">
-                                <input name="nombre" value="{{templo.Templo.nombre}}" id="nombre" type="text" class="validate">
-                                <label class="active" for="nombre">Nombre</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="popular" value="{{templo.Templo.nombre_popular}}" id="popular" type="text" class="validate">
-                                <label class="active" for="popular">Nombre Popular</label>
-                            </div>
-                            <h5>Categoria</h5>
-                            <div class="divider"></div>
-                            <div class="input-field">
-                                <select name="categoria">
-                                    {% for item in categoria %}
-                                    <option value="{{item.id_categoria}}" {%if item.id_categoria == templo.Templo.id_categoria%} selected {%endif%}>{{item.tipo}}</option>
-                                    {% endfor %}
-                                </select>
-                                <label>Categoria</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="direccion" value="{{templo.Templo.direccion}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Dirección</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="telefono" value="{{templo.Templo.telefono}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Telefono</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="historia" value="{{templo.Templo.historia}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Historia</label>
-                            </div>
-                            {% if templo.nomplombre_institucion %}
-                            <div class="input-field">
-                                <input name="institucion" value="{{templo.Templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Nombre Institucion</label>
-                            </div>
-                            {% endif %}
-                            <h5>Municipio</h5>
-                            <div class="divider"></div>
-                            <div class="input-field">
-                                <select name="municipio">
-                                    {% for item in municipio %}
-                                    <option value="{{item.id_municipio}}" {%if item.id_municipio == templo.Templo.id_municipio%} selected {%endif%}>{{item.nombre}}</option>
-                                    {% endfor %}
-                                </select>
-                                <label>Municipio</label>
-                            </div>
-                        </div>
-                        <div class="section">
-                            <div class="input-field">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Actualizar
-                                  <i class="material-icons right">done</i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <div class="col s12 m12 l6">
-                    <h5>Imagen Portada</h5>
-                    <div class="divider"></div>
-                    <div class="input-field">
-                        <img width="420" src="{{ url_for('static', filename='img/' + templo.Templo.portada ) }}">   
-                        <form action="#">
-                            <div class="file-field input-field btn-floating btn-large waves-effect waves-light" style="top:-90px; left:10px;">
-                                <i class="material-icons">add</i>
-                            </div>                            
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="tab3" class="col s12 m12 l9 panel-ecclesi">
-            <!-- Galeria -->
-            <div style="padding: 40px;">
-                <form >
-                    
-                    <div class="col s12 m12 l6">
-                        <div class="section">
-                            <h5>Galeria</h5>
-                            <div class="divider"></div>
-                            <div class="input-field">
-                                <input name="" value="" id="nombre" type="text" class="validate">
-                                <label class="active" for="nombre">Album</label>
-                            </div>                     
-                           
-                            <div class="input-field">
-                                <input name="" value="" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Historia</label>
-                            </div>
-                            {% if templo.nomplombre_institucion %}
-                            <div class="input-field">
-                                <input name="" value="{{templo.Templo.nomplombre_institucion}}" id="confer" type="text" class="validate">
-                                <label class="active" for="confer">Nombre Institucion</label>
-                            </div>
-                            {% endif %}
-                            <div class="divider"></div>
-                        </div>
-                        <div class="section">
-                            <div class="input-field">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Actualizar
-                                  <i class="material-icons right">done</i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col s12 m8 offset-m2 l6 offset-l3">
-                        <div class="card-panel grey lighten-5 z-depth-1">
-                            <div class="row valign-wrapper">
-                                <div class="col s2">
-                                    <img src="{{ url_for('static', filename='img/' + templo.Templo.portada ) }}" alt=""  class="circle responsive-img">
-                                </div>
-                                <div class="col s10">
-                                    <span class="black-text">
-                                        <p class="no_edit">{{templo.Galeria.descripcion}}</p>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </form>
-            </div>
-        </div>
-        
-        <div id="tab4" class="col s12 m12 l9 panel-ecclesi"> <!-- Note that "m8 l9" was added -->
-            <!-- Teal page content -->
-            <div style="padding: 40px;">
-                <form >
-                    
-                    <div class="col s12 m12 l6">
-                        <div class="input-field">
-                            <select>
-                                {% for item in servicio_religioso %}
-                                <option value="{{item.id_servicio_religioso}}" {%if item.id_servicio_religioso == templo.Templo.id_servicio_religioso%} selected {%endif%}>{{item.tipo}}</option>
-                                {% endfor %}
-                            </select>
-                            <label>Tipo</label>
-                        </div>
-                        <div class="input-field">
-                            <input name="" value="" id="nombre" type="text" class="validate">
-                            <label class="active" for="nombre">Descripcion</label>
-                        </div>
-                        <div class="input-field">
-                            <input name="" value="" id="nombre" type="text" class="validate">
-                            <label class="active" for="nombre">Hora</label>
-                        </div>
-                        <div class="input-field">
-                            <input name="" value="" id="nombre" type="text" class="validate">
-                            <label class="active" for="nombre">Dia</label>
-                        </div>
-                        <div class="section">
-                            <div class="input-field">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
-                                    <i class="material-icons right">done</i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Servicio</th>
-                                <th>Descripcion</th>
-                                <th>Hora</th>
-                                <th>Dia</th>
-                            </tr>
-                        </thead>
-                         <tbody>
-                             <tr>
-                                 <td>{{templo.Servicio_Religioso.tipo}}</td>
-                                 <td>{{templo.Servicio_Religioso.descripcion}}</td>
-                                 <td></td>
-                                 <td>{{templo.Servicio_Religioso.dia}}</td>
-
-                             </tr>
-                             <tr>
-                                 <td>{{templo.Servicio_Religioso.tipo}}</td>
-                                 <td>{{templo.Servicio_Religioso.descripcion}}</td>
-                                 <td></td>
-                                 <td>{{templo.Servicio_Religioso.dia}}</td>
-                             </tr>
-                             <tr>
-                                 <td>{{templo.Servicio_Religioso.tipo}}</td>
-                                 <td>{{templo.Servicio_Religioso.descripcion}}</td>
-                                 <td></td>
-                                 <td>{{templo.Servicio_Religioso.dia}}</td>
-                             </tr>
-                         </tbody>
-                    </table>
-                    
-                </form>
-            </div>
-        </div>
-        
         <div id="tab5" class="col s12 m12 l9 panel-ecclesi">
             <!-- Teal page content -->
             <div style="padding: 40px;">
@@ -332,33 +124,23 @@
         <div id="tab6" class="col s12 m12 l9 panel-ecclesi"> <!-- Note that "m8 l9" was added -->
             <!-- Teal page content -->
             <div style="padding: 40px;">
-                <form >
+                <form id="noticia_form" action="{{ url_for('ecclesi.templo') }}" method="POST">
                     <div class="col s12 m12 l6">
+                    <input name="id_templo" id="id_templo" value="{{templo.Templo.id_templo}}" type="text" class="hide">
+                        <div class="section">
+                            <div class="input-field">
+                                <input name="titulo" id="titulo" type="text" class="validate">
+                                <label class="active" for="titulo">Titulo</label>
+                            </div>
+                            <div class="input-field">
+                                <textarea id="noticia" name="noticia" class="materialize-textarea"></textarea>
+                                <label class="active" for="noticia">Descripcion</label>
+                            </div>
+                            <div class="input-field">
+                                <a id="btn_action" class="btn waves-effect waves-light">Agregar</a>
+                            </div>
+                        </div>
 
-                        <div class="section">
-                           <div class="input-field">
-                                <input name="" value="" id="nombre" type="text" class="validate">
-                                <label class="active" for="nombre">Titular</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="" value="" id="nombre" type="text" class="validate">
-                                <label class="active" for="nombre">Descripcion</label>
-                            </div>
-                            <div class="input-field">
-                                <input name="" value="" id="nombre" type="text" class="validate">
-                                <label class="active" for="nombre">Imagen</label>
-                            </div>
-                            <div class="section">
-                                <div class="input-field">
-                                    <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
-                                      <i class="material-icons right">done</i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="section">
-                            
-                        </div>
                     </div>
                 </form>
                 <div class="col s12 m12 l6">

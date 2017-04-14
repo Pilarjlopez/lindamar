@@ -9,7 +9,6 @@ from firebase import firebase
 
 # Importar el objeto de base de datos desde el modulo principal de la aplicacion
 from app import db
-#from app import firebase
 
 # Importar modulo de formulario
 from app.mod_auth.forms import LoginForm
@@ -52,4 +51,9 @@ def nada():
 def fbase():
     # Obtener el contendo de la refencia
     departamentos = firebase.get('/departamentos/MANAGUA/2/nombre', None)
-    return departamentos
+    return str(departamentos)
+
+@mod_auth.route('/mysql/', methods=['GET', 'POST'])
+def mysql():
+    mysql = Nube_Actividad.query.all()
+    return str(mysql)
