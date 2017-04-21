@@ -23,10 +23,52 @@ $ su -c "dnf -y update"
 $ su -c "dnf -y install git python-pip python2-mysql mariadb-server @development-tools python-devel python2-devel"
 ```
 
+> Arch
+
+```bashscript
+$ su -c "pacman -Syu"
+$ su -c "pacman -S git python-pip python-mysql-connector mariadb base-devel python python2"
+```
+
 ## Clona o copia el repo
 
 ```bashscript
 $ git clone https://github.com/lindamar/ecclesi.git
+```
+
+## Inicar el servidor de Base de Datos
+
+```bashscript
+$ cd ecclesi
+```
+
+> Solo para ArchLinux
+
+```bashscript
+# mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+```
+
+> En adelante para Mageia / Fedora / Arch
+
+1. Iniciar el servidor
+
+```bashscript
+$ systemctl start mariadb
+```
+
+2. Configuracion basica
+
+```bashscript
+$ mysql_secure_installation
+```
+
+3. Crear y restaurar la base de datos
+
+```bashscript
+$ mysql -u root -p
+> CREATE DATABASE ecclesiapp;
+> QUIT
+$ mysql -u root -p ecclesiapp < db/ecclesiapp.sql
 ```
 
 ## Instala las dependenencias de python
@@ -34,7 +76,7 @@ $ git clone https://github.com/lindamar/ecclesi.git
 Accede al directorio del repo.
 
 ```bashscript
-$ cd ecclesi/ecclesi-web
+$ cd ecclesi-web
 ```
 
 Y ejecuta el siguiente comando para instalar las depencias.
