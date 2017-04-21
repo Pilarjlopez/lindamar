@@ -20,7 +20,7 @@ $ su -c "urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64p
 
 ```bashscript
 $ su -c "dnf -y update"
-$ su -c "dnf -y install git pip mariadb-server build-essential python-dev python2.7-dev"
+$ su -c "dnf -y install git python-pip python2-mysql mariadb-server @development-tools python-devel python2-devel"
 ```
 
 ## Clona o copia el repo
@@ -34,20 +34,19 @@ $ git clone https://github.com/lindamar/ecclesi.git
 Accede al directorio del repo.
 
 ```bashscript
-$ cd ecclesi
-$ cd ecclesi-web
+$ cd ecclesi/ecclesi-web
 ```
 
 Y ejecuta el siguiente comando para instalar las depencias.
 
 ```bashscript
-$ pip install -r requirements.txt
+$ su -c "pip install -r requirements.txt"
 ```
 
 ## Generar el Entorno Virtual
 
 ```bashscript
-$ su -c 'virtualenv env'
+$ su -c "virtualenv env"
 ```
 
 ## Ejecute el servidor de desarrollo
