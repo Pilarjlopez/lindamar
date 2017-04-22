@@ -12,7 +12,9 @@ Intalaciond de librerias, aplicacciones y frameworks requeridas por el sistema o
 > Mageia
 
 ```bashscript
-$ sudo urpmi.update -a && urpmi --auto-select
+$ su
+# urpmi.update -a && urpmi --auto-select
+# exit
 ```
 
 > Fedora
@@ -32,7 +34,9 @@ $ su -c "pacman -Syu"
 > Mageia
 
 ```bashscript
-$ sudo urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64python-devel
+$ su
+# urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64python-devel
+# exit
 ```
 
 > Fedora
@@ -62,7 +66,9 @@ $ cd ecclesi
 > Solo para ArchLinux
 
 ```bashscript
+$ su
 # mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+# exit
 ```
 
 1. Iniciar el servidor
