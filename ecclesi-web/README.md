@@ -7,7 +7,7 @@ Lo siguiente es un pequeño startup para instalar y hacer funciona el citio web 
 
 Intalaciond de librerias, aplicacciones y frameworks necesarias por el sistema operativo.
 
-Actualice su sistema operativo.
+1. Actualice su sistema operativo.
 
 > Mageia
 
@@ -22,6 +22,23 @@ $ su -c "urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64p
 $ su -c "dnf -y update"
 $ su -c "dnf -y install git python-pip python2-mysql mariadb-server @development-tools python-devel python2-devel"
 ```
+
+
+> Mageia
+
+```bashscript
+$ su -c "urpmi.update -a && urpmi --auto-select"
+$ su -c "urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64python-devel"
+```
+
+> Fedora
+
+```bashscript
+$ su -c "dnf -y update"
+$ su -c "dnf -y install git python-pip python2-mysql mariadb-server @development-tools python-devel python2-devel"
+```
+
+2. Instalar dependenencias del sistema operativo
 
 ## Clona o copia el repo
 
