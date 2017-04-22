@@ -3,42 +3,49 @@
 
 Lo siguiente es un pequeño startup para instalar y hacer funciona el citio web y el sistema de maneral local.
 
-## Instala las dependenencias del sistema
+## Instala las dependencias del sistema
 
-Intalaciond de librerias, aplicacciones y frameworks necesarias por el sistema operativo.
+Intalaciond de librerias, aplicacciones y frameworks requeridas por el sistema operativo.
 
 1. Actualice su sistema operativo.
 
 > Mageia
 
 ```bashscript
-$ su -c "urpmi.update -a && urpmi --auto-select"
-$ su -c "urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64python-devel"
+$ sudo urpmi.update -a && urpmi --auto-select
 ```
 
 > Fedora
 
 ```bashscript
 $ su -c "dnf -y update"
-$ su -c "dnf -y install git python-pip python2-mysql mariadb-server @development-tools python-devel python2-devel"
 ```
 
+> Arch
+
+```bashscript
+$ su -c "pacman -Syu"
+```
+
+2. Instalar dependencias del sistema operativo
 
 > Mageia
 
 ```bashscript
-$ su -c "urpmi.update -a && urpmi --auto-select"
-$ su -c "urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64python-devel"
+$ sudo urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64python-devel
 ```
 
 > Fedora
 
 ```bashscript
-$ su -c "dnf -y update"
 $ su -c "dnf -y install git python-pip python2-mysql mariadb-server @development-tools python-devel python2-devel"
 ```
 
-2. Instalar dependenencias del sistema operativo
+> Arch
+
+```bashscript
+$ su -c "pacman -S git python-pip python-mysql-connector mariadb base-devel python python2"
+```
 
 ## Clona o copia el repo
 
@@ -46,15 +53,62 @@ $ su -c "dnf -y install git python-pip python2-mysql mariadb-server @development
 $ git clone https://github.com/lindamar/ecclesi.git
 ```
 
-## Instala las dependenencias de python
-
-Accede al directorio del repo.
+## Inicar el servidor de Base de Datos
 
 ```bashscript
-$ cd ecclesi/ecclesi-web
+$ cd ecclesi
 ```
 
-Y ejecuta el siguiente comando para instalar las depencias.
+> Solo para ArchLinux
+
+```bashscript
+# mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+```
+
+1. Iniciar el servidor
+
+> Mageia
+
+```bashscript
+$ systemctl start mysqld
+```
+
+> Fedora
+
+```bashscript
+$ systemctl start mysqld
+```
+
+> Arch
+
+```bashscript
+$ systemctl start mysqld
+```
+
+2. Configuracion basica
+
+```bashscript
+$ mysql_secure_installation
+```
+
+3. Crear y restaurar la base de datos
+
+```bashscript
+$ mysql -u root -p
+> CREATE DATABASE ecclesiapp;
+> QUIT
+$ mysql -u root -p ecclesiapp < db/ecclesiapp.sql
+```
+
+## Instala las dependencias de python
+
+1. Accede al directorio del sistema web.
+
+```bashscript
+$ cd ecclesi-web
+```
+
+2. Instalar las dependencias de flask.
 
 ```bashscript
 $ su -c "pip install -r requirements.txt"
