@@ -7,36 +7,10 @@ Lo siguiente es un pequeño startup para instalar y hacer funciona el citio web 
 
 Intalaciond de librerias, aplicacciones y frameworks requeridas por el sistema operativo.
 
-1. Actualice su sistema operativo.
-
 > Mageia
 
 ```bashscript
-$ su
-# urpmi.update -a && urpmi --auto-select
-# exit
-```
-
-> Fedora
-
-```bashscript
-$ su -c "dnf -y update"
-```
-
-> Arch
-
-```bashscript
-$ su -c "pacman -Syu"
-```
-
-2. Instalar dependencias del sistema operativo
-
-> Mageia
-
-```bashscript
-$ su
-# urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64python-devel
-# exit
+$ su -c "urpmi git python-pip python-mysql mariadb gcc gcc-c++ make cmake lib64python-devel"
 ```
 
 > Fedora
@@ -66,9 +40,7 @@ $ cd ecclesi
 > Solo para ArchLinux
 
 ```bashscript
-$ su
-# mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-# exit
+$ su -c "mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql"
 ```
 
 1. Iniciar el servidor
