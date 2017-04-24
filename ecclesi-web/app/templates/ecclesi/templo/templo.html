@@ -1,23 +1,23 @@
 {% extends "ecclesi/layout.html" %}
 
-{% block body %}    
+{% block body %}
 <div id="formulario">
     <div class="nav-wrapper" id="registro-nav"></div>
     <div style="margin-top: 50px"></div>
     <div class="row">
-        
+
         <div class="col s12 m12 l3"> <!-- Note that "m4 l3" was added -->
             <!-- Grey navigation panel -->
             <ul class="tabs" id="tabs">
                 <li class="tab tabtive" style="width: 25%;"><a href="#tab1">Templo</a></li>
                 <li class="tab" style="width: 25%;"><a href="#tab5">Actividades</a></li>
                 <li class="tab" style="width: 25%;"><a href="#tab6">Noticias</a></li>
-                
+
                 <!-- li class="tab"><a href="#test3">Horarios de Confesion</a></li>
                 <li class="tab"><a href="#test4">Evento</a></li -->
             </ul>
         </div>
-        
+
         <div id="tab1" class="col s12 m12 l9 panel-ecclesi">
             <!-- Templo -->
             <div style="padding: 40px;">
@@ -46,7 +46,7 @@
                         <label class="active">Historia:</label>
                     </div>
                     {% endif %}
-                    
+
                     {% if templo.Templo.nomplombre_institucion %}
                     <div class="input-field">
                         <p class="no_edit">{{templo.Templo.nomplombre_institucion}}</p>
@@ -75,15 +75,15 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="tab5" class="col s12 m12 l9 panel-ecclesi">
             <!-- Teal page content -->
             <div style="padding: 40px;">
-                <form >
+                <form id="actividad_form" action="{{ url_for('ecclesi.actividad_nueva') }}" method="POST">
                     <div class="col s12 m12 l6">
-                        
+                        <input name="id_templo" id="id_templo" value="{{templo.Templo.id_templo}}" type="text" class="hide">
                         <div class="input-field">
-                            <select>
+                            <select name="id_tipo_actividad" id="id_tipo_actividad">
                                 {% for item in tipo_actividad %}
                                 <option value="{{item.id_tipo_actividad}}" {%if item.id_tipo_actividad == templo.Actividad.id_tipo_actividad%} selected {%endif%}>{{item.tipo}}</option>
                                 {% endfor %}
@@ -91,42 +91,40 @@
                             <label>Tipo</label>
                         </div>
                         <div class="input-field">
-                            <input name="" value="" id="nombre" type="text" class="validate">
+                            <input name="nombre" value="" id="nombre" type="text" class="validate">
                             <label class="active" for="nombre">Dia</label>
                         </div>
                         <div class="input-field">
-                            <input name="" value="" id="nombre" type="text" class="validate">
-                            <label class="active" for="nombre">Hora</label>
+                            <input name="dia" value="" id="dia" type="text" class="validate">
+                            <label class="active" for="dia">Dia</label>
                         </div>
                         <div class="input-field">
-                            <input name="" value="" id="nombre" type="text" class="validate">
-                            <label class="active" for="nombre">Descripcion</label>
+                            <input name="hora" value="" id="hora" type="text" class="validate">
+                            <label class="active" for="hora">Hora</label>
+                        </div>
+                        <div class="input-field">
+                            <input name="descripcion" value="" id="descripcion" type="text" class="validate">
+                            <label class="active" for="descripcion">Descripcion</label>
                         </div>
                         <div class="section">
                             <div class="input-field">
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
+                                <button class="btn waves-effect waves-light" id="action_actividad">Agregar
                                   <i class="material-icons right">done</i>
                                 </button>
                             </div>
                         </div>
+
                     </div>
                 </form>
-                <div class="col s12 m12 l6">
-                    <div class="input-field">
-                        <form action="#">
-                                                      
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
-        
+
         <div id="tab6" class="col s12 m12 l9 panel-ecclesi"> <!-- Note that "m8 l9" was added -->
             <!-- Teal page content -->
             <div style="padding: 40px;">
-                <form id="noticia_form" action="{{ url_for('ecclesi.templo') }}" method="POST">
+                <form id="noticia_form" action="{{ url_for('ecclesi.noticia_nueva') }}" method="POST">
                     <div class="col s12 m12 l6">
-                    <input name="id_templo" id="id_templo" value="{{templo.Templo.id_templo}}" type="text" class="hide">
+                        <input name="id_templo" id="id_templo" value="{{templo.Templo.id_templo}}" type="text" class="hide">
                         <div class="section">
                             <div class="input-field">
                                 <input name="titulo" id="titulo" type="text" class="validate">
@@ -137,25 +135,18 @@
                                 <label class="active" for="noticia">Descripcion</label>
                             </div>
                             <div class="input-field">
-                                <a id="btn_action" class="btn waves-effect waves-light">Agregar</a>
+                                <a id="action_noticia" class="btn waves-effect waves-light">Agregar</a>
                             </div>
                         </div>
 
                     </div>
                 </form>
-                <div class="col s12 m12 l6">
-                    <div class="input-field">
-                        <form action="#">
-                                                       
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
-        
+
     </div>
 </div>
-    
+
 <style> body { background-color: #6F8A91; } </style>
 
 {% endblock %}

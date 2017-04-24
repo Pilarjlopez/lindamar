@@ -49,7 +49,7 @@ def acceso():
     For GET requests, display the login form. For POSTS, login the current user by processing the form.
     """
     form = FormularioAcceso(request.form)
-    
+
     if form.validate_on_submit():
         user = Usuario.query.filter_by(email=form.email.data).first()
         if user and check_password_hash(user.contrasenha, form.password.data):
@@ -57,7 +57,7 @@ def acceso():
             login_user(user, remember=True)
             session['usuario'] = user.email
             return redirect(url_for('usuario.perfil'))
-        
+
     return redirect(url_for("ecclesi.descarga"))
 
 @mod_usuario.route('/denegar/', methods=['GET', 'POST'])
@@ -99,6 +99,7 @@ def nuevo():
         presbitero = Presbitero(usuario.nombre, usuario.apellido, form['confer'], form['popular'], time.mktime(datetime.strptime(form['ordenacion'], "%Y-%m-%d").timetuple()), form['portada'], str(usuario.id_usuario), 0, form['oficio'])
         db.session.add(presbitero)
         db.session.commit()
+        db.session.flush()
         #f.get('/pins/3', name=None, connection=None, params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
         #firebase.post('/usuarios/'+form['email'], {'activo':1, 'nombre':form['nombre'] + form['apellido'], 'password':form['confer'], 'username':form['email']})
     else:

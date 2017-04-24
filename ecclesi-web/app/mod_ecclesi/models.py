@@ -93,24 +93,40 @@ class Actividad(db.Model):
 
     #tipo_actividad      = db.relationship('Tipo_Actividad')
 
+    def __init__(self, nombre=None, dia=None, hora=None, descripcion=None, id_tipo_actividad=None):
+        self.nombre            = nombre
+        self.dia               = dia
+        self.hora              = hora
+        self.descripcion       = descripcion
+        self.id_tipo_actividad = id_tipo_actividad
+
 #Definir modelo de tipo de actividad
 class Tipo_Actividad(db.Model):
     __tabletname__     = 'tipo_actividad'
     id_tipo_actividad  = db.Column(db.Integer, primary_key=True)
     tipo               = db.Column(db.String(45), nullable=False)
-    
+
 #Definir diocesis
 class Diocesis(db.Model):
     __tablename__       = 'diocesis'
     id_diocesis         = db.Column(db.Integer, primary_key=True)
     nombre              = db.Column(db.String(45),nullable=False)
-    
+
 #Definir noticia
 class Noticia(db.Model):
     __tablename__       = 'noticia'
     id_noticia          = db.Column(db.Integer, primary_key=True)
-    nombre              = db.Column(db.String(45),nullable=False)
-    
+    titulo              = db.Column(db.String(45),nullable=False)
+    noticia             = db.Column(db.String(45),nullable=False)
+    imagen              = db.Column(db.String(45))
+    id_templo           = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, titulo=None, noticia=None, imagen=None, id_templo=None):
+        self.titulo     = titulo
+        self.noticia    = noticia
+        self.imagen     = imagen
+        self.id_templo  = id_templo
+
 # Definir modelo de Templo
 class Templo(db.Model):
     __tablename__         = 'templo'
@@ -136,3 +152,4 @@ class Templo(db.Model):
     galeria            = db.relationship('Galeria')
     actividad          = db.relationship('Actividad')
     servicio_religioso = db.relationship('Servicio_Religioso')
+

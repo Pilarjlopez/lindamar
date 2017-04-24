@@ -59,7 +59,7 @@ def descarga():
         user = user_loader(session['usuario'])
         if user.id_tipo_usuario == 2:
             presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
-    
+
     return render_template("ecclesi/inicio.html", form=form, presbitero=presbitero)
 
 @mod_ecclesi.route('/prueba/', methods=['GET', 'POST'])
@@ -71,20 +71,20 @@ def prueba():
 @login_required
 def templo():
     session['visible'] = 1
-    
+
     presbitero = {'foto_portada':'ecclesi_marcador.svg'}
     if 'usuario' in session:
         user = user_loader(session['usuario'])
         if user.id_tipo_usuario == 2:
             presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
-            
+
     templo = db.session.query(Templo, Municipio, Zona_Parroquial, Categoria, Galeria, Actividad, Servicio_Religioso).join(Templo.municipio, Templo.zona_parroquial, Templo.categoria, Templo.galeria, Templo.actividad, Templo.servicio_religioso).filter(Templo.id_templo == presbitero.id_templo).order_by(Templo.id_templo).first()
-    
+
     tipo_actividad      = Tipo_Actividad.query.all()
     servicio_religioso  = Servicio_Religioso.query.all()
     municipio           = Municipio.query.filter_by(id_departamento=1).all()
     categoria           = Categoria.query.all()
-    
+
     return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, municipio=municipio, categoria=categoria, tipo_actividad=tipo_actividad,servicio_religioso=servicio_religioso)
 
 @mod_ecclesi.route('/guardar_templo/', methods=['GET', 'POST'])
@@ -109,26 +109,26 @@ def zpastoral():
 @login_required
 def diocesis():
     session['visible'] = 1
-    
+
     presbitero = {'foto_portada':'ecclesi_marcador.svg'}
     if 'usuario' in session:
         user = user_loader(session['usuario'])
         if user.id_tipo_usuario == 2:
             presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
-            
+
     return render_template("ecclesi/admin/admin_diocesis.html", presbitero=presbitero)
 
 @mod_ecclesi.route('/noticia/', methods=['GET', 'POST'])
 @login_required
 def noticia():
     session['visible'] = 1
-    
+
     presbitero = {'foto_portada':'ecclesi_marcador.svg'}
     if 'usuario' in session:
         user = user_loader(session['usuario'])
         if user.id_tipo_usuario == 2:
             presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
-            
+
     return render_template("ecclesi/admin/admin_noticias.html", presbitero=presbitero)
 
 @mod_ecclesi.route('/actividad/', methods=['GET', 'POST'])
@@ -140,6 +140,17 @@ def actividad():
 @mod_ecclesi.route('/noticia_nueva/', methods=['GET', 'POST'])
 @login_required
 def noticia_nueva():
-            
+    form = request.form
+    db.session.add(Noticia(form['titulo'], form['noticia'], '', form['id_templo']))
+    db.session.commit()
+    db.session.flush()
     return redirect(url_for("ecclesi.templo"))
 
+@mod_ecclesi.route('/actividad_nueva/', methods=['GET', 'POST'])
+@login_required
+def actividad_nueva():
+    form = request.form
+    db.session.add(Actividad(form['nombre'], form['di'], '', form['hora'], form['descripcion'], form['id_templo'], form['id_tipo_actividad']))
+    db.session.commit()
+    db.session.flush()
+    return redirect(url_for("ecclesi.templo"))

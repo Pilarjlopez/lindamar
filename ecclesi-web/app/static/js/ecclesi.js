@@ -1,19 +1,23 @@
 (function($){
     $(function(){
 
-        $('#btn_action').click(function(event) {
+        $('#action_noticia').click(function(event) {
             event.preventDefault();
             $.ajax({
                 url: "http://ecclesiapp.vicariadepastoralmanagua.org/"+$('#id_templo').val()+"/guardar_noticias/"+$('#titulo').val()+"/"+$('#noticia').val(),
                 type: "GET",
-                success: function(){
-                    $('#noticia_form').submit();
-                },
-                statusCode: {
-                    405: function() {
-                        alert( "error" );
-                    }
-                }
+            }).always( function() {
+                $('#noticia_form').submit();
+            });
+        });
+
+        $('#action_actividad').click(function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: "http://ecclesiapp.vicariadepastoralmanagua.org/"+$('#id_templo').val()+"/guardar_actividad/"+$('#nombre').val()+"/"+$('#dia').val()+"/"+$('#descripcion').val()+"/"+$('#id_templo').val()+"/"+$('#di_tipo_actividad').val(),
+                type: "GET",
+            }).always( function() {
+                $('#actividad_form').submit();
             });
         });
 
@@ -112,14 +116,6 @@
                 }
             });
         });
-
-        /*$('#btn_action').click(function(event) {
-            event.preventDefault();
-            $.get('http://ecclesiapp.vicariadepastoralmanagua.org/'+$('#id_templo').val()+'/guardar_noticias/'+$('#titulo').val()+'/'+$('#noticia').val())
-            .done(function() {
-                $('#noticia_form').submit();
-            });
-        });*/
 
     }); // end of document ready
 })(jQuery); // end of jQuery name space
