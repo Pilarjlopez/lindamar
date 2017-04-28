@@ -89,15 +89,17 @@ class Actividad(db.Model):
     dia                 = db.Column(db.String(128), nullable=False)
     hora                = db.Column(db.String(128), nullable=False)
     descripcion         = db.Column(db.String(128), nullable=False)
+    id_templo           = db.Column(db.Integer, nullable=False)
     id_tipo_actividad   = db.Column(db.Integer, nullable=False)
 
     #tipo_actividad      = db.relationship('Tipo_Actividad')
 
-    def __init__(self, nombre=None, dia=None, hora=None, descripcion=None, id_tipo_actividad=None):
+    def __init__(self, nombre=None, dia=None, hora=None, descripcion=None, id_templo=None, id_tipo_actividad=None):
         self.nombre            = nombre
         self.dia               = dia
         self.hora              = hora
         self.descripcion       = descripcion
+        self.id_templo         = id_templo
         self.id_tipo_actividad = id_tipo_actividad
 
 #Definir modelo de tipo de actividad
@@ -152,4 +154,3 @@ class Templo(db.Model):
     galeria            = db.relationship('Galeria')
     actividad          = db.relationship('Actividad')
     servicio_religioso = db.relationship('Servicio_Religioso')
-

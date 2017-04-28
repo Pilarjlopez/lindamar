@@ -78,14 +78,15 @@ def templo():
         if user.id_tipo_usuario == 2:
             presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
 
-    templo = db.session.query(Templo, Municipio, Zona_Parroquial, Categoria, Galeria, Actividad, Servicio_Religioso).join(Templo.municipio, Templo.zona_parroquial, Templo.categoria, Templo.galeria, Templo.actividad, Templo.servicio_religioso).filter(Templo.id_templo == presbitero.id_templo).order_by(Templo.id_templo).first()
+    templo = db.session.query(Templo, Municipio, Zona_Parroquial, Categoria, Galeria, Servicio_Religioso).join(Templo.municipio, Templo.zona_parroquial, Templo.categoria, Templo.galeria, Templo.servicio_religioso).filter(Templo.id_templo == presbitero.id_templo).order_by(Templo.id_templo).first()
 
+    actividad           = Actividad.query.filter_by(id_templo=templo.Templo.id_templo);
     tipo_actividad      = Tipo_Actividad.query.all()
     servicio_religioso  = Servicio_Religioso.query.all()
     municipio           = Municipio.query.filter_by(id_departamento=1).all()
     categoria           = Categoria.query.all()
 
-    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, municipio=municipio, categoria=categoria, tipo_actividad=tipo_actividad,servicio_religioso=servicio_religioso)
+    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, municipio=municipio, categoria=categoria, actividad=actividad, tipo_actividad=tipo_actividad,servicio_religioso=servicio_religioso)
 
 @mod_ecclesi.route('/guardar_templo/', methods=['GET', 'POST'])
 @login_required
@@ -150,7 +151,7 @@ def noticia_nueva():
 @login_required
 def actividad_nueva():
     form = request.form
-    db.session.add(Actividad(form['nombre'], form['di'], '', form['hora'], form['descripcion'], form['id_templo'], form['id_tipo_actividad']))
+    db.session.add(Actividad(form['nombre'], form['dia'], form['hora'], form['descripcion'], form['id_templo'], form['id_tipo_actividad']))
     db.session.commit()
     db.session.flush()
     return redirect(url_for("ecclesi.templo"))

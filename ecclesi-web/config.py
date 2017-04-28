@@ -23,9 +23,9 @@ DATABASE_CONNECT_OPTIONS = {}
 #FIREBASE_URL = ('https://ecclesiapp-fe5b2.firebaseio.com/', None)
 FIREBASE_URL = ('https://ecclesiapp-fe5b2.firebaseio.com', None)
 
-# Hilos de la aplicacion. Una suposicion general comun es 
-# usar 2 por nucleos de procesamiento disponibles - para manejar 
-# las peticiones entrantes utilizando uno y la realizacion de 
+# Hilos de la aplicacion. Una suposicion general comun es
+# usar 2 por nucleos de procesamiento disponibles - para manejar
+# las peticiones entrantes utilizando uno y la realizacion de
 # operaciones en segundo plano utilizando la otra.
 THREADS_PER_PAGE = 2
 
@@ -36,4 +36,4 @@ CSRF_ENABLED = True
 CSRF_SESSION_KEY = "secret"
 
 # clave secreta para las cookies
-SECRET_KEY = "secret" 
+SECRET_KEY = "secret"

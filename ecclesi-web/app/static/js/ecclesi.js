@@ -14,7 +14,7 @@
         $('#action_actividad').click(function(event) {
             event.preventDefault();
             $.ajax({
-                url: "http://ecclesiapp.vicariadepastoralmanagua.org/"+$('#id_templo').val()+"/guardar_actividad/"+$('#nombre').val()+"/"+$('#dia').val()+"/"+$('#descripcion').val()+"/"+$('#id_templo').val()+"/"+$('#di_tipo_actividad').val(),
+                url: "http://ecclesiapp.vicariadepastoralmanagua.org/"+$('#id_templo').val()+"/guardar_actividad/"+$('#nombre').val()+"/"+$('#dia').val()+"/"+$('#hora').val()+"/"+$('#descripcion').val()+"/"+$('#id_tipo_actividad').val(),
                 type: "GET",
             }).always( function() {
                 $('#actividad_form').submit();
