@@ -43,9 +43,13 @@ class Zona_Parroquial(db.Model):
     __tablename__      = 'zona_parroquial'
     id_zona_parroquial = db.Column(db.Integer, primary_key=True)
     nombre             = db.Column(db.String(128), nullable=False)
-    id_zona_pastoral   = db.Column(db.Integer, db.ForeignKey('zona_pastoral.id_zona_pastoral'))
+    id_zona_pastoral   = db.Column(db.Integer, nullable=True)
 
     #zona_pastoral     = db.relationship('Zona_Pastoral')
+
+    def __init__(self, nombre=None, id_zona_pastoral=None):
+        self.nombre            = nombre
+        self.id_zona_pastoral  = id_zona_pastoral
 
 #definir modelo de Galeria de fotos
 class Galeria(db.Model):
@@ -145,12 +149,40 @@ class Templo(db.Model):
     id_municipio          = db.Column(db.Integer, db.ForeignKey('municipio.id_municipio'), nullable=False)
     id_categoria          = db.Column(db.Integer, db.ForeignKey('categoria.id_categoria'), nullable=False)
     id_galeria            = db.Column(db.Integer, db.ForeignKey('galeria.id_galeria'), nullable=False)
-    id_actividad          = db.Column(db.Integer, db.ForeignKey('actividad.id_actividad'), nullable=False)
     id_servicio_religioso = db.Column(db.Integer, db.ForeignKey('servicio_religioso.id_servicio_religioso'), nullable=False)
 
     zona_parroquial    = db.relationship('Zona_Parroquial')
     municipio          = db.relationship('Municipio')
     categoria          = db.relationship('Categoria')
     galeria            = db.relationship('Galeria')
-    actividad          = db.relationship('Actividad')
     servicio_religioso = db.relationship('Servicio_Religioso')
+
+    def __init__(
+        self,
+        nombre=None,
+        nombre_popular=None,
+        direccion=None,
+        telefono=None,
+        historia=None,
+        nombre_institucion=None,
+        portada=None,
+        institucion=None,
+        id_zona_parroquial=None,
+        id_municipio=None,
+        id_categoria=None,
+        id_galeria=None,
+        id_servicio_religioso=None
+    ):
+        self.nombre                 = nombre
+        self.nombre_popular         = nombre_popular
+        self.direccion              = direccion
+        self.telefono               = telefono
+        self.historia               = historia
+        self.nombre_institucion     = nombre_institucion
+        self.portada                = portada
+        self.institucion            = institucion
+        self.id_zona_parroquial     = id_zona_parroquial
+        self.id_municipio           = id_municipio
+        self.id_categoria           = id_categoria
+        self.id_galeria             = id_galeria
+        self.id_servicio_religioso  = id_servicio_religioso

@@ -20,7 +20,7 @@
             <li class="divider"></li>
             <li><a href="/usuario/denegar">Cerrar Sesion</a></li>
         </ul>
-        
+
         <ul id="admin" class="dropdown-content">
             {% if current_user.id_tipo_usuario == 1 %}
             <li><a href="{{ url_for('ecclesi.usuario') }}">Administrar Usuario</a></li>
@@ -32,7 +32,7 @@
             <li><a href="{{ url_for('ecclesi.actividad') }}">Administrar Actividades</a></li>
             <li><a href="{{ url_for('ecclesi.noticia') }}">Administrar Noticias</a></li>
         </ul>
-      
+
         <nav style="{{ estilos }}">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo"><img src="{{ url_for('static', filename='img/ecclesi.svg') }}"></a>
@@ -40,10 +40,10 @@
                 <ul class="right hide-on-med-and-down">
                     {% if current_user.is_authenticated %}
                     <li><a class="dropdown-button" href="#!" data-activates="admin" style="padding: 0 10px;"><i class="material-icons" style="font-size: 50px;">view_module</i></a></li>
-                    
+
                     <li><a class="dropdown-button" href="#!" data-activates="usuario" style="padding: 0 10px; height: 61px;">
                         {% if current_user.id_tipo_usuario == 1 %}
-                        <i class="material-icons" style="font-size: 50px;">person_pin</i> 
+                        <i class="material-icons" style="font-size: 50px;">person_pin</i>
                         {% else %}
                         <img src="{{ url_for('static', filename='img/' + presbitero.foto_portada ) }}" class="circle responsive-img" style="width: 55px;">
                         {% endif %}
@@ -52,12 +52,13 @@
                     <li><a class="waves-effect waves-light btn btn-inicio" href="#acceso">Iniciar Sesion</a></li>
                     {% endif %}
                 </ul>
-                
+
             </div>
         </nav>
     </div>
     {% block body %}{% endblock %}
 </div>
-<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<!-- script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script -->
+<script type="text/javascript" src="../../static/js/jquery.min.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/ecclesi.js') }}"></script>

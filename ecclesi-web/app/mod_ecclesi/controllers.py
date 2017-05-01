@@ -1,4 +1,4 @@
-
+import sys
 # Importar las dependencias de flask
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for
 
@@ -78,15 +78,13 @@ def templo():
         if user.id_tipo_usuario == 2:
             presbitero = Presbitero.query.filter_by(id_usuario=user.id_usuario).first()
 
-    templo = db.session.query(Templo, Municipio, Zona_Parroquial, Categoria, Galeria, Servicio_Religioso).join(Templo.municipio, Templo.zona_parroquial, Templo.categoria, Templo.galeria, Templo.servicio_religioso).filter(Templo.id_templo == presbitero.id_templo).order_by(Templo.id_templo).first()
+    templo = Templo.query.filter_by(id_templo = presbitero.id_templo).order_by(Templo.id_templo).first()
 
-    actividad           = Actividad.query.filter_by(id_templo=templo.Templo.id_templo);
     tipo_actividad      = Tipo_Actividad.query.all()
-    servicio_religioso  = Servicio_Religioso.query.all()
     municipio           = Municipio.query.filter_by(id_departamento=1).all()
     categoria           = Categoria.query.all()
 
-    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, municipio=municipio, categoria=categoria, actividad=actividad, tipo_actividad=tipo_actividad,servicio_religioso=servicio_religioso)
+    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, municipio=municipio, categoria=categoria)
 
 @mod_ecclesi.route('/guardar_templo/', methods=['GET', 'POST'])
 @login_required
@@ -110,7 +108,6 @@ def zpastoral():
 @login_required
 def diocesis():
     session['visible'] = 1
-
     presbitero = {'foto_portada':'ecclesi_marcador.svg'}
     if 'usuario' in session:
         user = user_loader(session['usuario'])
@@ -123,7 +120,6 @@ def diocesis():
 @login_required
 def noticia():
     session['visible'] = 1
-
     presbitero = {'foto_portada':'ecclesi_marcador.svg'}
     if 'usuario' in session:
         user = user_loader(session['usuario'])
@@ -154,4 +150,29 @@ def actividad_nueva():
     db.session.add(Actividad(form['nombre'], form['dia'], form['hora'], form['descripcion'], form['id_templo'], form['id_tipo_actividad']))
     db.session.commit()
     db.session.flush()
+    return redirect(url_for("ecclesi.templo"))
+
+@mod_ecclesi.route('/editar_templo/', methods=['GET', 'POST'])
+@login_required
+def editar_templo():
+    form = request.form
+
+    templo                       = Templo.query.get(form['id_templo'])
+    templo.nombre                = form['nombre']
+    templo.nombre_popular        = form['nombre_popular']
+    templo.direccion             = form['direccion']
+    templo.telefono              = form['telefono']
+    templo.historia              = form['historia']
+    templo.nombre_institucion    = form['institucion']
+    templo.portada               = form['portada']
+    templo.institucion           = form['institucion']
+    templo.id_zona_parroquial    = form['id_zona_parroquial']
+    templo.id_municipio          = form['municipio']
+    templo.id_categoria          = form['categoria']
+    templo.id_galeria            = form['galeria']
+    templo.id_servicio_religioso = form['servicio_religioso']
+    templo.zona_parroquial.nombre= form['zona_parroquial']
+    db.session.commit()
+    db.session.flush()
+
     return redirect(url_for("ecclesi.templo"))

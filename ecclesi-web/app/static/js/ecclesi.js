@@ -2,13 +2,14 @@
     $(function(){
 
         $('#action_noticia').click(function(event) {
+            alert($('#id_templo_noticia').val());
             event.preventDefault();
             $.ajax({
-                url: "http://ecclesiapp.vicariadepastoralmanagua.org/"+$('#id_templo').val()+"/guardar_noticias/"+$('#titulo').val()+"/"+$('#noticia').val(),
+                url: "http://ecclesiapp.vicariadepastoralmanagua.org/"+$('#id_templo_noticia').val()+"/guardar_noticias/"+$('#titulo').val()+"/"+$('#noticia').val(),
                 type: "GET",
-            }).always( function() {
+            });/*.always( function() {
                 $('#noticia_form').submit();
-            });
+            });*/
         });
 
         $('#action_actividad').click(function(event) {
@@ -18,6 +19,33 @@
                 type: "GET",
             }).always( function() {
                 $('#actividad_form').submit();
+            });
+        });
+
+        $('#action_templo').click(function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: "http://ecclesiapp.vicariadepastoralmanagua.org/"+$('#id_templo').val()+"/actualizar_templo/",
+                data: {
+                    nombre: $('#nombre').val(),
+                    nombre_popular: $('#nombre_popularnombre_popular').val(),
+                    direccion: $('#direccion').val(),
+                    telefono: $('#telefono').val(),
+                    historia: $('#historia').val(),
+                    institucion: $('#institucion').val(),
+                    portada: $('#portada').val(),
+                    id_zona_parroquial: $('#zona_parroquial').val(),
+                    id_municipio: $('#municipio').val(),
+                    id_categoria: $('#categoria').val(),
+                    id_galeria: $('#galeria').val(),
+                    id_servicio_religioso: $('#servicio_religioso').val()
+                },
+                type: "GET",
+                success: function(response) {
+                    alert(response);
+                },
+            }).always( function() {
+                $('#templo_form').submit();
             });
         });
 
