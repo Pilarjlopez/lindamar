@@ -114,8 +114,7 @@
                             <label for="telefono">Telefono:</label>
                         </div>
                         <div class="input-field">
-                            <input name="historia" value="{{templo.historia}}" id="historia" type="text" class="validate">
-                            <p class="no_edit"></p>
+                            <textarea id="historia" name="historia" class="materialize-textarea">{{templo.historia}}</textarea>
                             <label for="historia">Historia:</label>
                         </div>
 
@@ -168,18 +167,18 @@
             <div style="padding: 40px;">
                 <form id="actividad_form" action="{{ url_for('ecclesi.actividad_nueva') }}" method="POST">
                     <div class="col s12 m12 l6">
-                        <input name="id_templo" id="id_templo_noticia" value="{{templo.id_templo}}" type="text" class="hide">
+                        <input name="id_templo" id="id_templo_actividad" value="{{templo.id_templo}}" type="text" class="hide">
                         <div class="input-field">
                             <select name="id_tipo_actividad" id="id_tipo_actividad">
                                 {% for item in tipo_actividad %}
-                                <option value="{{item.id_tipo_actividad}}" {%if item.id_tipo_actividad == actividad.id_tipo_actividad%} selected {%endif%}>{{item.tipo}}</option>
+                                <option value="{{item.id_tipo_actividad}}">{{item.tipo}}</option>
                                 {% endfor %}
                             </select>
                             <label for="id_tipo_actividad">Tipo</label>
                         </div>
                         <div class="input-field">
-                            <input name="nombre" value="" id="nombre" type="text" class="validate">
-                            <label class="active" for="nombre">Nombre</label>
+                            <input name="nombre" value="" id="nombre_actividad" type="text" class="validate">
+                            <label class="active" for="nombre_actividad">Nombre</label>
                         </div>
                         <div class="input-field">
                             <input name="dia" value="" id="dia" type="text" class="validate">
@@ -190,7 +189,7 @@
                             <label class="active" for="hora">Hora</label>
                         </div>
                         <div class="input-field">
-                            <input name="descripcion" value="" id="descripcion" type="text" class="validate">
+                            <textarea id="descripcion" name="descripcion" class="materialize-textarea"></textarea>
                             <label class="active" for="descripcion">Descripcion</label>
                         </div>
                         <div class="section">
@@ -211,7 +210,7 @@
             <div style="padding: 40px;">
                 <form id="noticia_form" action="{{ url_for('ecclesi.noticia_nueva') }}" method="POST">
                     <div class="col s12 m12 l6">
-                        <input name="id_templo" id="id_templo" value="{{templo.id_templo}}" type="text" class="hide">
+                        <input name="id_templo" id="id_templo_noticia" value="{{templo.id_templo}}" type="text" class="hide">
                         <div class="section">
                             <div class="input-field">
                                 <input name="titulo" id="titulo" type="text" class="validate">

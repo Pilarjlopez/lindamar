@@ -84,7 +84,7 @@ def templo():
     municipio           = Municipio.query.filter_by(id_departamento=1).all()
     categoria           = Categoria.query.all()
 
-    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, municipio=municipio, categoria=categoria)
+    return render_template("ecclesi/templo/templo.html", presbitero=presbitero, templo=templo, municipio=municipio, categoria=categoria, tipo_actividad=tipo_actividad)
 
 @mod_ecclesi.route('/guardar_templo/', methods=['GET', 'POST'])
 @login_required
